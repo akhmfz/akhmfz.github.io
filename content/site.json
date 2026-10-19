@@ -1,0 +1,582 @@
+{
+  "meta": {
+    "siteUrl": "https://akhmfz.github.io",
+    "defaultLang": "id",
+    "theme": "light"
+  },
+  "identity": {
+    "name": {
+      "id": "Muhammad Akhmal Fauzi Saefurohman",
+      "en": "Muhammad Akhmal Fauzi Saefurohman"
+    },
+    "shortName": {
+      "id": "Muhammad Akhmal",
+      "en": "Muhammad Akhmal"
+    },
+    "role": {
+      "id": "Mahasiswa Manajemen Keuangan · UNIDA Gontor",
+      "en": "Financial Management Student · UNIDA Gontor"
+    },
+    "headline": {
+      "id": "Menuju karier Internal Audit, Internal Control, Risk Management & Compliance.",
+      "en": "Building a career in Internal Audit, Internal Controls, Risk Management & Compliance."
+    },
+    "bio": {
+      "id": "Saya mahasiswa Manajemen Keuangan di Universitas Darussalam Gontor dengan IPK 3,73 dari 4,00, yang tertarik pada audit internal, pengendalian internal, manajemen risiko, dan kepatuhan. Sebagai Chairperson Sharia Investment Gallery (GIS) UNIDA Gontor, saya memimpin tim 15 orang dan mendukung kegiatan literasi pasar modal syariah bersama stakeholders universitas dan pasar. Peran organisasi saya memperketatkan kemampuan dokumentasi, koordinasi administrasi, komunikasi, dan kerja sama tim. Saat ini saya memperdalam prosedur audit, penilaian risiko, dan dokumentasi audit, serta terbuka untuk magang pada 2027.",
+      "en": "I am a Financial Management undergraduate at Universitas Darussalam Gontor with a GPA of 3.73 out of 4.00, interested in internal audit, internal controls, risk management, and compliance. As Chairperson of the Sharia Investment Gallery (GIS) at UNIDA Gontor, I lead a 15-member team and support Islamic capital market literacy activities with university and market stakeholders. My organisational roles have strengthened my skills in documentation, administrative coordination, communication, and teamwork. I am currently deepening my knowledge of audit procedures, risk assessment, and audit documentation, and I am open to a 2027 internship."
+    },
+    "location": {
+      "id": "Ponorogo, Jawa Timur, Indonesia",
+      "en": "Ponorogo, East Java, Indonesia"
+    },
+    "email": "akhmfz.analytics@gmail.com"
+  },
+  "links": {
+    "linkedin": "https://www.linkedin.com/in/muhammadakhmal172",
+    "github": "https://github.com/akhmfz",
+    "tradingview": "https://www.tradingview.com/u/akhmfz_analytics/",
+    "instagram": "https://instagram.com/akhm.fz",
+    "email": "mailto:akhmfz.analytics@gmail.com"
+  },
+  "credentials": [
+    {
+      "value": "3,73 / 4,00",
+      "label": {
+        "id": "IPK Manajemen Keuangan",
+        "en": "Financial Management GPA"
+      },
+      "accent": true
+    },
+    {
+      "value": "GenBI",
+      "label": {
+        "id": "Penerima Beasiswa Bank Indonesia",
+        "en": "Bank Indonesia Scholarship"
+      }
+    },
+    {
+      "value": "15",
+      "label": {
+        "id": "Anggota tim yang memimpin (GIS)",
+        "en": "Team members led (GIS)"
+      }
+    },
+    {
+      "value": "2027",
+      "label": {
+        "id": "Target magang",
+        "en": "Internship target"
+      }
+    }
+  ],
+  "experience": [
+    {
+      "org": "Sharia Investment Gallery (GIS) — UNIDA Gontor",
+      "role": {
+        "id": "Chairperson",
+        "en": "Chairperson"
+      },
+      "period": "2026-10",
+      "location": {
+        "id": "Ponorogo",
+        "en": "Ponorogo"
+      },
+      "highlights": [
+        {
+          "id": "Memimpin tim beranggotakan 15 orang untuk merencanakan dan menjalankan program literasi pasar modal syariah.",
+          "en": "Leading a 15-member team to plan and run Islamic capital market literacy programmes."
+        },
+        {
+          "id": "Mengoordinasikan kegiatan edukasi yang melibatkan Bursa Efek Indonesia (IDX), Otoritas Jasa Keuangan (OJK), dan pemangku kepentingan universitas.",
+          "en": "Coordinating educational events involving the Indonesia Stock Exchange (IDX), the Financial Services Authority (OJK), and university stakeholders."
+        },
+        {
+          "id": "Mengawasi dokumentasi organisasi, administrasi program, dan koordinasi operasional.",
+          "en": "Overseeing organisational documentation, programme administration, and operational coordination."
+        },
+        {
+          "id": "Memfasilitasi sesi pembelajaran dasar investasi syariah bagi anggota KSPM.",
+          "en": "Facilitating introductory Islamic investment sessions for KSPM members."
+        }
+      ]
+    },
+    {
+      "org": "Racana Al-Faraby (Scouts) — UNIDA Gontor",
+      "role": {
+        "id": "Secretary of the Gudep (Gugus Depan)",
+        "en": "Secretary of the Gudep (Front Scout Group)"
+      },
+      "period": "2026-10",
+      "location": {
+        "id": "Ponorogo",
+        "en": "Ponorogo"
+      },
+      "highlights": [
+        {
+          "id": "Mengelola surat resmi, arsip, dan dokumentasi administrasi untuk unit gugus depan.",
+          "en": "Managing official correspondence, archives, and administrative records for the scout group."
+        }
+      ]
+    },
+    {
+      "org": "Independent Forex Trader (Self-employed)",
+      "role": {
+        "id": "Independent Trader",
+        "en": "Independent Trader"
+      },
+      "period": "2024-10",
+      "location": {
+        "id": "Ponorogo",
+        "en": "Ponorogo"
+      },
+      "highlights": [
+        {
+          "id": "Menganalisis pasar menggunakan price action, market structure, serta area support dan resistance.",
+          "en": "Analysing markets using price action, market structure, and support/resistance areas."
+        },
+        {
+          "id": "Menyusun rencana trading dengan mempertimbangkan kondisi pasar, kemungkinan entry/exit, dan risk-to-reward.",
+          "en": "Building trading plans around market conditions, entry/exit scenarios, and risk-to-reward."
+        },
+        {
+          "id": "Menerapkan prinsip manajemen risiko saat mengevaluasi setup dan eksposur posisi.",
+          "en": "Applying risk management principles when evaluating setups and position exposure."
+        },
+        {
+          "id": "Meninjau keputusan trading untuk meningkatkan disiplin analisis serta konsistensi pengambilan keputusan.",
+          "en": "Reviewing trading decisions to strengthen analytical discipline and decision consistency."
+        }
+      ]
+    },
+    {
+      "org": "Sharia Investment Gallery (GIS) — UNIDA Gontor",
+      "role": {
+        "id": "Publication, Documentation & Design Division",
+        "en": "Publication, Documentation & Design Division"
+      },
+      "period": "2025-10",
+      "location": {
+        "id": "Ponorogo",
+        "en": "Ponorogo"
+      },
+      "highlights": [
+        {
+          "id": "Menyiapkan dokumentasi acara dan materi publikasi untuk program edukasi pasar modal syariah.",
+          "en": "Producing event documentation and publication material for Islamic capital market education programmes."
+        },
+        {
+          "id": "Mendukung IDX Roadshow to School on Islamic Capital Market Level 1 di tiga SMA di Ponorogo.",
+          "en": "Supporting the IDX Roadshow to School on Islamic Capital Market Level 1 across three high schools in Ponorogo."
+        },
+        {
+          "id": "Menjaga materi dokumentasi dan komunikasi agar mendukung pelaksanaan program.",
+          "en": "Maintaining documentation and communication materials to support programme delivery."
+        }
+      ]
+    },
+    {
+      "org": "Racana Al-Faraby (Scouts) — UNIDA Gontor",
+      "role": {
+        "id": "Secretary of the Dewan Racana",
+        "en": "Secretary of the Dewan Racana"
+      },
+      "period": "2025-10",
+      "location": {
+        "id": "Ponorogo",
+        "en": "Ponorogo"
+      },
+      "highlights": [
+        {
+          "id": "Menyusun notulen rapat, surat-menyurat organisasi, dan dokumentasi administrasi.",
+          "en": "Drafting meeting minutes, organisational correspondence, and administrative documentation."
+        },
+        {
+          "id": "Mendukung koordinasi kegiatan Dewan Racana dan menjaga arsip yang teratur untuk referensi internal.",
+          "en": "Supporting Dewan Racana activity coordination and keeping records organised for internal reference."
+        },
+        {
+          "id": "Membantu komunikasi administratif di antara anggota organisasi.",
+          "en": "Supporting administrative communication between organisation members."
+        }
+      ]
+    },
+    {
+      "org": "Management Student Association — UNIDA Gontor",
+      "role": {
+        "id": "Secretary",
+        "en": "Secretary"
+      },
+      "period": "2026-01",
+      "location": {
+        "id": "Ponorogo",
+        "en": "Ponorogo"
+      },
+      "highlights": [
+        {
+          "id": "Mengelola arsip organisasi, surat resmi, dan notulen rapat.",
+          "en": "Managing organisational archives, official correspondence, and meeting minutes."
+        },
+        {
+          "id": "Mendukung koordinasi administrasi serta dokumentasi kegiatan organisasi.",
+          "en": "Supporting administrative coordination and activity documentation."
+        },
+        {
+          "id": "Menjaga catatan tetap terorganisasi dan informasi terdokumentasi secara konsisten.",
+          "en": "Keeping records organised and information consistently documented."
+        }
+      ]
+    },
+    {
+      "org": "MIN 7 Ponorogo",
+      "role": {
+        "id": "Scout Instructor",
+        "en": "Scout Instructor"
+      },
+      "period": "2024-10",
+      "location": {
+        "id": "Ponorogo",
+        "en": "Ponorogo"
+      },
+      "highlights": [
+        {
+          "id": "Membantu pelaksanaan kegiatan pramuka dan sesi pembelajaran praktis bagi siswa.",
+          "en": "Supporting scouting activities and hands-on learning sessions for students."
+        },
+        {
+          "id": "Membimbing siswa mengembangkan disiplin, kerja sama, tanggung jawab, dan kepemimpinan.",
+          "en": "Guiding students to develop discipline, teamwork, responsibility, and leadership."
+        },
+        {
+          "id": "Mendukung persiapan, koordinasi, dan pengawasan kegiatan agar berlangsung teratur.",
+          "en": "Supporting activity preparation, coordination, and supervision to keep things orderly."
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universitas Darussalam Gontor",
+      "program": {
+        "id": "Manajemen Keuangan — S1",
+        "en": "Bachelor of Financial Management"
+      },
+      "period": "2024 – 2028",
+      "detail": {
+        "id": "IPK 3,73 dari 4,00. Fokus: manajemen keuangan, analisis investasi, dan prinsip bisnis Islam.",
+        "en": "GPA 3.73 out of 4.00. Focus: financial management, investment analysis, and Islamic business principles."
+      }
+    },
+    {
+      "institution": "Pondok Modern Darussalam Gontor",
+      "program": {
+        "id": "KMI — Kulliyatul Mu'allimin al-Islamiyyah",
+        "en": "KMI — Kulliyatul Mu'allimin al-Islamiyyah"
+      },
+      "period": "2018 – 2024",
+      "detail": {
+        "id": "Program terpadu enam tahun, bilingual Arab dan Inggris, mencakup ilmu agama dan ilmu umum.",
+        "en": "A six-year integrated bilingual Arabic and English programme combining religious and general studies."
+      }
+    }
+  ],
+  "awards": [
+    {
+      "title": {
+        "id": "Generasi Baru Indonesia (GenBI)",
+        "en": "Generasi Baru Indonesia (GenBI)"
+      },
+      "issuer": "Bank Indonesia",
+      "period": "2026",
+      "body": {
+        "id": "Penerima beasiswa pendidikan yang diberikan melalui program Beasiswa Bank Indonesia, mencakup biaya pendidikan, tunjangan studi, dan biaya hidup.",
+        "en": "Recipient of an education scholarship administered through the Bank Indonesia Scholarship Programme, covering tuition, study allowance, and living costs."
+      }
+    }
+  ],
+  "skills": [
+    {
+      "group": {
+        "id": "Dokumentasi & administrasi",
+        "en": "Documentation & administration"
+      },
+      "items": [
+        {
+          "id": "Pengarsipan dan pengelolaan arsip",
+          "en": "Archiving and records management"
+        },
+        {
+          "id": "Notulen rapat",
+          "en": "Meeting minutes"
+        },
+        {
+          "id": "Surat resmi & korespondensi",
+          "en": "Official correspondence"
+        },
+        {
+          "id": "Administrasi program",
+          "en": "Programme administration"
+        }
+      ]
+    },
+    {
+      "group": {
+        "id": "Komunikasi & koordinasi",
+        "en": "Communication & coordination"
+      },
+      "items": [
+        {
+          "id": "Koordinasi pemangku kepentingan",
+          "en": "Stakeholder coordination"
+        },
+        {
+          "id": "Komunikasi antarorganisasi",
+          "en": "Inter-organisational communication"
+        },
+        {
+          "id": "Kepemimpinan tim",
+          "en": "Team leadership"
+        },
+        {
+          "id": "Pembinaan siswa",
+          "en": "Student mentoring"
+        }
+      ]
+    },
+    {
+      "group": {
+        "id": "Pasar modal & analisis",
+        "en": "Capital markets & analysis"
+      },
+      "items": [
+        {
+          "id": "Edukasi pasar modal syariah",
+          "en": "Islamic capital market education"
+        },
+        {
+          "id": "Price action & market structure",
+          "en": "Price action & market structure"
+        },
+        {
+          "id": "Manajemen risiko posisi",
+          "en": "Position risk management"
+        },
+        {
+          "id": "Analisis investasi",
+          "en": "Investment analysis"
+        }
+      ]
+    },
+    {
+      "group": {
+        "id": "Bidang minat",
+        "en": "Areas of interest"
+      },
+      "items": [
+        {
+          "id": "Internal Audit",
+          "en": "Internal Audit"
+        },
+        {
+          "id": "Internal Controls",
+          "en": "Internal Controls"
+        },
+        {
+          "id": "Risk Management",
+          "en": "Risk Management"
+        },
+        {
+          "id": "Compliance",
+          "en": "Compliance"
+        },
+        {
+          "id": "Corporate Governance",
+          "en": "Corporate Governance"
+        },
+        {
+          "id": "Islamic Banking",
+          "en": "Islamic Banking"
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "slug": "papan-instrumen",
+      "name": {
+        "id": "Papan Instrumen",
+        "en": "Papan Instrumen"
+      },
+      "year": "2026",
+      "summary": {
+        "id": "Dasbor analisis fundamental untuk saham Indonesia dengan 7 dimensi scoring dan deteksi sektor.",
+        "en": "A fundamental analysis dashboard for Indonesian equities with 7 scoring dimensions and sector detection."
+      },
+      "detail": {
+        "id": "Alat analisis yang menyederhanakan data pasar modal Indonesia menjadi skor yang bisa dibaca dalam hitungan detik. Setiap bobot dan ambang batas scoring menyesuaikan karakteristik sektor bisnisnya, dan modul deteksi risiko dipisahkan dari skor utama. Dipublikasikan di TradingView Public Library.",
+        "en": "An analysis tool that reduces complex Indonesian market data into a score readable in seconds. Scoring weights and thresholds adapt to each business sector, and the risk-detection module is kept separate from the main score. Published on the TradingView Public Library."
+      },
+      "stack": [
+        "Pine Script v6",
+        "TradingView",
+        "PineTS",
+        "GitHub Actions"
+      ],
+      "links": {
+        "github": "https://github.com/akhmfz/papan-instrumen",
+        "demo": "https://www.tradingview.com/script/s4Bjqc7S-Saham-Papan-Instrumen-By-Akhmfz/"
+      },
+      "metrics": [
+        {
+          "value": "7",
+          "label": {
+            "id": "Dimensi scoring",
+            "en": "Scoring dimensions"
+          }
+        },
+        {
+          "value": "15",
+          "label": {
+            "id": "Kelas sektor",
+            "en": "Sector classes"
+          }
+        },
+        {
+          "value": "96",
+          "label": {
+            "id": "Tes otomatis",
+            "en": "Automated tests"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "papan-gerak",
+      "name": {
+        "id": "Papan Gerak",
+        "en": "Papan Gerak"
+      },
+      "year": "2026",
+      "summary": {
+        "id": "Dasbor analisis teknikal 4 dimensi dengan filter multi-timeframe, position sizing, dan webhook.",
+        "en": "A 4-dimension technical dashboard with multi-timeframe filtering, position sizing, and webhook alerts."
+      },
+      "detail": {
+        "id": "Pendamping Papan Instrumen untuk sisi teknikal. Menggabungkan skor trend, momentum, volatilitas, dan volume dengan tiga mode trigger entry, modul manajemen risiko, serta dukungan webhook JSON untuk otomasi alur trading.",
+        "en": "The technical companion to Papan Instrumen. Combines trend, momentum, volatility, and volume scoring with three entry-trigger modes, a risk-management module, and JSON webhook support for trading automation."
+      },
+      "stack": [
+        "Pine Script v6",
+        "PineTS",
+        "TradingView"
+      ],
+      "links": {
+        "github": "https://github.com/akhmfz/papan-gerak",
+        "demo": ""
+      },
+      "metrics": [
+        {
+          "value": "4",
+          "label": {
+            "id": "Dimensi teknikal",
+            "en": "Technical dimensions"
+          }
+        },
+        {
+          "value": "50",
+          "label": {
+            "id": "Parameter",
+            "en": "Parameters"
+          }
+        },
+        {
+          "value": "90",
+          "label": {
+            "id": "Tes otomatis",
+            "en": "Automated tests"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "pine-semantic-platform",
+      "name": {
+        "id": "Pine Semantic Platform",
+        "en": "Pine Semantic Platform"
+      },
+      "year": "2026",
+      "summary": {
+        "id": "Toolchain CLI untuk mem-parse kueri, dan validasi kode Pine Script sebelum dipublikasikan.",
+        "en": "A CLI toolchain to parse, query, and validate Pine Script code before publishing."
+      },
+      "detail": {
+        "id": "Dibangun karena memverifikasi indikator secara manual itu lambat dan rawan. Platform ini mengekstrak AST, menjawab kueri semantik, merakit konteks untuk LLM dengan batas token, lalu menjalankan rangkaian validasi. Dipakai sebagai dependensi oleh kedua dasbor di atas.",
+        "en": "Built because verifying indicators by hand is slow and error-prone. It extracts the AST, answers semantic queries, assembles LLM context under a token budget, then runs a validation pipeline. Used as a dependency by both dashboards above."
+      },
+      "stack": [
+        "Python 3.10+",
+        "ANTLR",
+        "Node.js",
+        "Graphify"
+      ],
+      "links": {
+        "github": "https://github.com/akhmfz/pine-semantic-platform",
+        "demo": ""
+      },
+      "metrics": [
+        {
+          "value": "7",
+          "label": {
+            "id": "Perintah CLI",
+            "en": "CLI commands"
+          }
+        },
+        {
+          "value": "2.0",
+          "label": {
+            "id": "Versi stabil",
+            "en": "Stable version"
+          }
+        }
+      ]
+    }
+  ],
+  "contact": {
+    "title": {
+      "id": "Tertarik magang internal audit, risk, atau compliance?",
+      "en": "Interested in an internal audit, risk, or compliance internship?"
+    },
+    "body": {
+      "id": "Saya terbuka untuk magang pada 2027 dan senang berdiskusi tentang prosedur audit, penilaian risiko, dan dokumentasi audit.",
+      "en": "I am open to a 2027 internship and would be glad to discuss audit procedures, risk assessment, and audit documentation."
+    },
+    "ctaLabel": {
+      "id": "Hubungi saya",
+      "en": "Get in touch"
+    },
+    "ctaHref": "https://www.linkedin.com/in/muhammadakhmal172"
+  },
+  "seo": {
+    "title": {
+      "id": "Muhammad Akhmal — Portofolio Karier Audit, Risk & Compliance",
+      "en": "Muhammad Akhmal — Audit, Risk & Compliance Career Portfolio"
+    },
+    "description": {
+      "id": "Mahasiswa Manajemen Keuangan UNIDA Gontor dengan IPK 3,73. Chairperson Sharia Investment Gallery, membangun jalur menuju internal audit dan risk management. Terbuka untuk magang 2027.",
+      "en": "Financial Management student at UNIDA Gontor with a 3.73 GPA. Chairperson of the Sharia Investment Gallery, building a path toward internal audit and risk management. Open to a 2027 internship."
+    },
+    "keywords": [
+      "internal audit",
+      "risk management",
+      "internal controls",
+      "compliance",
+      "manajemen keuangan",
+      "UNIDA Gontor",
+      "Islamic capital market"
+    ],
+    "ogImage": "assets/og.png"
+  },
+  "disclaimer": {
+    "id": "Portofolio pribadi. Proyek yang ditampilkan adalah alat bantu analisis yang saya bangun untukajari methodologies — bukan nasihat keuangan atau investasi.",
+    "en": "Personal portfolio. Featured projects are analysis tools I built to learn the methodologies — not financial or investment advice."
+  }
+}

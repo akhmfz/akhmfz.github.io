@@ -1,0 +1,169 @@
+/* ==========================================================================
+   AKHMFZ — portfolio karier · design tokens
+   Sumber: skill ui-ux-pro-max (product=Banking/Traditional Finance,
+   style=Swiss Modernism 2.0, typography=Corporate Trust, color=Consulting Firm).
+   Ubah warna/jenis huruf HANYA di sini. Jangan tulis hex langsung di HTML.
+   ========================================================================== */
+
+:root {
+  /* Light — tema default (site ini dibaca, bukan dipindai cepat) */
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --border: #e2e8f0;
+  --border-soft: #cbd5e1;
+  --text: #020617;
+  --muted: #475569;
+  --primary: #0369a1;
+  --primary-soft: #0284c7;
+  --gold: #b45309;
+
+  /* Tipografi: Corporate Trust = Lexend + Source Sans 3, mono untuk angka */
+  --font-heading: "Lexend", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: clamp(1.0625rem, 1.02rem + 0.2vw, 1.1875rem);
+  --text-lg: clamp(1.1875rem, 1.13rem + 0.28vw, 1.3125rem);
+  --text-xl: clamp(1.375rem, 1.24rem + 0.6vw, 1.625rem);
+  --text-3xl: clamp(1.75rem, 1.42rem + 1.5vw, 2.625rem);
+  --text-5xl: clamp(2.375rem, 1.7rem + 3.1vw, 4rem);
+
+  /* Layout */
+  --measure: 66ch;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur: 220ms;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+/* Dark = tambahan, bukan default. Navy, bukan hitam pekat. */
+@media (prefers-color-scheme: dark) {
+  html:not(.light):not(.dark) {
+    color-scheme: dark;
+    --bg: #0b1220;
+    --surface: #0f172a;
+    --surface-2: #1e293b;
+    --border: #334155;
+    --border-soft: #475569;
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --primary: #38bdf8;
+    --primary-soft: #7dd3fc;
+    --gold: #fbbf24;
+  }
+}
+
+html.dark {
+  color-scheme: dark;
+  --bg: #0b1220;
+  --surface: #0f172a;
+  --surface-2: #1e293b;
+  --border: #334155;
+  --border-soft: #475569;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --primary: #38bdf8;
+  --primary-soft: #7dd3fc;
+  --gold: #fbbf24;
+}
+
+/* Base ------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+p { margin: 0; }
+ul { margin: 0; padding: 0; }
+a { color: var(--primary); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+img { max-width: 100%; height: auto; }
+
+/* Skip link — aturan non-negotiable #1 */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 100;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  background: var(--primary);
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: var(--text-sm);
+}
+
+/* Aturan non-negotiable #2: anchor tidak boleh ketutup nav sticky */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+/* Bilingual: markup ganda disembunyikan lewat CSS, tanpa fetch JS di runtime.
+   Wajib ada di sini — tanpa rule ini toggle bahasa tidak menyembunyikan apa pun. */
+html[lang="id"] [data-lang="en"],
+html[lang="en"] [data-lang="id"] {
+  display: none;
+}
+
+/* Aturan non-negotiable #8 */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Aturan non-negotiable #7 — semua yang bisa diklik */
+a[href], button, summary, [role="button"] {
+  cursor: pointer;
+}
+
+/* Aturan non-negotiable #3 & #4 — hanya fade, tanpa scale, maks 1 blok */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+.rise {
+  animation: rise 400ms var(--ease) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  header, footer, #projects, .skip-link { display: none; }
+  body { background: #fff; color: #000; }
+}
