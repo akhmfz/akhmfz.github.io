@@ -447,7 +447,28 @@
             "en": "Automated tests"
           }
         }
-      ]
+      ],
+      "category": {
+        "id": "Analisis fundamental",
+        "en": "Fundamental analysis"
+      },
+      "problem": {
+        "id": "Membaca fundamental saham Indonesia di TradingView berarti menimbun puluhan baris data, dan tiap sektor punya karakteristik berbeda sehingga skor generik menyesatkan.",
+        "en": "Reading Indonesian equity fundamentals in TradingView means stacking dozens of data rows, and each sector has different characteristics, so a generic score misleads."
+      },
+      "role": {
+        "id": "Solo build dan pemelihara",
+        "en": "Solo build and maintainer"
+      },
+      "approach": {
+        "id": "Pine Script v6 modular: mesin data pasar, tabel UI, dan mesin scoring dipisah per berkas. Bobot serta ambang tiap dimensi dibuat sector-aware untuk 15 kelas sektor, dan modul deteksi risiko dipisahkan dari skor utama agar tidak tercampur. 96 tes otomatis lewat PineTS dengan CI di GitHub Actions.",
+        "en": "Modular Pine Script v6: market data engine, UI table, and scoring engine split into separate files. Weights and thresholds for each dimension are sector-aware across 15 sector classes, and the risk-detection module is kept separate from the main score. 96 automated tests via PineTS with CI on GitHub Actions."
+      },
+      "result": {
+        "id": "Dipublikasikan di TradingView Public Library, dengan deteksi otomatis 175+ ticker di 9 watchlist, dukungan bilingual ID/EN, lima tema warna, dan compact mode.",
+        "en": "Published on the TradingView Public Library, with automatic detection of 175+ tickers across 9 watchlists, bilingual ID/EN support, five colour themes, and a compact mode."
+      },
+      "media": "assets/projects/papan-instrumen.png"
     },
     {
       "slug": "papan-gerak",
@@ -495,7 +516,28 @@
             "en": "Automated tests"
           }
         }
-      ]
+      ],
+      "category": {
+        "id": "Analisis teknikal",
+        "en": "Technical analysis"
+      },
+      "problem": {
+        "id": "Indikator teknikal yang tersedia umumnya memakai ambang generik, sehingga tidak menyesuaikan likuiditas dan karakteristik saham IDX.",
+        "en": "Available technical indicators generally use generic thresholds, so they do not adjust to the liquidity and characteristics of IDX-listed stocks."
+      },
+      "role": {
+        "id": "Solo build dan pemelihara",
+        "en": "Solo build and maintainer"
+      },
+      "approach": {
+        "id": "Empat dimensi scoring (trend, momentum, volatilitas, volume) dengan tiga mode trigger entry, modul manajemen risiko dan position sizing, filter multi-timeframe, serta alert webhook format JSON. 90 tes PineTS termasuk integrasi full-script, 50 parameter dalam 12 grup settings.",
+        "en": "Four scoring dimensions (trend, momentum, volatility, volume) with three entry-trigger modes, a risk-management and position-sizing module, a multi-timeframe filter, and JSON-format webhook alerts. 90 PineTS tests including full-script integration, 50 parameters across 12 settings groups."
+      },
+      "result": {
+        "id": "v0.2.1-alpha dengan 1.286 baris output, 7 kondisi alert dalam 2 format, dan dokumentasi pengguna EN maupun ID.",
+        "en": "v0.2.1-alpha with 1,286 lines of build output, 7 alert conditions in 2 formats, and user documentation in both EN and ID."
+      },
+      "media": null
     },
     {
       "slug": "pine-semantic-platform",
@@ -537,7 +579,28 @@
             "en": "Stable version"
           }
         }
-      ]
+      ],
+      "category": {
+        "id": "Toolchain developer",
+        "en": "Developer toolchain"
+      },
+      "problem": {
+        "id": "Verifikasi indikator Pine Script secara manual lambat dan rawan salah, dan membaca ulang kode untuk menjawab pertanyaan yang sama berulang sekali-item adalah waktu yang terbuang.",
+        "en": "Verifying Pine Script indicators by hand is slow and error-prone, and re-reading code to answer the same recurring questions wastes time."
+      },
+      "role": {
+        "id": "Solo build dan pemelihara",
+        "en": "Solo build and maintainer"
+      },
+      "approach": {
+        "id": "CLI Python di atas parser ANTLR: ekstraksi AST ke pine_semantic.json, mesin kueri semantik (search, context, callers, callees, impact), perakit konteks LLM dengan batas token, lalu pipeline validasi berjenjang (parser, schema, graph, golden). 7 perintah CLI, versi semver, golden test.",
+        "en": "A Python CLI on top of an ANTLR parser: AST extraction into pine_semantic.json, a semantic query engine (search, context, callers, callees, impact), LLM context assembly under a token budget, then a staged validation pipeline (parser, schema, graph, golden). 7 CLI commands, semantic versioning, golden tests."
+      },
+      "result": {
+        "id": "v2.0.0 dan dipakai sebagai dependensi oleh kedua dasbor di atas, dengan 6 Architecture Decision Record terdokumentasi.",
+        "en": "v2.0.0, used as a dependency by both dashboards above, with 6 documented Architecture Decision Records."
+      },
+      "media": null
     }
   ],
   "contact": {
@@ -578,5 +641,33 @@
   "disclaimer": {
     "id": "Portofolio pribadi. Proyek yang ditampilkan adalah alat bantu analisis yang saya bangun untukajari methodologies — bukan nasihat keuangan atau investasi.",
     "en": "Personal portfolio. Featured projects are analysis tools I built to learn the methodologies — not financial or investment advice."
+  },
+  "hero": {
+    "ctas": [
+      {
+        "label": {
+          "id": "Lihat proyek",
+          "en": "View projects"
+        },
+        "href": "#projects",
+        "style": "primary"
+      },
+      {
+        "label": {
+          "id": "Profil LinkedIn",
+          "en": "LinkedIn profile"
+        },
+        "href": "https://www.linkedin.com/in/muhammadakhmal172",
+        "style": "ghost"
+      },
+      {
+        "label": {
+          "id": "Hubungi",
+          "en": "Contact"
+        },
+        "href": "#contact",
+        "style": "ghost"
+      }
+    ]
   }
 }
