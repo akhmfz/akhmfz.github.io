@@ -1,0 +1,13 @@
+# Normalisasi line ending.
+# Repo ini dikerjakan dari WSL (Linux) sekaligus dibuka dari Windows/VS Code.
+# Tanpa aturan ini, file bisa berpindah CRLF <-> LF diam-diam dan diff
+# menampilkan seluruh file berubah meski hanya satu baris yang diedit.
+* text=auto eol=lf
+
+# Biner: jangan pernah dinormalisasi.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+*.ico binary
