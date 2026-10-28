@@ -1,0 +1,32 @@
+{
+  "name": "akhmfz-portfolio",
+  "private": true,
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "remix vite:dev",
+    "build": "remix vite:build",
+    "preview": "vite preview",
+    "publish": "npm run build && node scripts/publish.mjs"
+  },
+  "dependencies": {
+    "@remix-run/react": "^2.7.1",
+    "framer-motion": "11.0.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "three": "^0.161.0"
+  },
+  "devDependencies": {
+    "@csstools/postcss-global-data": "^2.1.1",
+    "@remix-run/dev": "^2.7.1",
+    "postcss": "^8.4.33",
+    "postcss-custom-media": "^10.0.2",
+    "vite": "^5.1.0",
+    "vite-jsconfig-paths": "^2.0.1"
+  },
+  "engines": {
+    "node": ">=19.9.0"
+  }
+}

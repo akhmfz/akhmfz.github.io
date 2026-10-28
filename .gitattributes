@@ -11,3 +11,5 @@
 *.gif binary
 *.pdf binary
 *.ico binary
+*.mp4 binary
+*.woff2 binary

@@ -1,32 +1,21 @@
-# Artefak sementara. Repo ini situs statis tanpa toolchain: yang di-commit hanya
-# source (content/, scripts/, assets/) dan output generate (index.html, 404.html,
-# sitemap.xml, robots.txt, .nojekyll).
-#
-# Semua pola di bawah berdasarkan artefak yang benar-benar muncul di repo ini.
+# Root repo = output statis yang disajikan GitHub Pages.
+# Source ada di site/ — jalankan `cd site && npm run publish` untuk regenerate.
 
-# Screenshot browser — ditemukan nyata: screenshot.png (52 KB) tercipta karena
-# perintah chrome salah argumen, lalu masuk status untracked dan berbahaya
-# kalau ada `git add -A`.
+# Build toolchain
+site/node_modules/
+site/build/
+site/.cache/
+site/.env
+site/.dev.vars
+
+# Artefak verifikasi lokal
 screenshot.png
-
-# Salinan kerja verifikasi — semua file ini pernah dibuat di root saat audit
-# (dipakai untuk dump DOM / screenshot potongan), dan tidak pernah di-commit.
 _probe*.html
 _menu.html
 _lt.html
 _c.html
 
-# Catatan internal TIDAK boleh ada di repo ini.
-# GitHub Pages menyajikan seluruh file repo sebagai situs statis, sehingga file
-# markdown bisa dibaca publik lewat URL — bukan hanya lewat halaman yang dirender.
-# Catatan verifikasi konten (dapat memuat PII dari sumber CV) ada di vault:
-#   /mnt/c/Users/Akhmfz/journal-vault/04-Projects/Portfolio/TODO.md
-content/*.md
-
-# Python
-__pycache__/
-*.py[cod]
-
-# OS
+# OS / editor
 .DS_Store
 Thumbs.db
+__pycache__/

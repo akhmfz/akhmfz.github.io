@@ -1,0 +1,108 @@
+@layer components {
+  .experience {
+    width: 100%;
+    max-width: var(--maxWidthL);
+    margin: var(--space5XL) auto var(--space4XL);
+    padding: 0 var(--spaceOuter);
+    display: block;
+
+    @media (--mediaMobile) {
+      padding: 0 var(--spaceL);
+      margin: var(--space4XL) auto var(--space3XL);
+    }
+  }
+
+  .header {
+    display: grid;
+    grid-template-columns: var(--space4XL) 1fr;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: var(--spaceL);
+
+    &[data-secondary] {
+      margin-top: var(--space4XL);
+    }
+  }
+
+  .label {
+    font-size: var(--fontSizeBodyS);
+    font-weight: var(--fontWeightMedium);
+    color: var(--primary);
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-timing-function: var(--bezierFastoutSlowin);
+    transition-duration: var(--durationM);
+    transition-delay: 1.2s;
+    transform: translate3d(calc(var(--spaceM) * -1), 0, 0);
+
+    &[data-visible='true'] {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .title {
+    margin-bottom: var(--space2XL);
+    max-width: var(--maxWidthM);
+  }
+
+  .list {
+    border-top: 1px solid color-mix(in lab, var(--text) 12%, transparent);
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: var(--spaceXL);
+    padding: var(--spaceXL) 0;
+    border-bottom: 1px solid color-mix(in lab, var(--text) 12%, transparent);
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-timing-function: var(--bezierFastoutSlowin);
+    transition-duration: var(--durationXL);
+    transition-delay: var(--durationM);
+    transform: translate3d(0, var(--spaceL), 0);
+
+    &[data-visible='true'] {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (--mediaTablet) {
+      grid-template-columns: 100%;
+      gap: var(--spaceS);
+    }
+  }
+
+  .period {
+    font-family: var(--monoFontStack);
+    font-size: var(--fontSizeBodyXS);
+    letter-spacing: 0.06em;
+    color: var(--textLight);
+    padding-top: 6px;
+  }
+
+  .body {
+    max-width: var(--maxWidthM);
+  }
+
+  .role {
+    font-size: var(--fontSizeBodyL);
+    font-weight: var(--fontWeightMedium);
+    color: var(--textTitle);
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .org {
+    display: block;
+    font-size: var(--fontSizeBodyS);
+    color: var(--primary);
+    margin-top: 4px;
+  }
+
+  .detail {
+    margin-top: var(--spaceS);
+    color: var(--textBody);
+  }
+}
