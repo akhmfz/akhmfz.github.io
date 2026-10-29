@@ -1,19 +1,21 @@
-import config from '~/config.json';
+import generated from './posts.json';
 
-// Newest first. Add an entry each time something is published, then run
-// `npm run publish` so /articles picks it up. `href` must be the public post URL.
+// LinkedIn, Instagram, and TikTok have no public feed to read, so posts from
+// those platforms are added by hand, newest first:
 //
 // {
 //   platform: 'LinkedIn',
-//   title: 'Why a clean audit trail beats a clever spreadsheet',
+//   title: '...',
 //   date: '2026-11-02',
 //   href: 'https://www.linkedin.com/posts/...',
 //   blurb: 'One or two sentences summarising the post.',
 // }
-export const posts = [];
+const manual = [];
+
+export const posts = [...manual, ...generated].sort((a, b) => b.date.localeCompare(a.date));
 
 // Profiles shown at the bottom of /articles, in this order.
 export const platforms = [
-  { label: 'LinkedIn', href: config.linkedin },
-  { label: 'GitHub', href: `https://github.com/${config.github}` },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/muhammadakhmal172' },
+  { label: 'Kompasiana', href: 'https://www.kompasiana.com/muhammadakhmal172' },
 ];

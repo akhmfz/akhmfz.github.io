@@ -21,7 +21,8 @@ site/                 ← SOURCE Remix. Semua perubahan dikerjakan di sini.
   app/config.json     ← identitas, sosial, disiplin (sumber teks global)
   app/routes/         ← halaman: home/, articles, contact/, projects.$slug (detail proyek), $.jsx (404)
   app/data/projects.js ← isi proyek (dipakai home + halaman detail)
-  app/data/posts.js    ← daftar tulisan untuk /articles (isi manual, terbaru di atas)
+  app/data/posts.js    ← daftar tulisan /articles: gabungan posts.json + entri manual
+  app/data/posts.json  ← hasil `npm run posts` (artikel Kompasiana)
   app/components/     ← komponen UI + design token (theme-provider/theme.js)
   scripts/publish.mjs ← build + salin ke root repo + patch <head> statis
 ```
@@ -34,6 +35,8 @@ npm install          # sekali saja
 npm run dev          # http://localhost:5173
 npm run build        # hasil di site/build/client
 npm run publish      # build + salin ke root repo (index.html, assets/, 404.html, ...)
+npm run posts -- https://www.kompasiana.com/<user>
+                     # ambil daftar artikel Kompasiana → app/data/posts.json
 ```
 
 Preview setelah build:
