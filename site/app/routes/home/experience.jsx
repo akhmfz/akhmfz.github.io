@@ -100,7 +100,7 @@ export const Experience = ({ id, visible, sectionRef }) => {
                 Experience
               </Text>
             </div>
-            <Heading level={3} as="h2" className={styles.title} id={titleId}>
+            <Heading level={3} as="h1" className={styles.title} id={titleId}>
               Records, coordination, and controls
             </Heading>
             <div className={styles.list}>

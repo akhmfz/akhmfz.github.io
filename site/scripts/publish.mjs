@@ -14,6 +14,7 @@ const generated = [
   'assets',
   'articles',
   'contact',
+  'details',
   'projects',
   'index.html',
   '404.html',
@@ -80,6 +81,12 @@ const pages = {
     title: 'Muhammad Akhmal | Contact',
     description:
       'Send me a message about an internship, a project, or anything related to audit, risk, and financial controls.',
+  },
+  'details/index.html': {
+    path: '/details',
+    title: 'Muhammad Akhmal | Details',
+    description:
+      'Experience, education, and background of Muhammad Akhmal Fauzi Saefurohman — records, coordination, and controls.',
   },
   ...Object.fromEntries(
     // shortcut: head metadata for project pages is duplicated from

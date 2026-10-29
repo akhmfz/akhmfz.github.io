@@ -2,8 +2,6 @@ import { Footer } from '~/components/footer';
 import { baseMeta } from '~/utils/meta';
 import { projects } from '~/data/projects';
 import { Intro } from './intro';
-import { Experience } from './experience';
-import { Profile } from './profile';
 import { ProjectSummary } from './project-summary';
 import { useEffect, useRef, useState } from 'react';
 import config from '~/config.json';
@@ -24,18 +22,9 @@ export const Home = () => {
   const projectTwo = useRef();
   const projectThree = useRef();
   const projectRefs = [projectOne, projectTwo, projectThree];
-  const experience = useRef();
-  const details = useRef();
 
   useEffect(() => {
-    const sections = [
-      intro,
-      projectOne,
-      projectTwo,
-      projectThree,
-      experience,
-      details,
-    ];
+    const sections = [intro, projectOne, projectTwo, projectThree];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -95,19 +84,6 @@ export const Home = () => {
           secondaryText="Source code"
         />
       ))}
-      {/* Nav "Details" lands on the experience list, then the profile. */}
-      <div id="details">
-        <Experience
-          id="experience"
-          sectionRef={experience}
-          visible={visibleSections.includes(experience.current)}
-        />
-        <Profile
-          sectionRef={details}
-          visible={visibleSections.includes(details.current)}
-          id="about"
-        />
-      </div>
       <Footer />
     </div>
   );

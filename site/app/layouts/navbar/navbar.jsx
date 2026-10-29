@@ -30,7 +30,7 @@ export const Navbar = () => {
   }, [location]);
 
   // Handle smooth scroll nav items, including a #hash in the URL on first load
-  // (a page link like /#details arrives with scroll already reset by hydration).
+  // (a page link like /#project-1 arrives with scroll already reset by hydration).
   useEffect(() => {
     if (location.pathname !== '/') return;
     const hash = target || location.hash;

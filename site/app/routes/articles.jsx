@@ -1,7 +1,7 @@
 import { Button } from '~/components/button';
+import { Divider } from '~/components/divider';
 import { Footer } from '~/components/footer';
 import { Heading } from '~/components/heading';
-import { Link } from '~/components/link';
 import { Text } from '~/components/text';
 import { baseMeta } from '~/utils/meta';
 import config from '~/config.json';
@@ -25,37 +25,50 @@ const formatDate = value =>
 export default function Articles() {
   return (
     <div className={styles.page}>
-      <section className={styles.hero}>
-        <Heading level={0} as="h1" className={styles.title}>
-          Articles
-        </Heading>
-        <Text size="l" as="p" className={styles.intro}>
-          Notes on audit, risk, and the Indonesian market. Longer pieces and short
-          observations are collected here as they are published elsewhere.
-        </Text>
-      </section>
+      <section className={styles.content}>
+        <header className={styles.header}>
+          <Heading level={5} as="h1">
+            Latest articles
+          </Heading>
+        </header>
 
-      <section className={styles.list}>
-        {posts.length === 0 ? (
-          <Text as="p" className={styles.empty}>
-            Nothing has been collected here yet. New posts will be listed as they go out.
-          </Text>
-        ) : (
-          posts.map(post => (
-            <article className={styles.post} key={post.href}>
-              <div className={styles.postMeta}>
-                <span>{post.platform}</span>
-                <span>{formatDate(post.date)}</span>
-              </div>
-              <Link className={styles.postLink} href={post.href}>
-                {post.title}
-              </Link>
-              <Text as="p" className={styles.postBlurb}>
-                {post.blurb}
-              </Text>
-            </article>
-          ))
-        )}
+        <div className={styles.list}>
+          {posts.length === 0 ? (
+            <Text as="p" className={styles.empty}>
+              Nothing has been collected here yet. New posts will be listed as they go out.
+            </Text>
+          ) : (
+            posts.map(post => (
+              <article className={styles.post} key={post.href}>
+                <a
+                  className={styles.postLink}
+                  href={post.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div aria-hidden className={styles.postDate}>
+                    <Divider notchWidth="64px" notchHeight="8px" collapsed={false} />
+                    {formatDate(post.date)}
+                  </div>
+                  <Heading as="h2" level={4}>
+                    {post.title}
+                  </Heading>
+                  <Text size="s" as="p">
+                    {post.blurb}
+                  </Text>
+                  <div className={styles.postFooter}>
+                    <Button secondary iconHoverShift icon="chevron-right" as="div">
+                      Read article
+                    </Button>
+                    <Text className={styles.postSource} size="s">
+                      {post.platform}
+                    </Text>
+                  </div>
+                </a>
+              </article>
+            ))
+          )}
+        </div>
       </section>
 
       <section className={styles.elsewhere}>
