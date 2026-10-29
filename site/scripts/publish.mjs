@@ -23,6 +23,7 @@ const generated = [
   'manifest.json',
   'robots.txt',
   'sitemap.xml',
+  'humans.txt',
 ];
 
 const themeScript = `try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}`;

@@ -1,0 +1,20 @@
+/* TEAM */
+Name: Muhammad Akhmal Fauzi Saefurohman
+Role: Audit, risk & compliance — Finance Management student
+Contact: akhmfz.analytics [at] gmail.com
+LinkedIn: linkedin.com/in/muhammadakhmal172
+GitHub: github.com/akhmfz
+TradingView: tradingview.com/u/akhmfz_analytics
+Location: Ponorogo, East Java, Indonesia
+
+/* SITE */
+Last update: 2026-10-29
+Language: English
+Doctype: HTML5
+Standards: HTML5, CSS3, JavaScript
+Components: Remix, React, Three.js
+Design: Adapted from Hamish Williams' portfolio (MIT)
+Software: VS Code, opencode
+
+/* NOTE */
+Crafted by yours truly — no CMS, no page builder, no template marketplace.
