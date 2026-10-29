@@ -13,6 +13,7 @@ const siteUrl = 'https://akhmfz.github.io';
 const generated = [
   'assets',
   'contact',
+  'projects',
   'index.html',
   '404.html',
   'favicon.ico',
@@ -73,6 +74,27 @@ const pages = {
     description:
       'Send me a message about an internship, a project, or anything related to audit, risk, and financial controls.',
   },
+  ...Object.fromEntries(
+    // shortcut: head metadata for project pages is duplicated from
+    // app/data/projects.js because that module imports Vite-only assets;
+    // move the shared fields into JSON if the list outgrows three pages.
+    [
+      ['papan-instrumen', 'Papan Instrumen', 'Pine Script v6 · TradingView Public Library · 96 automated tests'],
+      ['papan-gerak', 'Papan Gerak', 'Pine Script v6 · 50 parameters · 90 automated tests'],
+      [
+        'pine-semantic-platform',
+        'Pine Semantic Platform',
+        'Python · ANTLR · 7 CLI commands · v2.0.0',
+      ],
+    ].map(([slug, shortTitle, description]) => [
+      `projects/${slug}/index.html`,
+      {
+        path: `/projects/${slug}`,
+        title: `${shortTitle} | Muhammad Akhmal`,
+        description,
+      },
+    ])
+  ),
 };
 
 async function buildPage(sourceHtml, meta) {

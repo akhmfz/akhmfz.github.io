@@ -1,0 +1,157 @@
+import instrumenShot from '~/assets/projects/papan-instrumen.jpg';
+import instrumenPlaceholder from '~/assets/projects/papan-instrumen-placeholder.jpg';
+import gerakShot from '~/assets/projects/papan-gerak.jpg';
+import gerakPlaceholder from '~/assets/projects/papan-gerak-placeholder.jpg';
+import pspShot from '~/assets/projects/pine-semantic-platform.jpg';
+import pspPlaceholder from '~/assets/projects/pine-semantic-platform-placeholder.jpg';
+
+// Shared by the home summaries and the /projects/:slug pages, so the copy only
+// lives in one place.
+export const projects = [
+  {
+    slug: 'papan-instrumen',
+    index: 1,
+    title: 'Scoring Indonesian equities in seconds',
+    shortTitle: 'Papan Instrumen',
+    description:
+      'Papan Instrumen turns dozens of fundamental data points into a sector-aware score, so a stock can be read at a glance instead of row by row.',
+    meta: 'Pine Script v6 · TradingView Public Library · 96 automated tests',
+    screenshot: {
+      src: instrumenShot,
+      placeholder: instrumenPlaceholder,
+      width: 1280,
+      height: 760,
+      alt: 'Papan Instrumen repository on GitHub',
+      url: 'github.com/akhmfz/papan-instrumen',
+    },
+    repo: 'https://github.com/akhmfz/papan-instrumen',
+    external: {
+      label: 'Open in TradingView',
+      href: 'https://www.tradingview.com/script/s4Bjqc7S-Saham-Papan-Instrumen-By-Akhmfz/',
+    },
+    summary:
+      'A fundamental dashboard for the Indonesian market (IDX), written in Pine Script v6 and published in the TradingView public library. It is an analysis aid, not a buy or sell signal: every input, weight, and threshold is visible and can be overridden.',
+    sections: [
+      {
+        heading: 'Seven dimensions, one score',
+        body: 'Value, quality, growth, health, income, momentum, and an Indonesia-specific factor are scored separately, then combined with weights you can change. Five presets ship with it — equal, value-biased, quality-biased, growth-biased, and conservative.',
+      },
+      {
+        heading: 'Sector-aware by default',
+        body: 'Banks, insurers, consumer names, coal, CPO, property, and infrastructure do not share the same thresholds. The script auto-detects one of 15 sector classes and applies the matching weights, with a manual override when the guess is wrong.',
+      },
+      {
+        heading: 'Risk kept separate from the score',
+        body: 'Liquidity and pump-and-dump risk are flagged in their own module instead of being folded into the composite. A company can score well on fundamentals and still be marked as risky to trade.',
+      },
+      {
+        heading: 'Built to be verified',
+        body: '96 automated tests run against the scoring engine with PineTS, and the user guide is written in both Indonesian and English so the numbers can be checked rather than trusted.',
+      },
+    ],
+    facts: [
+      { label: 'Version', value: 'v0.3.0-beta' },
+      { label: 'Market', value: 'IDX' },
+      { label: 'Dimensions', value: '7' },
+      { label: 'Sector classes', value: '15' },
+      { label: 'Tests', value: '96' },
+      { label: 'License', value: 'MIT' },
+    ],
+  },
+  {
+    slug: 'papan-gerak',
+    index: 2,
+    title: 'A technical dashboard built for IDX liquidity',
+    shortTitle: 'Papan Gerak',
+    description:
+      'Papan Gerak combines trend, momentum, volatility, and volume into one score, with three entry-trigger modes, position sizing, and JSON webhook alerts.',
+    meta: 'Pine Script v6 · 50 parameters · 90 automated tests',
+    screenshot: {
+      src: gerakShot,
+      placeholder: gerakPlaceholder,
+      width: 1280,
+      height: 760,
+      alt: 'Papan Gerak repository on GitHub',
+      url: 'github.com/akhmfz/papan-gerak',
+    },
+    repo: 'https://github.com/akhmfz/papan-gerak',
+    summary:
+      'The technical companion to Papan Instrumen. Where that script answers “is this business worth owning”, this one answers “is now a sensible time to act”, and keeps the answer in the same visual language.',
+    sections: [
+      {
+        heading: 'Four dimensions instead of one oscillator',
+        body: 'Trend, momentum, volatility, and volume are scored independently and combined. A setup only looks strong when the dimensions agree, which filters out the single-indicator traps that make IDX charts noisy.',
+      },
+      {
+        heading: 'Three entry triggers with risk attached',
+        body: 'Each trigger mode comes with position sizing and a stop level, so a signal arrives with the risk it implies instead of asking the reader to work it out afterwards.',
+      },
+      {
+        heading: 'MTF filter and webhook alerts',
+        body: 'A higher-timeframe filter blocks entries that fight the dominant trend, and seven alert conditions are available in both a readable format and JSON for webhooks.',
+      },
+      {
+        heading: 'Backtestable, not just drawable',
+        body: 'The repository ships a strategy version of the script for TradingView’s tester, plus 90 tests across 50 parameters to keep a change from silently altering behaviour.',
+      },
+    ],
+    facts: [
+      { label: 'Version', value: 'v0.2.1-alpha' },
+      { label: 'Dimensions', value: '4' },
+      { label: 'Parameters', value: '50' },
+      { label: 'Alert conditions', value: '7' },
+      { label: 'Tests', value: '90' },
+      { label: 'License', value: 'MIT' },
+    ],
+  },
+  {
+    slug: 'pine-semantic-platform',
+    index: 3,
+    title: 'Reading code the way a reviewer would',
+    shortTitle: 'Pine Semantic Platform',
+    description:
+      'A Python CLI that parses Pine Script into an abstract syntax tree, answers semantic queries, and runs a staged validation pipeline before anything is published.',
+    meta: 'Python · ANTLR · 7 CLI commands · v2.0.0',
+    screenshot: {
+      src: pspShot,
+      placeholder: pspPlaceholder,
+      width: 1280,
+      height: 760,
+      alt: 'Pine Semantic Platform repository on GitHub',
+      url: 'github.com/akhmfz/pine-semantic-platform',
+    },
+    repo: 'https://github.com/akhmfz/pine-semantic-platform',
+    summary:
+      'Pine Script files grow past the point where reading them line by line is reliable. This is the toolchain I use on my own scripts: parse once into a semantic model, then query, review, and validate against it.',
+    sections: [
+      {
+        heading: 'Parse once, query many times',
+        body: 'Every .pine file is parsed with an ANTLR grammar into pine_semantic.json — functions, variables, modules, and call edges. Questions about the codebase stop depending on grep and start depending on the graph.',
+      },
+      {
+        heading: 'Semantic queries',
+        body: 'The query engine covers search, context, stats, function, variable, module, impact, callers, callees, builtin, and explain. Impact analysis is the one I reach for before renaming a shared helper.',
+      },
+      {
+        heading: 'Context assembly for review',
+        body: 'Reviewing with an LLM needs the right slice of code, not the whole repository. The context command assembles a prompt-sized excerpt against a token budget, with profiles for review, debug, and documentation work.',
+      },
+      {
+        heading: 'Validation before publishing',
+        body: 'A staged pipeline runs parser, schema, graph, golden, and context checks in order and stops at the first failure, so a broken semantic model never reaches the review step.',
+      },
+    ],
+    facts: [
+      { label: 'Version', value: 'v2.0.0' },
+      { label: 'Schema', value: '1.1' },
+      { label: 'CLI commands', value: '7' },
+      { label: 'Runtime', value: 'Python 3.10+' },
+      { label: 'Parser', value: 'pynescript / ANTLR' },
+      { label: 'License', value: 'MIT' },
+    ],
+  },
+];
+
+export function getProject(slug) {
+  return projects.find(project => project.slug === slug);
+}

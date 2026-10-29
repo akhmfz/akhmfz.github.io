@@ -1,11 +1,6 @@
-import instrumenShot from '~/assets/projects/papan-instrumen.jpg';
-import instrumenPlaceholder from '~/assets/projects/papan-instrumen-placeholder.jpg';
-import gerakShot from '~/assets/projects/papan-gerak.jpg';
-import gerakPlaceholder from '~/assets/projects/papan-gerak-placeholder.jpg';
-import pspShot from '~/assets/projects/pine-semantic-platform.jpg';
-import pspPlaceholder from '~/assets/projects/pine-semantic-platform-placeholder.jpg';
 import { Footer } from '~/components/footer';
 import { baseMeta } from '~/utils/meta';
+import { projects } from '~/data/projects';
 import { Intro } from './intro';
 import { Experience } from './experience';
 import { Profile } from './profile';
@@ -28,6 +23,7 @@ export const Home = () => {
   const projectOne = useRef();
   const projectTwo = useRef();
   const projectThree = useRef();
+  const projectRefs = [projectOne, projectTwo, projectThree];
   const experience = useRef();
   const details = useRef();
 
@@ -81,66 +77,24 @@ export const Home = () => {
         sectionRef={intro}
         scrollIndicatorHidden={scrollIndicatorHidden}
       />
-      <ProjectSummary
-        id="project-1"
-        sectionRef={projectOne}
-        visible={visibleSections.includes(projectOne.current)}
-        index={1}
-        title="Scoring Indonesian equities in seconds"
-        description="Papan Instrumen turns dozens of fundamental data points into a sector-aware score, so a stock can be read at a glance instead of row by row."
-        meta="Pine Script v6 · TradingView Public Library · 96 automated tests"
-        screenshot={{
-          src: instrumenShot,
-          placeholder: instrumenPlaceholder,
-          width: 1280,
-          height: 760,
-          alt: 'Papan Instrumen repository on GitHub',
-          url: 'github.com/akhmfz/papan-instrumen',
-        }}
-        buttonText="View the script"
-        buttonLink="https://www.tradingview.com/script/s4Bjqc7S-Saham-Papan-Instrumen-By-Akhmfz/"
-        secondaryLink="https://github.com/akhmfz/papan-instrumen"
-        secondaryText="Source code"
-      />
-      <ProjectSummary
-        id="project-2"
-        alternate
-        sectionRef={projectTwo}
-        visible={visibleSections.includes(projectTwo.current)}
-        index={2}
-        title="A technical dashboard built for IDX liquidity"
-        description="Papan Gerak combines trend, momentum, volatility, and volume into one score, with three entry-trigger modes, position sizing, and JSON webhook alerts."
-        meta="Pine Script v6 · 50 parameters · 90 automated tests"
-        screenshot={{
-          src: gerakShot,
-          placeholder: gerakPlaceholder,
-          width: 1280,
-          height: 760,
-          alt: 'Papan Gerak repository on GitHub',
-          url: 'github.com/akhmfz/papan-gerak',
-        }}
-        buttonText="View source"
-        buttonLink="https://github.com/akhmfz/papan-gerak"
-      />
-      <ProjectSummary
-        id="project-3"
-        sectionRef={projectThree}
-        visible={visibleSections.includes(projectThree.current)}
-        index={3}
-        title="Reading code the way a reviewer would"
-        description="A Python CLI that parses Pine Script into an abstract syntax tree, answers semantic queries, and runs a staged validation pipeline before anything is published."
-        meta="Python · ANTLR · 7 CLI commands · v2.0.0"
-        screenshot={{
-          src: pspShot,
-          placeholder: pspPlaceholder,
-          width: 1280,
-          height: 760,
-          alt: 'Pine Semantic Platform repository on GitHub',
-          url: 'github.com/akhmfz/pine-semantic-platform',
-        }}
-        buttonText="View source"
-        buttonLink="https://github.com/akhmfz/pine-semantic-platform"
-      />
+      {projects.map((project, i) => (
+        <ProjectSummary
+          key={project.slug}
+          id={`project-${project.index}`}
+          alternate={i % 2 === 1}
+          sectionRef={projectRefs[i]}
+          visible={visibleSections.includes(projectRefs[i].current)}
+          index={project.index}
+          title={project.title}
+          description={project.description}
+          meta={project.meta}
+          screenshot={project.screenshot}
+          buttonText="View project"
+          buttonLink={`/projects/${project.slug}`}
+          secondaryLink={project.repo}
+          secondaryText="Source code"
+        />
+      ))}
       <Experience
         id="experience"
         sectionRef={experience}

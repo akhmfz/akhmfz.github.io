@@ -21,7 +21,6 @@ import { throttle } from '~/utils/throttle';
 import { cleanRenderer, cleanScene, removeLights } from '~/utils/three';
 import fragmentShader from './displacement-sphere-fragment.glsl?raw';
 import vertexShader from './displacement-sphere-vertex.glsl?raw';
-import styles from './displacement-sphere.module.css';
 
 const springConfig = {
   stiffness: 30,
@@ -187,7 +186,7 @@ export const DisplacementSphere = props => {
       {({ visible, nodeRef }) => (
         <canvas
           aria-hidden
-          className={styles.canvas}
+          className="sphereCanvas"
           data-visible={visible}
           ref={nodeRef}
           {...props}

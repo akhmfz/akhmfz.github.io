@@ -12,6 +12,9 @@ export const Footer = ({ className }) => (
       </span>
       <Link secondary className={styles.link} href="/humans.txt" target="_self">
         Crafted by yours truly
+      </Link>{' '}
+      <Link secondary className={styles.link} href="https://github.com/HamishMW/portfolio">
+        Template by Hamish Williams (MIT)
       </Link>
     </Text>
   </footer>

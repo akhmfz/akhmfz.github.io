@@ -1,5 +1,3 @@
-import notFoundPoster from '~/assets/notfound.jpg';
-import notFoundVideo from '~/assets/notfound.mp4';
 import flatlinePoster from '~/assets/flatline.png';
 import flatlineVideo from '~/assets/flatline.mp4';
 import { Button } from '~/components/button';
@@ -38,7 +36,7 @@ export function Error({ error }) {
   const { summary, message } = getMessage();
 
   return (
-    <section className={styles.page}>
+    <section className={styles.page} data-video={flatlined}>
       {flatlined && (
         <style
           dangerouslySetInnerHTML={{
@@ -123,17 +121,17 @@ export function Error({ error }) {
               </div>
             </div>
 
-            <div className={styles.videoContainer} data-visible={visible}>
-              <Image
-                reveal
-                cover
-                noPauseButton
-                delay={600}
-                className={styles.video}
-                src={flatlined ? flatlineVideo : notFoundVideo}
-                placeholder={flatlined ? flatlinePoster : notFoundPoster}
-              />
-              {flatlined ? (
+            {flatlined && (
+              <div className={styles.videoContainer} data-visible={visible}>
+                <Image
+                  reveal
+                  cover
+                  noPauseButton
+                  delay={600}
+                  className={styles.video}
+                  src={flatlineVideo}
+                  placeholder={flatlinePoster}
+                />
                 <a
                   className={styles.credit}
                   data-visible={visible}
@@ -143,18 +141,8 @@ export function Error({ error }) {
                 >
                   Animation from Berserk (1997)
                 </a>
-              ) : (
-                <a
-                  className={styles.credit}
-                  data-visible={visible}
-                  href="https://www.imdb.com/title/tt0113568/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Animation from Ghost in the Shell (1995)
-                </a>
-              )}
-            </div>
+              </div>
+            )}
           </>
         )}
       </Transition>

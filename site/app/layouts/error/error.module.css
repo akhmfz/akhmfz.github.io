@@ -5,6 +5,10 @@
     height: 100vh;
     padding-left: 140px;
 
+    &[data-video='false'] {
+      grid-template-columns: 100%;
+    }
+
     @media (--mediaTablet) {
       padding-top: 80px;
       padding-bottom: 80px;

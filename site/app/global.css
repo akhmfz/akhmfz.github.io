@@ -80,3 +80,22 @@
     }
   }
 }
+
+/*
+ * The sphere is code-split, so Vite injects its CSS chunk after hydration starts
+ * and React then replaces the <head>, dropping that stylesheet. These rules are
+ * kept in the eager global sheet so the canvas never falls into normal flow.
+ */
+.sphereCanvas {
+  position: absolute;
+  width: 100vw;
+  inset: 0;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 3s;
+  transition-timing-function: var(--bezierFastoutSlowin);
+}
+
+.sphereCanvas[data-visible='true'] {
+  opacity: 1;
+}

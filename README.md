@@ -12,11 +12,14 @@ Output-nya statis dan disajikan GitHub Pages dari root repo ini.
 index.html            ← HASIL BUILD. Jangan edit langsung.
 404.html              ← HASIL BUILD (fallback deep link SPA)
 contact/index.html    ← HASIL BUILD (agar /contact dapat HTTP 200)
+projects/<slug>/index.html
+                        ← HASIL BUILD (halaman detail tiap proyek)
 assets/, favicon*, manifest.json, shortcut.png, social-image.png
                         ← HASIL BUILD (kecuali social-image.png: gambar OG 1280×800)
 site/                 ← SOURCE Remix. Semua perubahan dikerjakan di sini.
   app/config.json     ← identitas, sosial, disiplin (sumber teks global)
-  app/routes/         ← halaman: home/, contact/, $.jsx (404)
+  app/routes/         ← halaman: home/, contact/, projects.$slug (detail proyek), $.jsx (404)
+  app/data/projects.js ← isi proyek (dipakai home + halaman detail)
   app/components/     ← komponen UI + design token (theme-provider/theme.js)
   scripts/publish.mjs ← build + salin ke root repo + patch <head> statis
 ```
@@ -51,7 +54,9 @@ Catatan:
   JS jalan; crawler non-JS membaca `og:title` / `og:description` yang ditambahkan
   `scripts/publish.mjs` di akhir `<head>`.
 - Deep link seperti `/contact` dilayani `404.html` (GitHub Pages tanpa rewrite server),
-  sedangkan `/contact/` dapat HTTP 200 dari `contact/index.html`.
+  sedangkan `/contact/` dapat HTTP 200 dari `contact/index.html`. `/projects/<slug>`
+  tanpa slash akhir jatuh ke `404.html` lalu dirutekan React ke halaman proyeknya;
+  versi `/projects/<slug>/` dapat HTTP 200 langsung.
 
 ## Riwayat
 
