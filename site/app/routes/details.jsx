@@ -14,8 +14,8 @@ export const meta = () =>
 export default function Details() {
   return (
     <div className={styles.page}>
-      <Experience id="experience" visible />
       <Profile id="about" visible />
+      <Experience id="experience" visible />
       <Footer />
     </div>
   );
