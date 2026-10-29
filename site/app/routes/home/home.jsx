@@ -95,16 +95,19 @@ export const Home = () => {
           secondaryText="Source code"
         />
       ))}
-      <Experience
-        id="experience"
-        sectionRef={experience}
-        visible={visibleSections.includes(experience.current)}
-      />
-      <Profile
-        sectionRef={details}
-        visible={visibleSections.includes(details.current)}
-        id="details"
-      />
+      {/* Nav "Details" lands on the experience list, then the profile. */}
+      <div id="details">
+        <Experience
+          id="experience"
+          sectionRef={experience}
+          visible={visibleSections.includes(experience.current)}
+        />
+        <Profile
+          sectionRef={details}
+          visible={visibleSections.includes(details.current)}
+          id="about"
+        />
+      </div>
       <Footer />
     </div>
   );

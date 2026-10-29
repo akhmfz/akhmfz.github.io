@@ -29,12 +29,15 @@ export const Navbar = () => {
     setCurrent(`${location.pathname}${location.hash}`);
   }, [location]);
 
-  // Handle smooth scroll nav items
+  // Handle smooth scroll nav items, including a #hash in the URL on first load
+  // (a page link like /#details arrives with scroll already reset by hydration).
   useEffect(() => {
-    if (!target || location.pathname !== '/') return;
-    setCurrent(`${location.pathname}${target}`);
-    scrollToHash(target, () => setTarget(null));
-  }, [location.pathname, scrollToHash, target]);
+    if (location.pathname !== '/') return;
+    const hash = target || location.hash;
+    if (!hash) return;
+    setCurrent(`${location.pathname}${hash}`);
+    scrollToHash(hash, () => setTarget(null));
+  }, [location.pathname, location.hash, scrollToHash, target]);
 
   // Handle swapping the theme when intersecting with inverse themed elements
   useEffect(() => {
@@ -142,8 +145,7 @@ export const Navbar = () => {
   return (
     <header className={styles.navbar} ref={headerRef}>
       <RouterLink
-        unstable_viewTransition
-        prefetch="intent"
+        reloadDocument
         to={location.pathname === '/' ? '/#intro' : '/'}
         data-navbar-item
         className={styles.logo}
@@ -157,8 +159,7 @@ export const Navbar = () => {
         <div className={styles.navList}>
           {navLinks.map(({ label, pathname }) => (
             <RouterLink
-              unstable_viewTransition
-              prefetch="intent"
+              reloadDocument
               to={pathname}
               key={label}
               data-navbar-item
@@ -177,8 +178,7 @@ export const Navbar = () => {
           <nav className={styles.mobileNav} data-visible={visible} ref={nodeRef}>
             {navLinks.map(({ label, pathname }, index) => (
               <RouterLink
-                unstable_viewTransition
-                prefetch="intent"
+                reloadDocument
                 to={pathname}
                 key={label}
                 className={styles.mobileNavLink}

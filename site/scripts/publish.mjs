@@ -12,6 +12,7 @@ const siteUrl = 'https://akhmfz.github.io';
 
 const generated = [
   'assets',
+  'articles',
   'contact',
   'projects',
   'index.html',
@@ -67,6 +68,12 @@ const pages = {
     title: 'Muhammad Akhmal | Audit, Risk & Compliance Portfolio',
     description:
       'Portfolio of Muhammad Akhmal Fauzi Saefurohman — Financial Management student at UNIDA Gontor building a career in internal audit, internal controls, risk management, and compliance.',
+  },
+  'articles/index.html': {
+    path: '/articles',
+    title: 'Muhammad Akhmal | Articles',
+    description:
+      'Writing by Muhammad Akhmal Fauzi Saefurohman on audit, risk, controls, and the Indonesian market.',
   },
   'contact/index.html': {
     path: '/contact',

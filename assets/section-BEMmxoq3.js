@@ -1,1 +1,0 @@
-import{r,j as a}from"./components-CcwoHjNM.js";import{c as i}from"./heading-CZ6r1yXT.js";const n="_section_cvvm4_2",m={section:n},f=r.forwardRef(({as:s="div",children:o,className:t,...c},e)=>a.jsx(s,{className:i(m.section,t),ref:e,...c,children:o}));export{f as S};

@@ -1,0 +1,91 @@
+@layer components {
+  .page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero {
+    max-width: var(--maxWidthL);
+    width: 100%;
+    margin: 0 auto;
+    padding: var(--space5XL) var(--spaceOuter) 0;
+
+    @media (--mediaMobile) {
+      padding: var(--space4XL) var(--spaceL) 0;
+    }
+  }
+
+  .title {
+    margin-bottom: var(--spaceL);
+  }
+
+  .intro {
+    max-width: 60ch;
+  }
+
+  .list {
+    max-width: var(--maxWidthL);
+    width: 100%;
+    margin: var(--space3XL) auto 0;
+    padding: 0 var(--spaceOuter);
+    display: grid;
+    gap: var(--space2XL);
+
+    @media (--mediaMobile) {
+      padding: 0 var(--spaceL);
+      margin-top: var(--space2XL);
+    }
+  }
+
+  .empty {
+    max-width: 60ch;
+    color: var(--textLight);
+  }
+
+  .post {
+    display: grid;
+    gap: var(--spaceS);
+    padding-bottom: var(--spaceL);
+    border-bottom: 1px solid color-mix(in lab, var(--text) 10%, transparent);
+  }
+
+  .postMeta {
+    display: flex;
+    gap: var(--spaceM);
+    font-size: var(--fontSizeBodyS);
+    color: var(--textLight);
+  }
+
+  .postLink {
+    font-size: var(--fontSizeH4);
+  }
+
+  .postBlurb {
+    max-width: 62ch;
+  }
+
+  .elsewhere {
+    max-width: var(--maxWidthL);
+    width: 100%;
+    margin: var(--space3XL) auto var(--space4XL);
+    padding: 0 var(--spaceOuter);
+    display: grid;
+    gap: var(--spaceM);
+
+    @media (--mediaMobile) {
+      padding: 0 var(--spaceL);
+    }
+  }
+
+  .elsewhereLabel {
+    color: var(--textLight);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spaceS);
+  }
+}

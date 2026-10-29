@@ -1,0 +1,1 @@
+import{j as t}from"./components-CcwoHjNM.js";import{E as r}from"./error-DNlYyvBV.js";import"./heading-umWI_qNc.js";import"./decoder-text-D7O7dye0.js";import"./image-DUP3MOVR.js";const e=()=>[{title:"404 | Muhammad Akhmal"}];function i(){return t.jsx(r,{error:{status:404,statusText:"Not found"}})}export{i as default,e as meta};
