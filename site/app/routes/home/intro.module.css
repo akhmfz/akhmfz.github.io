@@ -83,11 +83,18 @@
   font-size: var(--fontSizeBodyS);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  opacity: 0;
+  /* Visible by default: the reveal must not be the only thing that makes the text readable. */
+  opacity: 1;
 
   /* fade-in lives in global.css, so the name must not be hashed by CSS modules. */
   &:global {
-    animation: fade-in var(--durationL) ease 1.8s forwards;
+    animation: fade-in var(--durationL) ease 1.8s both;
+  }
+
+  @media (--mediaReduceMotion) {
+    &:global {
+      animation: none;
+    }
   }
 }
 
@@ -97,10 +104,16 @@
   color: var(--textBody);
   font-size: clamp(1rem, 2vw, var(--fontSizeBodyL));
   line-height: 1.6;
-  opacity: 0;
+  opacity: 1;
 
   &:global {
-    animation: fade-in var(--durationL) ease 1.8s forwards;
+    animation: fade-in var(--durationL) ease 1.8s both;
+  }
+
+  @media (--mediaReduceMotion) {
+    &:global {
+      animation: none;
+    }
   }
 }
 
