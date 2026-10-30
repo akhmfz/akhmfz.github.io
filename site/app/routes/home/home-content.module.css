@@ -1,0 +1,38 @@
+@layer components {
+  .content,
+  .about {
+    max-width: var(--maxWidthL);
+    width: 100%;
+    margin: var(--space5XL) auto;
+    padding: 0 var(--spaceOuter);
+  }
+
+  .work { max-width: var(--maxWidthL); width: 100%; margin: var(--space5XL) auto; padding: 0 var(--spaceOuter); }
+  .work > section { margin-top: 0; }
+  .projectRow { display: grid; grid-template-columns: 1fr auto; gap: var(--spaceXL); align-items: center; padding: var(--spaceL) 0; border-top: 1px solid color-mix(in lab, var(--text) 14%, transparent); }
+  .projectRow h3 { margin: var(--spaceS) 0; }
+  .projectRow p { max-width: 60ch; }
+  .projectActions { display: flex; flex-wrap: wrap; gap: var(--spaceS); }
+
+  .headingRow { display: grid; gap: var(--spaceM); margin-bottom: var(--space2XL); }
+  .headingRow > p, .eyebrow { color: var(--primary); }
+  .activityGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--spaceL); }
+  .card { border-top: 1px solid color-mix(in lab, var(--text) 14%, transparent); padding: var(--spaceL) 0; }
+  .card h3 { margin: var(--spaceS) 0; }
+  .organization { color: var(--textLight); }
+  .card p:last-child { color: var(--textLight); }
+  .writingList { display: grid; border-top: 1px solid color-mix(in lab, var(--text) 14%, transparent); margin-bottom: var(--spaceL); }
+  .writingItem { display: grid; gap: var(--spaceS); padding: var(--spaceL) 0; border-bottom: 1px solid color-mix(in lab, var(--text) 14%, transparent); color: inherit; text-decoration: none; }
+  .writingItem span, .writingItem small { color: var(--textLight); }
+  .writingItem strong { font-size: var(--fontSizeBodyL); }
+  .emptyWriting { color: var(--textLight); }
+  .about { border-top: 1px solid color-mix(in lab, var(--text) 14%, transparent); padding-top: var(--space2XL); }
+  .about h2 { max-width: 18ch; margin: var(--spaceM) 0; }
+  .about p { max-width: 58ch; }
+  .about div { display: flex; flex-wrap: wrap; gap: var(--spaceS); margin-top: var(--spaceL); }
+  @media (--mediaMobile) {
+    .content, .about, .work { margin: var(--space4XL) auto; padding: 0 var(--spaceL); }
+    .activityGrid { grid-template-columns: 1fr; }
+    .projectRow { grid-template-columns: 1fr; }
+  }
+}

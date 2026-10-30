@@ -1,0 +1,21 @@
+// Evidence-bound activity summaries. Add links or dates only when they are verified.
+export const activities = [
+  {
+    title: 'GIS UNIDA Gontor',
+    organization: 'Sharia Investment Gallery, Universitas Darussalam Gontor',
+    role: 'Chairperson · 2026 — Present',
+    category: 'Leadership & financial literacy',
+    summary:
+      'Leading a student initiative focused on Islamic capital-market literacy and programme coordination.',
+    contribution: 'Current work includes coordinating the team and supporting financial-literacy programming.',
+  },
+  {
+    title: 'IDX Roadshow to School',
+    organization: 'Sharia Investment Gallery (GIS)',
+    role: 'Publication, Documentation & Design · 2025 — 2026',
+    category: 'Publication & documentation',
+    summary: 'The GIS activity list records this school programme on Islamic capital-market fundamentals.',
+    contribution:
+      'Supported publication, documentation, and design for the programme. Further event details are intentionally omitted until an official source is available.',
+  },
+];

@@ -1,10 +1,17 @@
 {
   "short_name": "Muhammad Akhmal",
   "name": "Portfolio of Muhammad Akhmal Fauzi Saefurohman",
+  "description": "Financial Management student focused on Internal Audit, Risk & Compliance.",
+  "lang": "en",
   "icons": [
     {
       "src": "shortcut.png",
       "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
       "type": "image/png"
     },
     {
@@ -16,9 +23,15 @@
       "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#111111",
   "background_color": "#111111"

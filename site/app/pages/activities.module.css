@@ -1,0 +1,12 @@
+@layer components {
+  .page { min-height: 100vh; display: flex; flex-direction: column; }
+  .content { max-width: var(--maxWidthL); width: 100%; margin: 0 auto; padding: var(--spaceOuter); }
+  .content > p:first-child, .category { color: var(--primary); }
+  .intro { max-width: 60ch; margin-top: var(--spaceL); }
+  .list { margin-top: var(--space4XL); }
+  .item { max-width: 760px; padding: var(--space2XL) 0; border-top: 1px solid color-mix(in lab, var(--text) 14%, transparent); }
+  .item h2 { margin: var(--spaceS) 0; }
+  .role { color: var(--textLight); }
+  .item p:last-child { color: var(--textLight); }
+  @media (--mediaMobile) { .content { padding: var(--mobileNavOffset) var(--spaceL) var(--space3XL); } }
+}

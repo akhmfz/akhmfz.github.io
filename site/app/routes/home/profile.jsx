@@ -22,17 +22,14 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I’m Akhmal, a Financial Management student at Universitas Darussalam Gontor with a
-      3.73/4.00 GPA. I chair the Sharia Investment Gallery (GIS), leading a 15-member team
-      that runs Islamic capital market literacy programmes with{' '}
-      <Link href="https://www.idx.co.id">IDX</Link> and{' '}
-      <Link href="https://www.ojk.go.id">OJK</Link>.
+      I’m Akhmal, a Financial Management undergraduate at Universitas Darussalam Gontor.
+      My career interests are internal audit, controls, risk, compliance, and corporate
+      governance; I also build tools for capital-market analysis.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      Most of my work sits where documentation meets control: minutes, records,
-      correspondence, and programme administration that has to hold up when someone
-      reviews it later. I’m training in internal audit procedures and risk assessment, and
-      I’m open to a 2027 internship in audit, risk, or compliance.
+      As chairperson of the Sharia Investment Gallery (GIS), I contribute to student-led
+      financial-literacy initiatives and programme coordination. I’m preparing for a 2027
+      internship in audit, risk, or compliance.
     </Text>
   </Fragment>
 );

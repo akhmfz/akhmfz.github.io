@@ -117,9 +117,15 @@ export const Navbar = () => {
 
   // Check if a nav item should be active
   const getCurrent = (url = '') => {
-    const nonTrailing = current?.endsWith('/') ? current?.slice(0, -1) : current;
+    const normalize = value => {
+      if (!value) return value;
+      const [pathname, hash] = value.split('#');
+      const path = pathname === '/' ? '/' : pathname.replace(/\/+$/, '');
+      return hash ? `${path}#${hash}` : path;
+    };
+    const nonTrailing = normalize(current);
 
-    if (url === nonTrailing) {
+    if (normalize(url) === nonTrailing || (url === '/#project-1' && location.pathname === '/')) {
       return 'page';
     }
 

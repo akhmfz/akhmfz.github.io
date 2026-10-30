@@ -20,6 +20,7 @@ export const meta = () => {
     title: 'Contact',
     description:
       'Send me a message about an internship, a project, or anything related to audit, risk, and financial controls.',
+    canonical: `${config.url}/contact/`,
   });
 };
 

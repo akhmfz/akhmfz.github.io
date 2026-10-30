@@ -8,6 +8,7 @@ export function baseMeta({
   description,
   prefix = name,
   ogImage = defaultOgImage,
+  canonical = url,
 }) {
   const titleText = [prefix, title].filter(Boolean).join(' | ');
 
@@ -16,13 +17,13 @@ export function baseMeta({
     { name: 'description', content: description },
     { name: 'author', content: name },
     { property: 'og:image', content: ogImage },
-    { property: 'og:image:alt', content: 'Muhammad Akhmal — Audit, Risk & Compliance portfolio' },
-    { property: 'og:image:width', content: '1280' },
-    { property: 'og:image:height', content: '800' },
+    { property: 'og:image:alt', content: 'Muhammad Akhmal — Financial Management student focused on Internal Audit, Risk & Compliance' },
+    { property: 'og:image:width', content: '1200' },
+    { property: 'og:image:height', content: '630' },
     { property: 'og:title', content: titleText },
     { property: 'og:site_name', content: name },
     { property: 'og:type', content: 'website' },
-    { property: 'og:url', content: url },
+    { property: 'og:url', content: canonical },
     { property: 'og:description', content: description },
     { property: 'twitter:card', content: 'summary_large_image' },
     { property: 'twitter:description', content: description },

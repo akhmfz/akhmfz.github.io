@@ -12,7 +12,7 @@ const roles = [
     role: 'Chairperson',
     org: 'Sharia Investment Gallery (GIS), UNIDA Gontor',
     detail:
-      'Lead a 15-member team running Islamic capital market literacy programmes, including an OJK SEPMT 2026 public lecture delivered to roughly 500 participants.',
+      'Lead student-led Islamic capital-market literacy initiatives and support programme coordination.',
   },
   {
     period: '2026 — Present',
@@ -33,7 +33,7 @@ const roles = [
     role: 'Publication, Documentation & Design',
     org: 'Sharia Investment Gallery (GIS)',
     detail:
-      'Coordinated the IDX Roadshow to School programme on Islamic capital market fundamentals across three high schools in Ponorogo.',
+      'Supported publication, documentation, and design for the IDX Roadshow to School programme on Islamic capital-market fundamentals.',
   },
   {
     period: '2024 — Present',

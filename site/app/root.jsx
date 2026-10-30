@@ -63,8 +63,7 @@ export default function App() {
   const { pathname } = useLocation();
 
   const canonicalUrl = useMemo(() => {
-    if (typeof window === 'undefined') return config.url;
-    const path = pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
+    const path = pathname === '/' ? '/' : `${pathname.replace(/\/+$/, '')}/`;
     return `${config.url}${path}`;
   }, [pathname]);
 

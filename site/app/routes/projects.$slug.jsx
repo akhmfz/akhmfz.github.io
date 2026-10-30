@@ -7,6 +7,7 @@ import { Link } from '~/components/link';
 import { Text } from '~/components/text';
 import { Error } from '~/layouts/error';
 import { baseMeta } from '~/utils/meta';
+import config from '~/config.json';
 import { useParams } from '@remix-run/react';
 import { getProject, projects } from '~/data/projects';
 import styles from '~/pages/project.module.css';
@@ -20,7 +21,8 @@ export const meta = ({ params }) => {
 
   return baseMeta({
     title: project.shortTitle,
-    description: project.meta,
+    description: project.summary,
+    canonical: `${config.url}/projects/${params.slug}/`,
   });
 };
 
@@ -38,7 +40,7 @@ export default function Project() {
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
-        <Link className={styles.back} href="/#project-1">
+          <Link className={styles.back} href="/#project-1">
           All projects
         </Link>
         <Heading level={0} as="h1" className={styles.title}>
@@ -113,7 +115,7 @@ export default function Project() {
 
       <section className={styles.next}>
         <Text size="s">Next project</Text>
-        <Link className={styles.nextLink} href={`/projects/${next.slug}`}>
+        <Link className={styles.nextLink} href={`/projects/${next.slug}/`}>
           {next.shortTitle}
         </Link>
       </section>

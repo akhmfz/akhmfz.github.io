@@ -15,13 +15,18 @@ const generated = [
   'articles',
   'contact',
   'details',
+  'activities',
   'projects',
   'index.html',
   '404.html',
   'favicon.ico',
   'favicon.svg',
+  'social-image.png',
+  'icon-192.png',
+  'icon-maskable-512.png',
   'icon-256.png',
   'icon-512.png',
+  'icon-maskable-512.png',
   'shortcut.png',
   'manifest.json',
   'robots.txt',
@@ -52,9 +57,9 @@ function head({ title, description, path: pagePath }) {
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${description}">
 <meta property="og:image" content="${siteUrl}/social-image.png">
-<meta property="og:image:width" content="1280">
-<meta property="og:image:height" content="800">
-<meta property="og:image:alt" content="Muhammad Akhmal — Audit, Risk & Compliance portfolio">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Muhammad Akhmal — Financial Management student focused on Internal Audit, Risk & Compliance">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${title}">
 <meta name="twitter:description" content="${description}">
@@ -66,44 +71,57 @@ function head({ title, description, path: pagePath }) {
 const pages = {
   'index.html': {
     path: '/',
-    title: 'Muhammad Akhmal | Audit, Risk & Compliance Portfolio',
+    title: 'Muhammad Akhmal | Financial Management Student — Internal Audit, Risk & Compliance',
     description:
-      'Portfolio of Muhammad Akhmal Fauzi Saefurohman — Financial Management student at UNIDA Gontor building a career in internal audit, internal controls, risk management, and compliance.',
+      'Portfolio of Muhammad Akhmal Fauzi Saefurohman — Financial Management student focused on internal audit, risk, compliance, capital-market analysis, and GIS financial literacy.',
   },
   'articles/index.html': {
-    path: '/articles',
+    path: '/articles/',
     title: 'Muhammad Akhmal | Articles',
     description:
       'Writing by Muhammad Akhmal Fauzi Saefurohman on audit, risk, controls, and the Indonesian market.',
   },
   'contact/index.html': {
-    path: '/contact',
+    path: '/contact/',
     title: 'Muhammad Akhmal | Contact',
     description:
       'Send me a message about an internship, a project, or anything related to audit, risk, and financial controls.',
   },
   'details/index.html': {
-    path: '/details',
+    path: '/details/',
     title: 'Muhammad Akhmal | Details',
     description:
       'Experience, education, and background of Muhammad Akhmal Fauzi Saefurohman — records, coordination, and controls.',
+  },
+  'activities/index.html': {
+    path: '/activities/',
+    title: 'Muhammad Akhmal | Activities',
+    description: 'Leadership, publication, documentation, and financial-literacy activities through GIS UNIDA Gontor.',
   },
   ...Object.fromEntries(
     // shortcut: head metadata for project pages is duplicated from
     // app/data/projects.js because that module imports Vite-only assets;
     // move the shared fields into JSON if the list outgrows three pages.
     [
-      ['papan-instrumen', 'Papan Instrumen', 'Pine Script v6 · TradingView Public Library · 96 automated tests'],
-      ['papan-gerak', 'Papan Gerak', 'Pine Script v6 · 50 parameters · 90 automated tests'],
+      [
+        'papan-instrumen',
+        'Papan Instrumen',
+        'A transparent, sector-aware fundamental analysis dashboard for Indonesian equities, built in Pine Script v6.',
+      ],
+      [
+        'papan-gerak',
+        'Papan Gerak',
+        'A personal technical-analysis tool combining trend, momentum, volatility, and volume for IDX charts.',
+      ],
       [
         'pine-semantic-platform',
         'Pine Semantic Platform',
-        'Python · ANTLR · 7 CLI commands · v2.0.0',
+        'A Python CLI for parsing Pine Script into a semantic model, querying code relationships, and validating changes.',
       ],
     ].map(([slug, shortTitle, description]) => [
       `projects/${slug}/index.html`,
       {
-        path: `/projects/${slug}`,
+        path: `/projects/${slug}/`,
         title: `${shortTitle} | Muhammad Akhmal`,
         description,
       },

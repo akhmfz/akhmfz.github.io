@@ -5,22 +5,25 @@ import { Heading } from '~/components/heading';
 import { Text } from '~/components/text';
 import { baseMeta } from '~/utils/meta';
 import config from '~/config.json';
-import { platforms, posts } from '~/data/posts';
+import { parseEditorialDate, platforms, posts } from '~/data/posts';
 import styles from '~/pages/articles.module.css';
 
 export const meta = () =>
   baseMeta({
     title: 'Articles',
     description: `Writing by ${config.fullName} on audit, risk, controls, and the Indonesian market.`,
+    canonical: `${config.url}/articles/`,
   });
 
 const formatDate = value =>
-  new Date(`${value}T00:00:00Z`).toLocaleDateString('en-GB', {
+  parseEditorialDate(value)
+    ? parseEditorialDate(value).toLocaleDateString('en-GB', {
     day: 'numeric',
     month: 'short',
     year: 'numeric',
     timeZone: 'UTC',
-  });
+      })
+    : 'Date unavailable';
 
 export default function Articles() {
   return (
@@ -54,7 +57,7 @@ export default function Articles() {
                     {post.title}
                   </Heading>
                   <Text size="s" as="p">
-                    {post.blurb}
+                    {post.blurb || 'Read the original publication.'}
                   </Text>
                   <div className={styles.postFooter}>
                     <Button secondary iconHoverShift icon="chevron-right" as="div">
@@ -65,6 +68,16 @@ export default function Articles() {
                     </Text>
                   </div>
                 </a>
+                {post.sources?.length > 0 && (
+                  <div className={styles.sources}>
+                    <Text size="s">Sources:</Text>
+                    {post.sources.map(source => (
+                      <a href={source.href} target="_blank" rel="noopener noreferrer" key={source.href}>
+                        {source.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
               </article>
             ))
           )}

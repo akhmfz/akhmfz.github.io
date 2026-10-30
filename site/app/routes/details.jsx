@@ -9,6 +9,7 @@ export const meta = () =>
   baseMeta({
     title: 'Details',
     description: `Experience, education, and background of ${config.fullName} — records, coordination, and controls.`,
+    canonical: `${config.url}/details/`,
   });
 
 export default function Details() {

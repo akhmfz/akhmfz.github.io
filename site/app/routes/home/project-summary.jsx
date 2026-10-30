@@ -120,6 +120,7 @@ export function ProjectSummary({
       aria-labelledby={titleId}
       ref={sectionRef}
       id={id}
+      data-project-index={index}
       tabIndex={-1}
       {...rest}
     >
