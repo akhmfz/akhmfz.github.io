@@ -60,7 +60,7 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
                 </span>
               </Heading>
               <p className={styles.positioning}>{config.role}</p>
-              <p className={styles.intro}>{config.intro}</p>
+              <p className={styles.introText}>{config.intro}</p>
             </header>
               <RouterLink
               to="/#project-1"

@@ -84,29 +84,31 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   opacity: 0;
-  animation: fade-in var(--durationL) ease 1.8s forwards;
+
+  /* fade-in lives in global.css, so the name must not be hashed by CSS modules. */
+  &:global {
+    animation: fade-in var(--durationL) ease 1.8s forwards;
+  }
 }
 
-.intro {
+.introText {
   max-width: 680px;
   margin: var(--spaceL) 0 0;
   color: var(--textBody);
-  opacity: 0;
-  animation: fade-in var(--durationL) ease 1.8s forwards;
-}
-
-.intro {
-  font-size: var(--fontSizeBodyL);
-  line-height: 1.6;
   font-size: clamp(1rem, 2vw, var(--fontSizeBodyL));
+  line-height: 1.6;
+  opacity: 0;
+
+  &:global {
+    animation: fade-in var(--durationL) ease 1.8s forwards;
+  }
 }
 
 @media (--mediaMobile) {
   .positioning,
-  .intro {
+  .introText {
     max-width: calc(100vw - 2 * var(--spaceOuter));
   }
-  .intro { min-height: max(720px, 100svh); }
 }
 
 .row {
