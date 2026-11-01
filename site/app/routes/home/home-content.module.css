@@ -10,9 +10,20 @@
   .work {
     max-width: var(--maxWidthL);
     width: 100%;
-    margin: var(--space4XL) auto var(--space5XL);
-    padding: var(--space2XL) var(--spaceOuter) 0;
-    border-top: 1px solid color-mix(in lab, var(--text) 14%, transparent);
+    margin: 0 auto var(--space5XL);
+    padding: var(--space5XL) var(--spaceOuter) 0;
+    position: relative;
+    isolation: isolate;
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      inset: 0 calc(50% - 50vw);
+      background: var(--backgroundLight);
+      border-top: 1px solid color-mix(in lab, var(--text) 14%, transparent);
+      border-bottom: 1px solid color-mix(in lab, var(--text) 10%, transparent);
+    }
   }
   .work > section { margin-top: 0; }
   .projectRow { display: grid; grid-template-columns: 1fr auto; gap: var(--spaceXL); align-items: center; padding: var(--spaceL) 0; border-top: 1px solid color-mix(in lab, var(--text) 14%, transparent); }
@@ -39,7 +50,7 @@
   .about div { display: flex; flex-wrap: wrap; align-items: center; gap: var(--spaceS); margin-top: var(--spaceL); }
   @media (--mediaMobile) {
     .content, .about { margin: var(--space4XL) auto; padding: 0 var(--spaceL); }
-    .work { margin: var(--space4XL) auto; padding: var(--spaceL) var(--spaceL) 0; }
+    .work { margin: 0 auto var(--space4XL); padding: var(--space4XL) var(--spaceL) 0; }
     .activityGrid { grid-template-columns: 1fr; }
     .projectRow { grid-template-columns: 1fr; }
   }
