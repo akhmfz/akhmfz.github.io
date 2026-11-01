@@ -1,6 +1,6 @@
 import instrumenShot from '~/assets/projects/papan-instrumen-tradingview.png';
 import instrumenPlaceholder from '~/assets/projects/papan-instrumen-placeholder.jpg';
-import gerakShot from '~/assets/projects/papan-gerak.jpg';
+import gerakShot from '~/assets/projects/papan-gerak-tradingview.png';
 import gerakPlaceholder from '~/assets/projects/papan-gerak-placeholder.jpg';
 
 // Shared by the home summaries and the /projects/:slug pages, so the copy only
@@ -67,12 +67,16 @@ export const projects = [
     screenshot: {
       src: gerakShot,
       placeholder: gerakPlaceholder,
-      width: 1280,
-      height: 760,
-      alt: 'Papan Gerak repository on GitHub',
-      url: 'github.com/akhmfz/papan-gerak',
+      width: 1440,
+      height: 900,
+      alt: 'Papan Gerak indicator running on a TradingView chart',
+      url: 'tradingview.com/script/zmENYRvs-Saham-Papan-Gerak-By-Akhmfz/',
     },
     repo: 'https://github.com/akhmfz/papan-gerak',
+    external: {
+      label: 'Open in TradingView',
+      href: 'https://www.tradingview.com/script/zmENYRvs-Saham-Papan-Gerak-By-Akhmfz/',
+    },
     summary:
       'The technical companion to Papan Instrumen. Where that script answers “is this business worth owning”, this one answers “is now a sensible time to act”, and keeps the answer in the same visual language. It is a chart-study aid, not investment advice.',
     sections: [

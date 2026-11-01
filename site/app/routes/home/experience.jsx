@@ -8,19 +8,71 @@ import styles from './experience.module.css';
 
 const roles = [
   {
-    period: '',
-    role: 'Self-directed market analysis',
-    org: 'Forex price action study',
+    period: '2026 – Present',
+    role: 'Chairman',
+    org: 'Islamic Investment Gallery (GIS) · UNIDA Gontor',
     detail:
-      'Build structured trade plans from market structure and support/resistance, with a written review process for each setup.',
+      'Lead a team of 15 members in Islamic capital-market literacy programs; coordinate activities with BEI and OJK; facilitate the Kuliah Umum Pasar Modal Syariah under OJK SEPMT 2026 East Java; instruct KSPM members on Islamic investment fundamentals.',
+  },
+  {
+    period: '2025 – 2026',
+    role: 'Publication, Documentation & Design Division',
+    org: 'Islamic Investment Gallery (GIS) · UNIDA Gontor',
+    detail:
+      'Produced content, documentation, and design assets for GIS programs; coordinated IDX Roadshow to School across three high schools in Ponorogo.',
+  },
+  {
+    period: '2025 – Present',
+    role: 'Secretary',
+    org: 'Management Student Association · UNIDA Gontor',
+    detail:
+      'Maintain official records and correspondence, draft meeting minutes, and support administrative compliance across association activities.',
+  },
+  {
+    period: '2025 – 2026',
+    role: 'Secretary',
+    org: 'Dewan Racana · Racana Al-Faraby Scouts · UNIDA Gontor',
+    detail: 'Managed secretarial duties, formal records, and official correspondence for the university scout council.',
+  },
+  {
+    period: '2026 – Present',
+    role: 'Secretary',
+    org: 'Gugus Depan 04.091 Scout HQ · UNIDA Gontor',
+    detail: 'Manage archival records, official correspondence, and administrative documentation for the scout headquarters unit.',
+  },
+  {
+    period: '2026',
+    role: 'Secretary',
+    org: 'OSPEK Orientation Committee · UNIDA Gontor',
+    detail: 'Oversaw documentation, official correspondence, and administrative operations for the new-student orientation program.',
+  },
+  {
+    period: '2024 – Present',
+    role: 'Independent Market Researcher',
+    org: 'Forex price-action analysis · Remote',
+    detail:
+      'Conduct independent price-action analysis and develop systematic trade plans based on technical structure and market context.',
+  },
+  {
+    period: '2024 – Present',
+    role: 'Volunteer Scout Instructor',
+    org: 'MIN 7 Ponorogo',
+    detail: 'Mentor elementary-school students in scouting and explain structured material clearly.',
   },
 ];
 
 const education = [
   {
-    period: '',
-    role: 'Financial Management undergraduate',
-    org: '',
+    period: '2024 – Present',
+    role: 'Bachelor of Financial Management',
+    org: 'Universitas Darussalam Gontor (UNIDA)',
+    detail: 'GPA 3.73/4.00 · Semester 6 · Focus on financial management, investment analysis, and Islamic business.',
+  },
+  {
+    period: 'Graduated 2024',
+    role: "KMI · Kulliyatul Mu'allimin al-Islamiyyah",
+    org: 'Pondok Modern Darussalam Gontor',
+    detail: 'Six-year bilingual Arabic and English integrated program covering religious and general sciences.',
   },
 ];
 
@@ -64,7 +116,7 @@ export const Experience = ({ id, visible, sectionRef }) => {
               </Text>
             </div>
             <Heading level={3} as="h2" className={styles.title} id={titleId}>
-              Independent analysis
+              Experience
             </Heading>
             <div className={styles.list}>
               {roles.map(item => (

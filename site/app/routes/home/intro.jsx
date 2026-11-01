@@ -6,8 +6,9 @@ import { tokens } from '~/components/theme-provider/theme';
 import { Transition } from '~/components/transition';
 import { VisuallyHidden } from '~/components/visually-hidden';
 import { Link as RouterLink } from '@remix-run/react';
-import { useScrollToHash } from '~/hooks';
-import { Suspense, lazy } from 'react';
+import { useReducedMotion } from 'framer-motion';
+import { useInterval, usePrevious, useScrollToHash } from '~/hooks';
+import { Suspense, lazy, useEffect, useState } from 'react';
 import { cssProps } from '~/utils/style';
 import config from '~/config.json';
 import { useHydrated } from '~/hooks/useHydrated';
@@ -19,9 +20,24 @@ const DisplacementSphere = lazy(() =>
 
 export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
   const { theme } = useTheme();
+  const { disciplines } = config;
+  const [disciplineIndex, setDisciplineIndex] = useState(0);
+  const prevTheme = usePrevious(theme);
+  const reduceMotion = useReducedMotion();
+  const currentDiscipline = disciplines[disciplineIndex];
   const titleId = `${id}-title`;
   const scrollToHash = useScrollToHash();
   const isHydrated = useHydrated();
+
+  useInterval(
+    () => setDisciplineIndex(index => (index + 1) % disciplines.length),
+    reduceMotion ? null : 5000,
+    theme
+  );
+
+  useEffect(() => {
+    if (prevTheme && prevTheme !== theme) setDisciplineIndex(0);
+  }, [theme, prevTheme]);
 
   const handleScrollClick = event => {
     event.preventDefault();
@@ -62,6 +78,27 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
                   </span>
                   <span className={styles.line} data-status={status} />
                 </span>
+                <div className={styles.row}>
+                  <Transition
+                    unmount
+                    in={Boolean(currentDiscipline)}
+                    timeout={{ enter: 3000, exit: 2000 }}
+                    key={currentDiscipline}
+                  >
+                    {({ status: itemStatus, nodeRef }) => (
+                      <span
+                        aria-hidden
+                        ref={nodeRef}
+                        className={styles.word}
+                        data-plus={true}
+                        data-status={itemStatus}
+                        style={cssProps({ delay: tokens.base.durationL })}
+                      >
+                        {currentDiscipline}
+                      </span>
+                    )}
+                  </Transition>
+                </div>
               </Heading>
             </header>
               <RouterLink

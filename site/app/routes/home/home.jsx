@@ -6,7 +6,7 @@ import { Heading } from '~/components/heading';
 import { Text } from '~/components/text';
 import { Intro } from './intro';
 import { ProjectSummary } from './project-summary';
-import { useEffect, useRef, useState } from 'react';
+import { createRef, useEffect, useRef, useState } from 'react';
 import styles from './home.module.css';
 import activityStyles from './home-content.module.css';
 
@@ -21,9 +21,9 @@ export const Home = () => {
   const [visibleSections, setVisibleSections] = useState([]);
   const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState(false);
   const intro = useRef();
-  const projectOne = useRef();
+  const projectRefs = useRef(projects.map(() => createRef()));
   useEffect(() => {
-    const sections = [intro, projectOne];
+    const sections = [intro, ...projectRefs.current];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -73,8 +73,8 @@ export const Home = () => {
         <ProjectSummary
           id="project-1"
           key={projects[0].slug}
-          sectionRef={projectOne}
-          visible={visibleSections.includes(projectOne.current)}
+          sectionRef={projectRefs.current[0]}
+          visible={visibleSections.includes(projectRefs.current[0].current)}
           index={projects[0].index}
           title={projects[0].title}
           description={projects[0].description}
@@ -85,18 +85,23 @@ export const Home = () => {
           secondaryLink={projects[0].repo}
           secondaryText="Source code"
         />
-        {projects.slice(1).map(project => (
-          <article className={activityStyles.projectRow} id={`project-${project.index}`} key={project.slug}>
-            <div>
-              <Text size="s" className={activityStyles.eyebrow}>{project.meta}</Text>
-              <Heading level={4} as="h3">{project.shortTitle}</Heading>
-              <Text as="p">{project.description}</Text>
-            </div>
-            <div className={activityStyles.projectActions}>
-              <Button href={`/projects/${project.slug}/`}>Project details</Button>
-              <Button secondary href={project.repo}>Source code</Button>
-            </div>
-          </article>
+        {projects.slice(1).map((project, index) => (
+          <ProjectSummary
+            id={`project-${project.index}`}
+            key={project.slug}
+            sectionRef={projectRefs.current[index + 1]}
+            visible={visibleSections.includes(projectRefs.current[index + 1].current)}
+            index={project.index}
+            title={project.title}
+            description={project.description}
+            meta={project.meta}
+            screenshot={project.screenshot}
+            buttonText="View project"
+            buttonLink={`/projects/${project.slug}/`}
+            secondaryLink={project.repo}
+            secondaryText="Source code"
+            alternate={index % 2 === 0}
+          />
         ))}
       </section>
       <Footer />
