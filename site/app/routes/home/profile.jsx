@@ -22,14 +22,13 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I’m Akhmal, a Financial Management undergraduate at Universitas Darussalam Gontor.
+      I’m Akhmal, a Financial Management student.
       My career interests are internal audit, controls, risk, compliance, and corporate
       governance; I also build tools for capital-market analysis.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      As chairperson of the Sharia Investment Gallery (GIS), I contribute to student-led
-      financial-literacy initiatives and programme coordination. I’m preparing for a 2027
-      internship in audit, risk, or compliance.
+      I’m developing relevant knowledge through my studies and independent analytical
+      projects as I prepare for an internship in internal audit, risk, or compliance.
     </Text>
   </Fragment>
 );

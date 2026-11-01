@@ -12,7 +12,17 @@
   width: 100%;
   position: relative;
   top: calc(var(--spaceL) * -1);
-  padding: 0 var(--spaceOuter);
+  isolation: isolate;
+
+  /* Keep hero contrast stable over bright frames of the sphere. */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: calc(var(--spaceM) * -1) 0;
+    background: color-mix(in lab, var(--background) 88%, transparent);
+    border-radius: var(--spaceL);
+    z-index: -1;
+  }
 
   @media (--mediaDesktop) {
     max-width: 920px;
@@ -22,7 +32,7 @@
     max-width: 780px;
   }
 
-  @media (--mediaMobile) { top: 0; padding: 0 var(--spaceL); }
+  @media (--mediaMobile) { top: 0; }
 
   @media (--mediaMobileS) {
     top: 0;
@@ -37,7 +47,7 @@
   text-transform: uppercase;
   font-size: calc((24 / 16) * 1rem);
   letter-spacing: 0.3em;
-  color: var(--textLight);
+  color: color-mix(in lab, var(--text) 68%, transparent);
   margin-bottom: var(--space2XL);
   margin-top: 0;
   font-weight: var(--fontWeightMedium);

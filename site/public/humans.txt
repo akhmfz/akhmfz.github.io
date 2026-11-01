@@ -1,6 +1,6 @@
 /* TEAM */
 Name: Muhammad Akhmal Fauzi Saefurohman
-Role: Audit, risk & compliance — Finance Management student
+Role: Financial Management student — internal audit, risk & compliance focus
 Contact: akhmfz.analytics [at] gmail.com
 LinkedIn: linkedin.com/in/muhammadakhmal172
 GitHub: github.com/akhmfz
@@ -8,7 +8,7 @@ TradingView: tradingview.com/u/akhmfz_analytics
 Location: Ponorogo, East Java, Indonesia
 
 /* SITE */
-Last update: 2026-10-29
+Last update: 2026-10-31
 Language: English
 Doctype: HTML5
 Standards: HTML5, CSS3, JavaScript

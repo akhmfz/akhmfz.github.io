@@ -13,19 +13,19 @@ import generated from './posts.json';
 const manual = [
   {
     platform: 'LinkedIn',
-    title: 'ISO 9001: Apa yang Sebenarnya Dinilai?',
+    title: 'Pernah dengar orang bilang organisasinya punya sertifikasi ISO 9001?',
     date: '2026-10-23',
     href: 'https://www.linkedin.com/feed/update/urn:li:activity:7519306697467949056/',
     blurb:
-      'ISO develops standards, while independent certification bodies assess organizations. ISO 9001 sets quality-management system requirements rather than one identical way of working; certification does not guarantee every product is always fully conforming.',
+      'This post distinguishes ISO’s standards-setting role from third-party certification and explains that ISO 9001 sets management-system requirements. Certification does not guarantee perfect product conformity.',
   },
   {
     platform: 'LinkedIn',
-    title: 'MSCI Indonesia: Proposal Reclassification dan Isu Integritas Pasar',
+    title: 'Rilis MSCI 15 Oktober mencatat pelaku pasar menilai kemajuan belum terlihat konsisten.',
     date: '2026-10-21',
     href: 'https://www.linkedin.com/feed/update/urn:li:activity:7518599219725950976/',
     blurb:
-      'MSCI opened a consultation on 15 October 2026 on a proposal—not a final decision—to reclassify Indonesia from Emerging Market to Standalone Market. Feedback is due by 30 April 2027, with a decision by 30 June 2027; the post discusses governance, market functioning, and evidence of enforcement.',
+      'The post summarises MSCI’s proposed review of Indonesia’s market classification, the consultation timeline, and concerns raised about market functioning and evidence of reform. It does not present the proposal as a final reclassification.',
     sources: [
       {
         label: 'MSCI consultation',

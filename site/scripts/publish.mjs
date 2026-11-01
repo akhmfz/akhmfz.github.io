@@ -73,13 +73,13 @@ const pages = {
     path: '/',
     title: 'Muhammad Akhmal | Financial Management Student — Internal Audit, Risk & Compliance',
     description:
-      'Portfolio of Muhammad Akhmal Fauzi Saefurohman — Financial Management student focused on internal audit, risk, compliance, capital-market analysis, and GIS financial literacy.',
+      'Financial Management student at UNIDA Gontor developing knowledge of internal audit, risk, compliance, and governance through study and independent analytical projects.',
   },
   'articles/index.html': {
     path: '/articles/',
     title: 'Muhammad Akhmal | Articles',
     description:
-      'Writing by Muhammad Akhmal Fauzi Saefurohman on audit, risk, controls, and the Indonesian market.',
+      'Writing by Muhammad Akhmal Fauzi Saefurohman on quality standards, market integrity, and financial inclusion in Indonesia.',
   },
   'contact/index.html': {
     path: '/contact/',
@@ -91,12 +91,12 @@ const pages = {
     path: '/details/',
     title: 'Muhammad Akhmal | Details',
     description:
-      'Experience, education, and background of Muhammad Akhmal Fauzi Saefurohman — records, coordination, and controls.',
+      'Education and professional interests of Muhammad Akhmal Fauzi Saefurohman, a Financial Management student developing a foundation in internal audit, risk, and compliance.',
   },
   'activities/index.html': {
     path: '/activities/',
     title: 'Muhammad Akhmal | Activities',
-    description: 'Leadership, publication, documentation, and financial-literacy activities through GIS UNIDA Gontor.',
+    description: 'Selected activities by Muhammad Akhmal Fauzi Saefurohman.',
   },
   ...Object.fromEntries(
     // shortcut: head metadata for project pages is duplicated from

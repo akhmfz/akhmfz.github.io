@@ -2,14 +2,14 @@
   "name": "Muhammad Akhmal",
   "fullName": "Muhammad Akhmal Fauzi Saefurohman",
   "role": "Financial Management Student",
-  "positioning": "Internal Audit, Risk & Compliance",
-  "intro": "I am developing my knowledge of internal controls, risk assessment, compliance, and corporate governance while building analytical tools for capital-market research and contributing to financial-literacy initiatives through GIS UNIDA Gontor.",
+  "positioning": "Internal Audit",
+  "intro": "I am developing my knowledge of internal controls, risk assessment, compliance, and corporate governance. I explore these interests through financial studies and capital-market analysis tools.",
   "disciplines": [
-    "Internal Controls",
-    "Risk Management",
+    "Risk",
+    "Controls",
+    "Governance",
     "Compliance",
-    "Capital Markets",
-    "Pine Script"
+    "Assurance"
   ],
   "url": "https://akhmfz.github.io",
   "email": "akhmfz.analytics@gmail.com",
@@ -17,5 +17,5 @@
   "linkedin": "https://www.linkedin.com/in/muhammadakhmal172",
   "tradingview": "https://www.tradingview.com/u/akhmfz_analytics/",
   "repo": "https://github.com/akhmfz/akhmfz.github.io",
-  "ascii": "__  __  __\n\u005C \u005C \u005C \u005C \u005C\u2215\n \u005C \u005C\u2215\u005C \u005C\n  \u005C\u2215  \u005C\u2215\n"
+  "ascii": "__  __  __\n\\ \\ \\ \\ \\∕\n \\ \\∕\\ \\\n  \\∕  \\∕\n"
 }
