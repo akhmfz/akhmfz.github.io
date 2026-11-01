@@ -32,6 +32,15 @@
   }
 }
 
+.summary[data-first='true'] .details {
+  justify-self: start;
+}
+
+.summary[data-first='true'] {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .content {
   --textColumnWidth: 44%;
 
