@@ -167,24 +167,6 @@
   }
 }
 
-.svg {
-  opacity: 0;
-  transition: opacity 1200ms ease 1400ms;
-  fill: var(--textTitle);
-  position: absolute;
-  width: 100%;
-  right: -34%;
-  bottom: 20%;
-  transform: translateY(50%);
-
-  &[data-visible='true'] {
-    opacity: var(--opacity);
-  }
-
-  @media (--mediaTablet) {
-    display: none;
-  }
-}
 
 .index {
   position: relative;
@@ -255,6 +237,10 @@
 }
 
 .button {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--spaceM) var(--spaceL);
   transition-property: opacity;
   transition-timing-function: var(--bezierFastoutSlowin);
   transition-duration: var(--durationXL);
@@ -270,5 +256,9 @@
   &[data-visible='true'] {
     transform: none;
     opacity: 1;
+  }
+
+  & > [data-secondary='true'] {
+    left: 0;
   }
 }

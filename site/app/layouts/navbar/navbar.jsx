@@ -125,7 +125,7 @@ export const Navbar = () => {
     };
     const nonTrailing = normalize(current);
 
-    if (normalize(url) === nonTrailing || (url === '/#project-1' && location.pathname === '/')) {
+    if (normalize(url) === nonTrailing) {
       return 'page';
     }
 
