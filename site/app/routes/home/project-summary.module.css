@@ -1,5 +1,5 @@
 .summary {
-  height: 100vh;
+  height: min(100vh, 760px);
   width: 100%;
   max-height: 1080px;
   padding-bottom: var(--spaceL);
@@ -33,7 +33,7 @@
 }
 
 .content {
-  --textColumnWidth: 36%;
+  --textColumnWidth: 44%;
 
   width: 100%;
   max-width: var(--maxWidthL);
@@ -48,7 +48,7 @@
   }
 
   @media (--mediaLaptop) {
-    --textColumnWidth: 40%;
+    --textColumnWidth: 50%;
   }
 
   @media (--mediaTablet) {
@@ -209,6 +209,10 @@
   @media (--mediaUseMotion) {
     transition-property: transform, opacity;
     transform: translate3d(0, var(--spaceL), 0);
+  }
+
+  @media (--mediaLaptop) {
+    font-size: calc((32 / 16) * 1rem);
   }
 
   &[data-visible='true'] {
