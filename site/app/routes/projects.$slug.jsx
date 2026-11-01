@@ -46,7 +46,7 @@ export default function Project() {
         <Heading level={0} as="h1" className={styles.title}>
           {project.title}
         </Heading>
-        <Text className={styles.meta} size="s">
+        <Text as="p" className={styles.meta} size="s">
           {project.meta}
         </Text>
         <Text className={styles.summary} size="l" as="p">

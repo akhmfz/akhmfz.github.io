@@ -4,11 +4,9 @@ import { Heading } from '~/components/heading';
 import { Image } from '~/components/image';
 import { Section } from '~/components/section';
 import { Text } from '~/components/text';
-import { useTheme } from '~/components/theme-provider';
 import { Transition } from '~/components/transition';
 import { useState } from 'react';
-import { cssProps, media } from '~/utils/style';
-import katakana from './katakana.svg';
+import { media } from '~/utils/style';
 import styles from './project-summary.module.css';
 
 export function ProjectSummary({
@@ -28,9 +26,7 @@ export function ProjectSummary({
   ...rest
 }) {
   const [focused, setFocused] = useState(false);
-  const { theme } = useTheme();
   const titleId = `${id}-title`;
-  const svgOpacity = theme === 'light' ? 0.7 : 1;
   const indexText = index < 10 ? `0${index}` : index;
 
   function renderDetails(visible) {
@@ -56,7 +52,7 @@ export function ProjectSummary({
         >
           {title}
         </Heading>
-        <Text className={styles.meta} data-visible={visible}>
+        <Text as="p" className={styles.meta} data-visible={visible}>
           {meta}
         </Text>
         <Text className={styles.description} data-visible={visible} as="p">
@@ -79,16 +75,6 @@ export function ProjectSummary({
   function renderPreview(visible) {
     return (
       <div className={styles.preview}>
-        <svg
-          type="project"
-          data-visible={visible}
-          data-light={theme === 'light'}
-          style={cssProps({ opacity: svgOpacity })}
-          className={styles.svg}
-          viewBox="0 0 751 136"
-        >
-          <use href={`${katakana}#katakana-project`} />
-        </svg>
         <div className={styles.frame} data-visible={visible}>
           <div className={styles.frameBar} aria-hidden>
             <span className={styles.dot} />

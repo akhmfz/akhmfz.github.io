@@ -8,7 +8,7 @@ import styles from '~/pages/details.module.css';
 export const meta = () =>
   baseMeta({
     title: 'Details',
-    description: `Experience, education, and background of ${config.fullName} — records, coordination, and controls.`,
+    description: `Education and professional interests of ${config.fullName}, a Financial Management student developing a foundation in internal audit, risk, and compliance.`,
     canonical: `${config.url}/details/`,
   });
 

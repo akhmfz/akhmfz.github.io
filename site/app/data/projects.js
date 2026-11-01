@@ -11,11 +11,11 @@ export const projects = [
   {
     slug: 'papan-instrumen',
     index: 1,
-    title: 'Scoring Indonesian equities in seconds',
+    title: 'Scoring Indonesian equities by sector',
     shortTitle: 'Papan Instrumen',
     description:
       'Papan Instrumen turns dozens of fundamental data points into a sector-aware score, so a stock can be read at a glance instead of row by row.',
-    meta: 'Pine Script v6 · TradingView Public Library · 96 automated tests',
+    meta: 'Pine Script v6 · TradingView Public Library',
     screenshot: {
       src: instrumenShot,
       placeholder: instrumenPlaceholder,
@@ -46,7 +46,7 @@ export const projects = [
       },
       {
         heading: 'Built to be verified',
-        body: '96 automated tests run against the scoring engine with PineTS, and the user guide is written in both Indonesian and English so the numbers can be checked rather than trusted.',
+        body: 'Automated tests cover the scoring dimensions and regression cases, and the user guide is written in both Indonesian and English so the numbers can be checked rather than trusted.',
       },
     ],
     facts: [
@@ -54,7 +54,7 @@ export const projects = [
       { label: 'Market', value: 'IDX' },
       { label: 'Dimensions', value: '7' },
       { label: 'Sector classes', value: '15' },
-      { label: 'Tests', value: '96' },
+
       { label: 'License', value: 'MIT' },
     ],
   },
@@ -65,7 +65,7 @@ export const projects = [
     shortTitle: 'Papan Gerak',
     description:
       'Papan Gerak combines trend, momentum, volatility, and volume into one score, with three entry-trigger modes, position sizing, and JSON webhook alerts.',
-    meta: 'Pine Script v6 · 50 parameters · 90 automated tests',
+    meta: 'Pine Script v6 · 50 parameters',
     screenshot: {
       src: gerakShot,
       placeholder: gerakPlaceholder,
@@ -76,11 +76,11 @@ export const projects = [
     },
     repo: 'https://github.com/akhmfz/papan-gerak',
     summary:
-      'The technical companion to Papan Instrumen. Where that script answers “is this business worth owning”, this one answers “is now a sensible time to act”, and keeps the answer in the same visual language.',
+      'The technical companion to Papan Instrumen. Where that script answers “is this business worth owning”, this one answers “is now a sensible time to act”, and keeps the answer in the same visual language. It is a chart-study aid, not investment advice.',
     sections: [
       {
         heading: 'Four dimensions instead of one oscillator',
-        body: 'Trend, momentum, volatility, and volume are scored independently and combined. A setup only looks strong when the dimensions agree, which filters out the single-indicator traps that make IDX charts noisy.',
+        body: 'Trend, momentum, volatility, and volume are scored independently and combined, giving chart readers several dimensions to consider instead of relying on one oscillator.',
       },
       {
         heading: 'Three entry triggers with risk attached',
@@ -92,15 +92,14 @@ export const projects = [
       },
       {
         heading: 'Backtestable, not just drawable',
-        body: 'The repository ships a strategy version of the script for TradingView’s tester, plus 90 tests across 50 parameters to keep a change from silently altering behaviour.',
+        body: 'The repository includes a strategy version for TradingView’s tester, allowing its behaviour to be explored against historical chart data.',
       },
     ],
     facts: [
-      { label: 'Version', value: 'v0.2.1-alpha' },
       { label: 'Dimensions', value: '4' },
       { label: 'Parameters', value: '50' },
       { label: 'Alert conditions', value: '7' },
-      { label: 'Tests', value: '90' },
+
       { label: 'License', value: 'MIT' },
     ],
   },
@@ -111,7 +110,7 @@ export const projects = [
     shortTitle: 'Pine Semantic Platform',
     description:
       'A Python CLI that parses Pine Script into an abstract syntax tree, answers semantic queries, and runs a staged validation pipeline before anything is published.',
-    meta: 'Python · ANTLR · 7 CLI commands · v2.0.0',
+    meta: 'Python · ANTLR · Semantic queries & validation · v2.0.0',
     screenshot: {
       src: pspShot,
       placeholder: pspPlaceholder,
@@ -144,7 +143,6 @@ export const projects = [
     facts: [
       { label: 'Version', value: 'v2.0.0' },
       { label: 'Schema', value: '1.1' },
-      { label: 'CLI commands', value: '7' },
       { label: 'Runtime', value: 'Python 3.10+' },
       { label: 'Parser', value: 'pynescript / ANTLR' },
       { label: 'License', value: 'MIT' },

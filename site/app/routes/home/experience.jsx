@@ -8,67 +8,30 @@ import styles from './experience.module.css';
 
 const roles = [
   {
-    period: '2026 — Present',
-    role: 'Chairperson',
-    org: 'Sharia Investment Gallery (GIS), UNIDA Gontor',
+    period: '',
+    role: 'Self-directed market analysis',
+    org: 'Forex price action study',
     detail:
-      'Lead student-led Islamic capital-market literacy initiatives and support programme coordination.',
-  },
-  {
-    period: '2026 — Present',
-    role: 'Secretary',
-    org: 'Gugus Depan 04.091 Scout HQ',
-    detail:
-      'Manage archival records, official correspondence, and administrative documentation for the scout headquarters unit.',
-  },
-  {
-    period: '2025 — Present',
-    role: 'Secretary',
-    org: 'Management Student Association',
-    detail:
-      'Draft minutes and formal correspondence, and keep administrative records consistent across all association activities.',
-  },
-  {
-    period: '2025 — 2026',
-    role: 'Publication, Documentation & Design',
-    org: 'Sharia Investment Gallery (GIS)',
-    detail:
-      'Supported publication, documentation, and design for the IDX Roadshow to School programme on Islamic capital-market fundamentals.',
-  },
-  {
-    period: '2024 — Present',
-    role: 'Independent Market Researcher',
-    org: 'Forex price action analysis',
-    detail:
-      'Build structured trade plans from market structure and support/resistance, with a written review process for every setup taken.',
+      'Build structured trade plans from market structure and support/resistance, with a written review process for each setup.',
   },
 ];
 
 const education = [
   {
-    period: '2024 — 2028',
-    role: 'Bachelor of Financial Management',
-    org: 'Universitas Darussalam Gontor',
-    detail: 'GPA 3.73 / 4.00 · semester 6 · focus on investment analysis and Islamic business.',
-  },
-  {
-    period: '2018 — 2024',
-    role: 'KMI — Kulliyatul Mu’allimin al-Islamiyyah',
-    org: 'Pondok Modern Darussalam Gontor',
-    detail: 'Six-year integrated bilingual programme in Arabic and English.',
+    period: '',
+    role: 'Financial Management undergraduate',
+    org: '',
   },
 ];
 
 function Row({ period, role, org, detail, visible }) {
   return (
-    <div className={styles.row} data-visible={visible}>
-      <span className={styles.period}>{period}</span>
+    <div className={styles.row} data-visible={visible} data-no-period={!period || undefined}>
+      {period && <span className={styles.period}>{period}</span>}
       <div className={styles.body}>
         <h3 className={styles.role}>{role}</h3>
-        <span className={styles.org}>{org}</span>
-        <Text className={styles.detail} as="p">
-          {detail}
-        </Text>
+        {org && <span className={styles.org}>{org}</span>}
+        {detail && <Text className={styles.detail} as="p">{detail}</Text>}
       </div>
     </div>
   );
@@ -101,7 +64,7 @@ export const Experience = ({ id, visible, sectionRef }) => {
               </Text>
             </div>
             <Heading level={3} as="h2" className={styles.title} id={titleId}>
-              Records, coordination, and controls
+              Independent analysis
             </Heading>
             <div className={styles.list}>
               {roles.map(item => (

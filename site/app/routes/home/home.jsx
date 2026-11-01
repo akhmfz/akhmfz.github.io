@@ -16,7 +16,7 @@ import activityStyles from './home-content.module.css';
 export const meta = () => {
   return baseMeta({
     title: 'Financial Management Student — Internal Audit, Risk & Compliance',
-    description: `Financial Management student at UNIDA Gontor focused on internal audit, internal controls, risk management, compliance, and governance.`,
+    description: `Financial Management student at UNIDA Gontor developing knowledge of internal audit, risk, compliance, and governance through study and independent analytical projects.`,
   });
 };
 
@@ -102,24 +102,26 @@ export const Home = () => {
           </article>
         ))}
       </section>
-      <section className={activityStyles.content} aria-labelledby="activities-title">
-        <div className={activityStyles.headingRow}>
-          <Text size="s">Selected leadership & activities</Text>
-          <Heading level={3} as="h2" id="activities-title">Work beyond the tools</Heading>
-        </div>
-        <div className={activityStyles.activityGrid}>
-          {activities.map(activity => (
-            <article className={activityStyles.card} key={activity.title}>
-              <Text size="s" className={activityStyles.eyebrow}>{activity.category}</Text>
-              <Heading level={4} as="h3">{activity.title}</Heading>
-              <Text size="s" className={activityStyles.organization}>{activity.organization}</Text>
-              <Text as="p">{activity.summary}</Text>
-              <Text as="p">{activity.contribution}</Text>
-            </article>
-          ))}
-        </div>
-        <Button secondary href="/activities/">View activity notes</Button>
-      </section>
+      {activities.length > 0 && (
+        <section className={activityStyles.content} aria-labelledby="activities-title">
+          <div className={activityStyles.headingRow}>
+            <Text size="s">Selected activities</Text>
+            <Heading level={3} as="h2" id="activities-title">Work beyond the tools</Heading>
+          </div>
+          <div className={activityStyles.activityGrid}>
+            {activities.map(activity => (
+              <article className={activityStyles.card} key={activity.title}>
+                <Text size="s" className={activityStyles.eyebrow}>{activity.category}</Text>
+                <Heading level={4} as="h3">{activity.title}</Heading>
+                <Text size="s" className={activityStyles.organization}>{activity.organization}</Text>
+                <Text as="p">{activity.summary}</Text>
+                <Text as="p">{activity.contribution}</Text>
+              </article>
+            ))}
+          </div>
+          <Button secondary href="/activities/">View activity notes</Button>
+        </section>
+      )}
       <section className={activityStyles.content} aria-labelledby="writing-title">
         <div className={activityStyles.headingRow}>
           <Text size="s">Selected writing</Text>
@@ -143,7 +145,7 @@ export const Home = () => {
       <section className={activityStyles.about} id="about-preview" aria-labelledby="about-preview-title">
         <Text size="s">About</Text>
         <Heading level={3} as="h2" id="about-preview-title">Training for work that stands up to review.</Heading>
-        <Text as="p">Financial Management undergraduate at Universitas Darussalam Gontor, building a foundation in controls, risk, compliance, and governance alongside capital-market research.</Text>
+        <Text as="p">Financial Management student developing a foundation in controls, risk, compliance, and governance through study and independent analytical work.</Text>
         <div><Button href="/details/">Read the full profile</Button><Button secondary href="/contact/">Get in touch</Button></div>
       </section>
       <Footer />

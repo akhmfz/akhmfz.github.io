@@ -6,14 +6,12 @@ import { DecoderText } from '~/components/decoder-text';
 import { Divider } from '~/components/divider';
 import { Heading } from '~/components/heading';
 import { Image } from '~/components/image';
-import { Link } from '~/components/link';
 import { Section } from '~/components/section';
 import { Text } from '~/components/text';
 import { Transition } from '~/components/transition';
 import { Fragment, useState } from 'react';
 import { media } from '~/utils/style';
 import config from '~/config.json';
-import katakana from './katakana.svg';
 import styles from './profile.module.css';
 
 const ProfileText = ({ visible, titleId }) => (
@@ -22,14 +20,13 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I’m Akhmal, a Financial Management undergraduate at Universitas Darussalam Gontor.
+      I’m Akhmal, a Financial Management student.
       My career interests are internal audit, controls, risk, compliance, and corporate
       governance; I also build tools for capital-market analysis.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      As chairperson of the Sharia Investment Gallery (GIS), I contribute to student-led
-      financial-literacy initiatives and programme coordination. I’m preparing for a 2027
-      internship in audit, risk, or compliance.
+      I’m developing relevant knowledge through my studies and independent analytical
+      projects as I prepare for an internship in internal audit, risk, or compliance.
     </Text>
   </Fragment>
 );
@@ -96,9 +93,6 @@ export const Profile = ({ id, visible, sectionRef }) => {
                   sizes={`(max-width: ${media.mobile}px) 100vw, 480px`}
                   alt="Muhammad Akhmal Fauzi Saefurohman"
                 />
-                <svg className={styles.svg} data-visible={visible} viewBox="0 0 136 766">
-                  <use href={`${katakana}#katakana-profile`} />
-                </svg>
               </div>
             </div>
           </div>

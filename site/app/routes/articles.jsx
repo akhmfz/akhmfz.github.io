@@ -11,7 +11,7 @@ import styles from '~/pages/articles.module.css';
 export const meta = () =>
   baseMeta({
     title: 'Articles',
-    description: `Writing by ${config.fullName} on audit, risk, controls, and the Indonesian market.`,
+    description: `Writing by ${config.fullName} on quality standards, market integrity, and financial inclusion in Indonesia.`,
     canonical: `${config.url}/articles/`,
   });
 

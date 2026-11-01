@@ -68,6 +68,10 @@
       transform: none;
     }
 
+    &[data-no-period] {
+      grid-template-columns: 1fr;
+    }
+
     @media (--mediaTablet) {
       grid-template-columns: 100%;
       gap: var(--spaceS);

@@ -9,7 +9,7 @@ import styles from '~/pages/activities.module.css';
 export const meta = () =>
   baseMeta({
     title: 'Activities',
-    description: `Leadership, publication, documentation, and financial-literacy activities by ${config.fullName}.`,
+    description: `Selected activities by ${config.fullName}.`,
     canonical: `${config.url}/activities/`,
   });
 
@@ -19,10 +19,12 @@ export default function Activities() {
       <section className={styles.content}>
         <Text size="s">Leadership & activities</Text>
         <Heading level={0} as="h1">Work beyond the tools</Heading>
-        <Text size="l" as="p" className={styles.intro}>
-          Selected responsibilities through GIS UNIDA Gontor, presented as concise activity notes rather than a photo gallery.
-        </Text>
         <div className={styles.list}>
+          {activities.length === 0 && (
+            <Text as="p" className={styles.intro}>
+              Activity notes will appear here once each role is confirmed and documented.
+            </Text>
+          )}
           {activities.map(activity => (
             <article className={styles.item} key={activity.title}>
               <Text size="s" className={styles.category}>{activity.category}</Text>

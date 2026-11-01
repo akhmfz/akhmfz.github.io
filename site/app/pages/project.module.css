@@ -136,6 +136,7 @@
   .asideTagText {
     font-size: var(--fontSizeBodyS);
     color: var(--textLight);
+    white-space: nowrap;
   }
 
   .facts {
