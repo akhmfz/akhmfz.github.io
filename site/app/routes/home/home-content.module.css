@@ -8,7 +8,7 @@
   }
 
   .work {
-    max-width: var(--maxWidthXL);
+    max-width: var(--maxWidthL);
     width: 100%;
     margin: 0 auto var(--space5XL);
     padding: var(--space5XL) var(--spaceOuter) 0;
