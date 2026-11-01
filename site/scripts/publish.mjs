@@ -118,11 +118,6 @@ const pages = {
         'Papan Gerak',
         'A personal technical-analysis tool combining trend, momentum, volatility, and volume for IDX charts.',
       ],
-      [
-        'pine-semantic-platform',
-        'Pine Semantic Platform',
-        'A Python CLI for parsing Pine Script into a semantic model, querying code relationships, and validating changes.',
-      ],
     ].map(([slug, shortTitle, description]) => [
       `projects/${slug}/index.html`,
       {

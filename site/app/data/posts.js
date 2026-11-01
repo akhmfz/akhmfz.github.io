@@ -13,6 +13,21 @@ import generated from './posts.json';
 const manual = [
   {
     platform: 'LinkedIn',
+    title:
+      'GAO menemukan seorang manajer menyetujui invoice kontraktor meskipun dokumen pendukungnya tidak cocok dengan jumlah pembayaran.',
+    date: '2026-11-01',
+    href: 'https://lnkd.in/p/gbxy8ZR7',
+    blurb:
+      'A case-based note on why a correct payment amount is not enough: reviewers still need to resolve, document, and evidence discrepancies before approval. This is a reading of GAO-21-420R, not a personal audit experience.',
+    sources: [
+      {
+        label: 'GAO-21-420R',
+        href: 'https://lnkd.in/gkjKNFFQ',
+      },
+    ],
+  },
+  {
+    platform: 'LinkedIn',
     title: 'Pernah dengar orang bilang organisasinya punya sertifikasi ISO 9001?',
     date: '2026-10-23',
     href: 'https://www.linkedin.com/feed/update/urn:li:activity:7519306697467949056/',

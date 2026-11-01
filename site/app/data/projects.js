@@ -1,9 +1,7 @@
-import instrumenShot from '~/assets/projects/papan-instrumen.jpg';
+import instrumenShot from '~/assets/projects/papan-instrumen-tradingview.png';
 import instrumenPlaceholder from '~/assets/projects/papan-instrumen-placeholder.jpg';
 import gerakShot from '~/assets/projects/papan-gerak.jpg';
 import gerakPlaceholder from '~/assets/projects/papan-gerak-placeholder.jpg';
-import pspShot from '~/assets/projects/pine-semantic-platform.jpg';
-import pspPlaceholder from '~/assets/projects/pine-semantic-platform-placeholder.jpg';
 
 // Shared by the home summaries and the /projects/:slug pages, so the copy only
 // lives in one place.
@@ -19,10 +17,10 @@ export const projects = [
     screenshot: {
       src: instrumenShot,
       placeholder: instrumenPlaceholder,
-      width: 1280,
-      height: 760,
-      alt: 'Papan Instrumen repository on GitHub',
-      url: 'github.com/akhmfz/papan-instrumen',
+      width: 1440,
+      height: 900,
+      alt: 'Papan Instrumen indicator running on a TradingView chart',
+      url: 'tradingview.com/script/s4Bjqc7S-Saham-Papan-Instrumen-By-Akhmfz/',
     },
     repo: 'https://github.com/akhmfz/papan-instrumen',
     external: {
@@ -65,7 +63,7 @@ export const projects = [
     shortTitle: 'Papan Gerak',
     description:
       'Papan Gerak combines trend, momentum, volatility, and volume into one score, with three entry-trigger modes, position sizing, and JSON webhook alerts.',
-    meta: 'Pine Script v6 · 50 parameters',
+    meta: 'Pine Script v6 · Technical dashboard',
     screenshot: {
       src: gerakShot,
       placeholder: gerakPlaceholder,
@@ -103,51 +101,7 @@ export const projects = [
       { label: 'License', value: 'MIT' },
     ],
   },
-  {
-    slug: 'pine-semantic-platform',
-    index: 3,
-    title: 'Reading code the way a reviewer would',
-    shortTitle: 'Pine Semantic Platform',
-    description:
-      'A Python CLI that parses Pine Script into an abstract syntax tree, answers semantic queries, and runs a staged validation pipeline before anything is published.',
-    meta: 'Python · ANTLR · Semantic queries & validation · v2.0.0',
-    screenshot: {
-      src: pspShot,
-      placeholder: pspPlaceholder,
-      width: 1280,
-      height: 760,
-      alt: 'Pine Semantic Platform repository on GitHub',
-      url: 'github.com/akhmfz/pine-semantic-platform',
-    },
-    repo: 'https://github.com/akhmfz/pine-semantic-platform',
-    summary:
-      'Pine Script files grow past the point where reading them line by line is reliable. This is the toolchain I use on my own scripts: parse once into a semantic model, then query, review, and validate against it.',
-    sections: [
-      {
-        heading: 'Parse once, query many times',
-        body: 'Every .pine file is parsed with an ANTLR grammar into pine_semantic.json — functions, variables, modules, and call edges. Questions about the codebase stop depending on grep and start depending on the graph.',
-      },
-      {
-        heading: 'Semantic queries',
-        body: 'The query engine covers search, context, stats, function, variable, module, impact, callers, callees, builtin, and explain. Impact analysis is the one I reach for before renaming a shared helper.',
-      },
-      {
-        heading: 'Context assembly for review',
-        body: 'Reviewing with an LLM needs the right slice of code, not the whole repository. The context command assembles a prompt-sized excerpt against a token budget, with profiles for review, debug, and documentation work.',
-      },
-      {
-        heading: 'Validation before publishing',
-        body: 'A staged pipeline runs parser, schema, graph, golden, and context checks in order and stops at the first failure, so a broken semantic model never reaches the review step.',
-      },
-    ],
-    facts: [
-      { label: 'Version', value: 'v2.0.0' },
-      { label: 'Schema', value: '1.1' },
-      { label: 'Runtime', value: 'Python 3.10+' },
-      { label: 'Parser', value: 'pynescript / ANTLR' },
-      { label: 'License', value: 'MIT' },
-    ],
-  },
+
 ];
 
 export function getProject(slug) {

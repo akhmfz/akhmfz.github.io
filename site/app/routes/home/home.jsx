@@ -1,15 +1,12 @@
 import { Footer } from '~/components/footer';
 import { baseMeta } from '~/utils/meta';
 import { projects } from '~/data/projects';
-import { activities } from '~/data/activities';
-import { posts } from '~/data/posts';
 import { Button } from '~/components/button';
 import { Heading } from '~/components/heading';
 import { Text } from '~/components/text';
 import { Intro } from './intro';
 import { ProjectSummary } from './project-summary';
 import { useEffect, useRef, useState } from 'react';
-import config from '~/config.json';
 import styles from './home.module.css';
 import activityStyles from './home-content.module.css';
 
@@ -101,52 +98,6 @@ export const Home = () => {
             </div>
           </article>
         ))}
-      </section>
-      {activities.length > 0 && (
-        <section className={activityStyles.content} aria-labelledby="activities-title">
-          <div className={activityStyles.headingRow}>
-            <Text size="s">Selected activities</Text>
-            <Heading level={3} as="h2" id="activities-title">Work beyond the tools</Heading>
-          </div>
-          <div className={activityStyles.activityGrid}>
-            {activities.map(activity => (
-              <article className={activityStyles.card} key={activity.title}>
-                <Text size="s" className={activityStyles.eyebrow}>{activity.category}</Text>
-                <Heading level={4} as="h3">{activity.title}</Heading>
-                <Text size="s" className={activityStyles.organization}>{activity.organization}</Text>
-                <Text as="p">{activity.summary}</Text>
-                <Text as="p">{activity.contribution}</Text>
-              </article>
-            ))}
-          </div>
-          <Button secondary href="/activities/">View activity notes</Button>
-        </section>
-      )}
-      <section className={activityStyles.content} aria-labelledby="writing-title">
-        <div className={activityStyles.headingRow}>
-          <Text size="s">Selected writing</Text>
-          <Heading level={3} as="h2" id="writing-title">Notes from the field</Heading>
-        </div>
-        <div className={activityStyles.writingList}>
-          {posts.length ? posts.slice(0, 3).map(post => (
-            <a className={activityStyles.writingItem} href={post.href} target="_blank" rel="noopener noreferrer" key={post.href}>
-              <span>{post.platform} · {post.date || 'Date unavailable'}</span>
-              <strong>{post.title}</strong>
-              <small>{post.blurb || 'Read the original publication.'}</small>
-            </a>
-          )) : (
-            <Text size="s" className={activityStyles.emptyWriting}>
-              Writing will appear here when a new publication is added.
-            </Text>
-          )}
-        </div>
-        {posts.length > 0 && <Button secondary href="/articles/">View all writing</Button>}
-      </section>
-      <section className={activityStyles.about} id="about-preview" aria-labelledby="about-preview-title">
-        <Text size="s">About</Text>
-        <Heading level={3} as="h2" id="about-preview-title">Training for work that stands up to review.</Heading>
-        <Text as="p">Financial Management student developing a foundation in controls, risk, compliance, and governance through study and independent analytical work.</Text>
-        <div><Button href="/details/">Read the full profile</Button><Button secondary href="/contact/">Get in touch</Button></div>
       </section>
       <Footer />
     </div>

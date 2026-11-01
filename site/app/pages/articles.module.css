@@ -99,6 +99,7 @@
   .sources {
     display: flex;
     flex-wrap: wrap;
+    min-width: 0;
     gap: var(--spaceS);
     padding: 0 0 var(--spaceL);
     color: var(--textLight);
@@ -106,6 +107,7 @@
 
     & a {
       color: var(--primary);
+      overflow-wrap: anywhere;
     }
   }
 
