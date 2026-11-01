@@ -13,17 +13,6 @@
     margin: 0 auto var(--space5XL);
     padding: var(--space5XL) var(--spaceOuter) 0;
     position: relative;
-    isolation: isolate;
-
-    &::before {
-      content: '';
-      position: absolute;
-      z-index: -1;
-      inset: 0 calc(50% - 50vw);
-      background: var(--backgroundLight);
-      border-top: 1px solid color-mix(in lab, var(--text) 14%, transparent);
-      border-bottom: 1px solid color-mix(in lab, var(--text) 10%, transparent);
-    }
   }
   .work > section { margin-top: 0; }
   .projectRow { display: grid; grid-template-columns: 1fr auto; gap: var(--spaceXL); align-items: center; padding: var(--spaceL) 0; border-top: 1px solid color-mix(in lab, var(--text) 14%, transparent); }
