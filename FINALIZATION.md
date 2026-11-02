@@ -1,6 +1,18 @@
-# Portfolio Content Finalization — Local Candidate
+# Portfolio Content Finalization — Historical Candidate Snapshot
 
-**Candidate status: BLOCKED pending owner review.** This file records provenance; no deployment is included.
+**Historical candidate status (2026-11-01): BLOCKED pending owner review.** This file records the earlier snapshot below; its no-deployment status does not describe the current source.
+
+## Current release update (2026-11-02)
+
+- The owner directed publishing the current portfolio to GitHub Pages `main`.
+- The Berserk video and poster are removed from the error page and source assets; the page now uses an original inline pulse illustration.
+- Gotham remains by owner instruction. No Gotham licence evidence is present in the repository, so its status remains unverified; the separate IPA Gothic fallback is also unverified and still shipped.
+- The About portrait now uses the owner's supplied original photo with its EXIF orientation applied and a head-inclusive crop.
+- Experience includes three UNIDA Gontor event photos. Each card links to its source article and credits UNIDA Gontor; no explicit photo reuse licence was found.
+- Static route titles share `site/app/data/page-titles.json` with the route-aware SPA hydration fallback. Published-copy checks passed with JavaScript disabled and enabled.
+- Mobile menu focus stays inside the open menu, and the WebGL effect is skipped on mobile, reduced-motion, unsupported, and constrained-connection cases.
+
+> The content, source and deployment statements below describe the superseded 2026-11-01 snapshot only.
 
 - Base: committed repository `akhmfz/akhmfz.github.io` at HEAD `6e08841c10b75c4ca763585b0f58962e206cad9b`, branch `main`.
 - Candidate directory: `/tmp/opencode/portfolio-final-candidate`, branch `review/portfolio-candidate`. `main` is untouched.
@@ -35,7 +47,7 @@ This file previously claimed that no CSS, layout, animation, nav or component so
 - ALR-013 katakana sprite: removed from source.
 - ALR-020, ALR-024: the placeholders are imported and shipped; the previous `NOT_REFERENCED` status was wrong.
 - ALR-027…029: owner-work icon provenance; icon set regenerated from the owner monogram.
-- ALR-004…012, ALR-030…033: corrected to the candidate's real state. Gotham, IPA Gothic, `flatline.mp4` and `flatline.png` are still imported and served here; the Montserrat font swap and the error-page removal exist only in the local working tree. That Phase 4 remediation must be ported before the licensed binaries can be deleted.
+- Current main differs from this snapshot: the Berserk video and poster are removed; Gotham remains at the owner's request with its licence still unverified; IPA Gothic remains as an unverified Japanese fallback. UNIDA event photos are included with source links, but their reuse licence is not stated.
 
 ## Known gaps
 

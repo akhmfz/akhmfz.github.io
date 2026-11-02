@@ -1,12 +1,9 @@
-import flatlinePoster from '~/assets/flatline.png';
-import flatlineVideo from '~/assets/flatline.mp4';
 import { Button } from '~/components/button';
 import { DecoderText } from '~/components/decoder-text';
 import { Heading } from '~/components/heading';
 import { Text } from '~/components/text';
 import { Transition } from '~/components/transition';
 import styles from './error.module.css';
-import { Image } from '~/components/image';
 import flatlineSkull from './error-flatline.svg';
 
 export function Error({ error }) {
@@ -36,7 +33,7 @@ export function Error({ error }) {
   const { summary, message } = getMessage();
 
   return (
-    <section className={styles.page} data-video={flatlined}>
+    <section className={styles.page} data-flatlined={flatlined}>
       {flatlined && (
         <style
           dangerouslySetInnerHTML={{
@@ -122,25 +119,10 @@ export function Error({ error }) {
             </div>
 
             {flatlined && (
-              <div className={styles.videoContainer} data-visible={visible}>
-                <Image
-                  reveal
-                  cover
-                  noPauseButton
-                  delay={600}
-                  className={styles.video}
-                  src={flatlineVideo}
-                  placeholder={flatlinePoster}
-                />
-                <a
-                  className={styles.credit}
-                  data-visible={visible}
-                  href="https://www.imdb.com/title/tt0318871/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Animation from Berserk (1997)
-                </a>
+              <div className={styles.visual} data-visible={visible} aria-hidden="true">
+                <svg viewBox="0 0 760 400" fill="none">
+                  <path d="M8 206h176l48-1 38-84 54 169 56-125 38 42h106l37-1 42-151 59 269 49-118h41" />
+                </svg>
               </div>
             )}
           </>
