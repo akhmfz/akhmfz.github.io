@@ -2,7 +2,7 @@ import { useTheme } from '~/components/theme-provider';
 import { Transition } from '~/components/transition';
 import { useReducedMotion, useSpring } from 'framer-motion';
 import { useInViewport, useWindowSize } from '~/hooks';
-import { startTransition, useEffect, useRef } from 'react';
+import { startTransition, useEffect, useRef, useState } from 'react';
 import {
   AmbientLight,
   DirectionalLight,
@@ -44,19 +44,25 @@ export const DisplacementSphere = props => {
   const reduceMotion = useReducedMotion();
   const isInViewport = useInViewport(canvasRef);
   const windowSize = useWindowSize();
+  const [webglAvailable, setWebglAvailable] = useState(true);
   const rotationX = useSpring(0, springConfig);
   const rotationY = useSpring(0, springConfig);
 
   useEffect(() => {
     const { innerWidth, innerHeight } = window;
     mouse.current = new Vector2(0.8, 0.5);
-    renderer.current = new WebGLRenderer({
-      canvas: canvasRef.current,
-      antialias: false,
-      alpha: true,
-      powerPreference: 'high-performance',
-      failIfMajorPerformanceCaveat: true,
-    });
+    try {
+      renderer.current = new WebGLRenderer({
+        canvas: canvasRef.current,
+        antialias: false,
+        alpha: true,
+        powerPreference: 'high-performance',
+        failIfMajorPerformanceCaveat: true,
+      });
+    } catch {
+      setWebglAvailable(false);
+      return;
+    }
     renderer.current.setSize(innerWidth, innerHeight);
     renderer.current.setPixelRatio(1);
     renderer.current.outputColorSpace = LinearSRGBColorSpace;
@@ -93,6 +99,8 @@ export const DisplacementSphere = props => {
   }, []);
 
   useEffect(() => {
+    if (!scene.current) return;
+
     const dirLight = new DirectionalLight(0xffffff, theme === 'light' ? 1.8 : 2.0);
     const ambientLight = new AmbientLight(0xffffff, theme === 'light' ? 2.7 : 0.4);
 
@@ -109,6 +117,8 @@ export const DisplacementSphere = props => {
   }, [theme]);
 
   useEffect(() => {
+    if (!renderer.current || !camera.current || !sphere.current) return;
+
     const { width, height } = windowSize;
 
     const adjustedHeight = height + height * 0.3;
@@ -134,6 +144,8 @@ export const DisplacementSphere = props => {
   }, [reduceMotion, windowSize]);
 
   useEffect(() => {
+    if (!renderer.current) return;
+
     const onMouseMove = throttle(event => {
       const position = {
         x: event.clientX / window.innerWidth,
@@ -154,6 +166,8 @@ export const DisplacementSphere = props => {
   }, [isInViewport, reduceMotion, rotationX, rotationY]);
 
   useEffect(() => {
+    if (!renderer.current || !scene.current || !camera.current || !sphere.current) return;
+
     let animation;
 
     const animate = () => {
@@ -180,6 +194,8 @@ export const DisplacementSphere = props => {
       cancelAnimationFrame(animation);
     };
   }, [isInViewport, reduceMotion, rotationX, rotationY]);
+
+  if (!webglAvailable) return null;
 
   return (
     <Transition in timeout={3000} nodeRef={canvasRef}>

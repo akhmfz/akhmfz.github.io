@@ -1,2 +1,9 @@
-// Activity entries are omitted until dates and responsibilities are confirmed.
-export const activities = [];
+import { roles } from './career';
+
+export const activities = roles.map(({ period, activityTitle, org, category, detail }) => ({
+  period,
+  title: activityTitle,
+  org,
+  category,
+  detail,
+}));

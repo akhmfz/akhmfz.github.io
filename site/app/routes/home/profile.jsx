@@ -14,9 +14,9 @@ import { media } from '~/utils/style';
 import config from '~/config.json';
 import styles from './profile.module.css';
 
-const ProfileText = ({ visible, titleId }) => (
+const ProfileText = ({ visible, titleId, headingAs }) => (
   <Fragment>
-    <Heading className={styles.title} data-visible={visible} level={3} as="h1" id={titleId}>
+    <Heading className={styles.title} data-visible={visible} level={3} as={headingAs} id={titleId}>
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
@@ -31,7 +31,7 @@ const ProfileText = ({ visible, titleId }) => (
   </Fragment>
 );
 
-export const Profile = ({ id, visible, sectionRef }) => {
+export const Profile = ({ id, visible, sectionRef, headingAs = 'h1' }) => {
   const [focused, setFocused] = useState(false);
   const titleId = `${id}-title`;
 
@@ -50,7 +50,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
         {({ visible, nodeRef }) => (
           <div className={styles.content} ref={nodeRef}>
             <div className={styles.column}>
-              <ProfileText visible={visible} titleId={titleId} />
+              <ProfileText visible={visible} titleId={titleId} headingAs={headingAs} />
               <div className={styles.actions} data-visible={visible}>
                 <Button
                   secondary

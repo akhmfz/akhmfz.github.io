@@ -16,12 +16,21 @@ import { Error } from '~/layouts/error';
 import { VisuallyHidden } from '~/components/visually-hidden';
 import { Navbar } from '~/layouts/navbar';
 import { Progress } from '~/components/progress';
+import pageTitles from '~/data/page-titles.json';
 import config from '~/config.json';
 import styles from './root.module.css';
 import './reset.css';
 import './global.css';
 
 const THEME_KEY = 'theme';
+
+function getHydrateTitle() {
+  const path = typeof window === 'undefined' ? '/' : window.location.pathname;
+  const normalizedPath = path === '/' || path === '/index.html'
+    ? '/'
+    : `${path.replace(/\/+$/, '')}/`;
+  return pageTitles[normalizedPath] ?? pageTitles['404'];
+}
 
 // Runs before hydration so a stored light theme never flashes dark on load.
 const themeScript = `try{var t=localStorage.getItem('${THEME_KEY}');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}`;
@@ -56,6 +65,26 @@ export const links = () => [
   { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
   { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' },
 ];
+
+export function HydrateFallback() {
+  const theme =
+    typeof document === 'undefined' ? 'dark' : document.documentElement.dataset.theme || 'dark';
+
+  return (
+    <html lang="en" data-theme={theme}>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{getHydrateTitle()}</title>
+        <Links />
+      </head>
+      <body>
+        <main style={{ fontFamily: 'system-ui, sans-serif', padding: '2rem' }} />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
 
 export default function App() {
   const [theme, setTheme] = useState(getInitialTheme);

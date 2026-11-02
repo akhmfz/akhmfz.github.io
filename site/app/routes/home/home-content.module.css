@@ -10,7 +10,7 @@
   .work {
     max-width: var(--maxWidthL);
     width: 100%;
-    margin: 0 auto var(--space5XL);
+    margin: 0 auto var(--space3XL);
     padding: var(--space5XL) var(--spaceOuter) 0;
     position: relative;
   }
@@ -21,7 +21,7 @@
   .projectActions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--spaceS); }
   .projectActions > [data-secondary='true'], .about > div > [data-secondary='true'] { left: 0; }
 
-  .headingRow { display: grid; gap: var(--spaceM); margin-bottom: var(--space2XL); }
+  .headingRow { display: grid; gap: var(--spaceM); margin-bottom: var(--space3XL); }
   .headingRow > p, .eyebrow { color: var(--primary); }
   .activityGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--spaceL); }
   .card { border-top: 1px solid color-mix(in lab, var(--text) 14%, transparent); padding: var(--spaceL) 0; }

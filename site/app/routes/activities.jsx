@@ -1,3 +1,4 @@
+import { Divider } from '~/components/divider';
 import { Footer } from '~/components/footer';
 import { Heading } from '~/components/heading';
 import { Text } from '~/components/text';
@@ -9,7 +10,7 @@ import styles from '~/pages/activities.module.css';
 export const meta = () =>
   baseMeta({
     title: 'Activities',
-    description: `Selected activities by ${config.fullName}.`,
+    description: `Notes on the roles, programs, and teaching work behind ${config.fullName}'s audit practice.`,
     canonical: `${config.url}/activities/`,
   });
 
@@ -17,21 +18,34 @@ export default function Activities() {
   return (
     <div className={styles.page}>
       <section className={styles.content}>
-        <Text size="s">Leadership & activities</Text>
-        <Heading level={0} as="h1">Work beyond the tools</Heading>
+        <header className={styles.header}>
+          <Heading level={5} as="h1">
+            Notes from the field
+          </Heading>
+          <Text as="p" className={styles.intro}>
+            Short entries on the committees, programs, and teaching work behind the audit
+            practice.
+          </Text>
+        </header>
+
         <div className={styles.list}>
-          {activities.length === 0 && (
-            <Text as="p" className={styles.intro}>
-              Activity notes will appear here once each role is confirmed and documented.
-            </Text>
-          )}
           {activities.map(activity => (
-            <article className={styles.item} key={activity.title}>
-              <Text size="s" className={styles.category}>{activity.category}</Text>
-              <Heading level={3} as="h2">{activity.title}</Heading>
-              <Text size="s" className={styles.role}>{activity.role} · {activity.organization}</Text>
-              <Text as="p">{activity.summary}</Text>
-              <Text as="p">{activity.contribution}</Text>
+            <article className={styles.item} key={activity.org}>
+              <div aria-hidden className={styles.meta}>
+                <Divider notchWidth="64px" notchHeight="8px" collapsed={false} />
+                <span>
+                  {activity.period} · {activity.category}
+                </span>
+              </div>
+              <Heading level={4} as="h2">
+                {activity.title}
+              </Heading>
+              <Text size="s" className={styles.org}>
+                {activity.org}
+              </Text>
+              <Text as="p" className={styles.detail}>
+                {activity.detail}
+              </Text>
             </article>
           ))}
         </div>

@@ -17,12 +17,73 @@ export const Navbar = () => {
   const [current, setCurrent] = useState();
   const [menuOpen, setMenuOpen] = useState(false);
   const [target, setTarget] = useState();
+  const wasMenuOpen = useRef(false);
   const { theme } = useTheme();
   const location = useLocation();
   const windowSize = useWindowSize();
   const headerRef = useRef();
   const isMobile = windowSize.width <= media.mobile || windowSize.height <= 696;
   const scrollToHash = useScrollToHash();
+
+  useEffect(() => {
+    const main = document.getElementById('main-content');
+    const skipLink = document.querySelector('a[href="#main-content"]');
+    if (main) main.inert = menuOpen;
+    if (skipLink) skipLink.inert = menuOpen;
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const toggle = headerRef.current?.querySelector('[aria-controls="mobile-navigation"]');
+    const menu = headerRef.current?.querySelector('#mobile-navigation');
+
+    if (!menuOpen) {
+      if (wasMenuOpen.current) toggle?.focus();
+      wasMenuOpen.current = false;
+      return;
+    }
+
+    if (!isMobile) {
+      setMenuOpen(false);
+      return;
+    }
+
+    wasMenuOpen.current = true;
+    if (!menu || !toggle) return;
+
+    const getFocusable = () => [...menu.querySelectorAll('a[href], button:not([disabled])')]
+      .filter(element => element.getClientRects().length > 0);
+
+    getFocusable()[0]?.focus();
+
+    const handleMenuKeyDown = event => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setMenuOpen(false);
+        return;
+      }
+
+      if (event.key !== 'Tab') return;
+
+      const focusable = getFocusable();
+      const first = focusable[0];
+      const last = focusable.at(-1);
+      if (!first || !last) return;
+
+      if (!menu.contains(document.activeElement)) {
+        event.preventDefault();
+        (event.shiftKey ? last : first).focus();
+      } else if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleMenuKeyDown);
+    return () => document.removeEventListener('keydown', handleMenuKeyDown);
+  }, [isMobile, menuOpen]);
 
   useEffect(() => {
     // Prevent ssr mismatch by storing this in state
@@ -156,12 +217,13 @@ export const Navbar = () => {
         data-navbar-item
         className={styles.logo}
         aria-label={`${config.name}, ${config.role}`}
+        inert={menuOpen}
         onClick={handleMobileNavClick}
       >
         <Monogram highlight />
       </RouterLink>
       <NavToggle onClick={() => setMenuOpen(!menuOpen)} menuOpen={menuOpen} />
-      <nav className={styles.nav}>
+      <nav className={styles.nav} inert={menuOpen}>
         <div className={styles.navList}>
           {navLinks.map(({ label, pathname }) => (
             <RouterLink
@@ -181,7 +243,13 @@ export const Navbar = () => {
       </nav>
       <Transition unmount in={menuOpen} timeout={msToNum(tokens.base.durationL)}>
         {({ visible, nodeRef }) => (
-          <nav className={styles.mobileNav} data-visible={visible} ref={nodeRef}>
+          <nav
+            aria-label="Mobile navigation"
+            className={styles.mobileNav}
+            data-visible={visible}
+            id="mobile-navigation"
+            ref={nodeRef}
+          >
             {navLinks.map(({ label, pathname }, index) => (
               <RouterLink
                 reloadDocument
@@ -205,7 +273,7 @@ export const Navbar = () => {
           </nav>
         )}
       </Transition>
-      {!isMobile && <ThemeToggle data-navbar-item />}
+      {!isMobile && <ThemeToggle data-navbar-item inert={menuOpen} />}
     </header>
   );
 };

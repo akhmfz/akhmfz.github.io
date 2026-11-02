@@ -1,4 +1,5 @@
 import generated from './posts.json';
+import gaoBanner from '~/assets/articles/gao-21-420r.png';
 
 // LinkedIn, Instagram, and TikTok have no public feed to read, so posts from
 // those platforms are added by hand, newest first:
@@ -13,10 +14,13 @@ import generated from './posts.json';
 const manual = [
   {
     platform: 'LinkedIn',
+    titleLang: 'id',
+    blurbLang: 'en',
     title:
       'GAO menemukan seorang manajer menyetujui invoice kontraktor meskipun dokumen pendukungnya tidak cocok dengan jumlah pembayaran.',
     date: '2026-11-01',
     href: 'https://lnkd.in/p/gbxy8ZR7',
+    banner: gaoBanner,
     blurb:
       'A case-based note on why a correct payment amount is not enough: reviewers still need to resolve, document, and evidence discrepancies before approval. This is a reading of GAO-21-420R, not a personal audit experience.',
     sources: [
@@ -28,6 +32,8 @@ const manual = [
   },
   {
     platform: 'LinkedIn',
+    titleLang: 'id',
+    blurbLang: 'en',
     title: 'Pernah dengar orang bilang organisasinya punya sertifikasi ISO 9001?',
     date: '2026-10-23',
     href: 'https://www.linkedin.com/feed/update/urn:li:activity:7519306697467949056/',
@@ -36,6 +42,8 @@ const manual = [
   },
   {
     platform: 'LinkedIn',
+    titleLang: 'id',
+    blurbLang: 'en',
     title: 'Rilis MSCI 15 Oktober mencatat pelaku pasar menilai kemajuan belum terlihat konsisten.',
     date: '2026-10-21',
     href: 'https://www.linkedin.com/feed/update/urn:li:activity:7518599219725950976/',
@@ -70,7 +78,8 @@ const validPost = post => {
       post.title.trim() &&
       ['http:', 'https:'].includes(url.protocol) &&
       typeof post?.platform === 'string' &&
-      post.platform.trim()
+      post.platform.trim() &&
+      Boolean(parseEditorialDate(post.date))
     );
   } catch {
     return false;

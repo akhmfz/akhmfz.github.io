@@ -6,4 +6,18 @@
     display: flex;
     flex-direction: column;
   }
+
+  /* Keep every page on the same content column as the landing page. */
+  .page > section {
+    width: 100%;
+    max-width: var(--maxWidthL);
+    margin-inline: auto;
+    padding-inline: var(--spaceOuter);
+  }
+
+  @media (--mediaMobile) {
+    .page > section {
+      padding-inline: var(--spaceL);
+    }
+  }
 }

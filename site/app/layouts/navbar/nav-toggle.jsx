@@ -9,6 +9,7 @@ export const NavToggle = ({ menuOpen, ...rest }) => {
       className={styles.toggle}
       aria-label="Menu"
       aria-expanded={menuOpen}
+      aria-controls="mobile-navigation"
       {...rest}
     >
       <div className={styles.inner}>

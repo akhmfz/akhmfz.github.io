@@ -9,6 +9,7 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const client = path.resolve(here, '../build/client');
 const root = path.resolve(here, '../..');
 const siteUrl = 'https://akhmfz.github.io';
+const pageTitles = JSON.parse(await readFile(path.resolve(here, '../app/data/page-titles.json'), 'utf8'));
 
 const generated = [
   'assets',
@@ -43,10 +44,7 @@ html[data-theme='light']{background:#f5f5f5;color-scheme:light}
 body{margin:0;background:inherit;color:inherit;font-family:system-ui,sans-serif}
 `;
 
-// Links and social previews read this before JavaScript runs. The tags are
-// appended to the end of <head> (not swapped in for the shell's <title>) because
-// React's hydration expects the original shell markup — any other edit to the
-// existing head nodes makes hydration fail on every page load.
+// Keep the static title identical to the route meta title React uses on hydration.
 function head({ title, description, path: pagePath }) {
   const canonical = `${siteUrl}${pagePath}`;
   return `<meta name="description" content="${description}">
@@ -65,10 +63,6 @@ function head({ title, description, path: pagePath }) {
 <meta name="twitter:title" content="${title}">
 <meta name="twitter:description" content="${description}">
 <meta name="twitter:image" content="${siteUrl}/social-image.png">
-<link rel="icon" href="${siteUrl}/favicon.ico" sizes="any">
-<link rel="icon" href="${siteUrl}/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="${siteUrl}/apple-touch-icon.png">
-<link rel="manifest" href="${siteUrl}/manifest.json">
 <script>${themeScript}</script>
 <style>${criticalCss}</style>`;
 }
@@ -76,31 +70,31 @@ function head({ title, description, path: pagePath }) {
 const pages = {
   'index.html': {
     path: '/',
-    title: 'Muhammad Akhmal | Financial Management Student — Internal Audit, Risk & Compliance',
+    title: pageTitles['/'],
     description:
       'Financial Management student at UNIDA Gontor developing knowledge of internal audit, risk, compliance, and governance through study and independent analytical projects.',
   },
   'articles/index.html': {
     path: '/articles/',
-    title: 'Muhammad Akhmal | Articles',
+    title: pageTitles['/articles/'],
     description:
       'Writing by Muhammad Akhmal Fauzi Saefurohman on quality standards, market integrity, and financial inclusion in Indonesia.',
   },
   'contact/index.html': {
     path: '/contact/',
-    title: 'Muhammad Akhmal | Contact',
+    title: pageTitles['/contact/'],
     description:
       'Send me a message about an internship, a project, or anything related to audit, risk, and financial controls.',
   },
   'details/index.html': {
     path: '/details/',
-    title: 'Muhammad Akhmal | Details',
+    title: pageTitles['/details/'],
     description:
       'Education and professional interests of Muhammad Akhmal Fauzi Saefurohman, a Financial Management student developing a foundation in internal audit, risk, and compliance.',
   },
   'activities/index.html': {
     path: '/activities/',
-    title: 'Muhammad Akhmal | Activities',
+    title: pageTitles['/activities/'],
     description: 'Selected activities by Muhammad Akhmal Fauzi Saefurohman.',
   },
   ...Object.fromEntries(
@@ -110,19 +104,17 @@ const pages = {
     [
       [
         'papan-instrumen',
-        'Papan Instrumen',
         'A transparent, sector-aware fundamental analysis dashboard for Indonesian equities, built in Pine Script v6.',
       ],
       [
         'papan-gerak',
-        'Papan Gerak',
         'A personal technical-analysis tool combining trend, momentum, volatility, and volume for IDX charts.',
       ],
-    ].map(([slug, shortTitle, description]) => [
+    ].map(([slug, description]) => [
       `projects/${slug}/index.html`,
       {
         path: `/projects/${slug}/`,
-        title: `${shortTitle} | Muhammad Akhmal`,
+        title: pageTitles[`/projects/${slug}/`],
         description,
       },
     ])
@@ -131,8 +123,19 @@ const pages = {
 
 async function buildPage(sourceHtml, meta) {
   return sourceHtml
-    .replace('<html lang="en">', '<html lang="en" data-theme="dark">')
+    // Keep the rewritten title consistent with the route-aware SPA fallback.
+    .replace(/<title>[^<]*<\/title>/, `<title>${escapeHtml(meta.title)}</title>`)
     .replace('</head>', `${head(meta)}\n</head>`);
+}
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, character => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+  })[character]);
 }
 
 for (const entry of generated) {
@@ -151,7 +154,14 @@ for (const [target, meta] of Object.entries(pages)) {
   await writeFile(out, await buildPage(sourceHtml, meta));
 }
 
-await writeFile(path.join(root, '404.html'), await buildPage(sourceHtml, pages['index.html']));
+await writeFile(
+  path.join(root, '404.html'),
+  await buildPage(sourceHtml, {
+    path: '/404.html',
+    title: pageTitles['404'],
+    description: 'The page you were looking for could not be found.',
+  })
+);
 await writeFile(path.join(root, '.nojekyll'), '');
 
 console.log('Published to repository root.');

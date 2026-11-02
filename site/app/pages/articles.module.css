@@ -10,19 +10,68 @@
     width: 100%;
     max-width: var(--maxWidthL);
     margin: 0 auto;
-    padding: var(--spaceOuter) var(--spaceOuter) var(--space4XL);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 55%;
+    align-items: start;
+    column-gap: var(--space4XL);
+    row-gap: 0;
+    padding: var(--space4XL) var(--spaceOuter);
+
+    @media (--mediaTablet) {
+      grid-template-columns: 100%;
+      row-gap: var(--space2XL);
+      padding: var(--mobileNavOffset) var(--space2XL) var(--spaceXL);
+    }
 
     @media (--mediaMobile) {
-      padding: var(--mobileNavOffset) var(--spaceL) var(--space3XL);
+      padding-inline: var(--spaceL);
     }
   }
 
   .header {
-    padding-bottom: var(--space2XL);
+    grid-column: 1;
+    grid-row: 1;
+    padding: var(--spaceS) 0 var(--space2XL);
+
+    @media (--mediaTablet) {
+      padding-bottom: 0;
+    }
+  }
+
+  .heading {
+    white-space: nowrap;
   }
 
   .list {
+    grid-column: 1;
+    grid-row: 2;
     display: grid;
+
+    @media (--mediaTablet) {
+      grid-row: 3;
+    }
+  }
+
+  .featured {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    position: sticky;
+    top: var(--spaceOuter);
+    max-height: calc(100svh - var(--spaceOuter) * 2);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    @media (--mediaTablet) {
+      grid-column: 1;
+      grid-row: 2;
+      position: relative;
+      top: 0;
+      max-height: none;
+      overflow: visible;
+    }
   }
 
   .empty {
@@ -38,11 +87,68 @@
     &:last-child {
       border-bottom: 1px solid color-mix(in lab, var(--text) 10%, transparent);
     }
+
+    &[data-featured='true'] {
+      border: 0;
+      overflow: hidden;
+      padding: var(--space2XL) var(--space3XL);
+      position: relative;
+      background-color: color-mix(in lab, var(--backgroundLight) 70%, transparent);
+      clip-path: polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 0 100%);
+
+      @media (--mediaMobile) {
+        padding: calc(var(--spaceOuter) + var(--spaceL)) var(--spaceOuter) var(--spaceOuter);
+      }
+    }
+  }
+
+  .postImage {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      opacity: 0.65;
+      transform: scale(1.15);
+      filter: blur(14px) saturate(0.45) brightness(0.55);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        color-mix(in lab, var(--background) 55%, transparent) 0%,
+        color-mix(in lab, var(--background) 80%, transparent) 45%,
+        color-mix(in lab, var(--background) 92%, transparent) 100%
+      );
+    }
+  }
+
+  .postLabel {
+    position: absolute;
+    top: var(--spaceM);
+    left: var(--space3XL);
+    padding: 0;
+    color: var(--textLight);
+    font-family: var(--monoFontStack);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    z-index: var(--zIndex1);
+
+    @media (--mediaMobile) {
+      left: var(--spaceOuter);
+    }
   }
 
   .postLink {
     display: grid;
-    gap: var(--spaceL);
     padding: var(--space2XL) 0;
     color: inherit;
 
@@ -60,9 +166,30 @@
     &:focus-visible::before {
       opacity: 1;
     }
+
+    [data-featured='true'] & {
+      position: relative;
+      z-index: 1;
+      padding: 0;
+
+      &::before {
+        content: none;
+      }
+    }
+  }
+
+  .postDetails {
+    display: grid;
+    justify-items: start;
+    gap: var(--spaceL);
+  }
+
+  .post[data-featured='true'] .postDetails {
+    gap: var(--spaceM);
   }
 
   .postDate {
+    justify-self: stretch;
     display: grid;
     grid-template-columns: 128px 1fr;
     gap: var(--spaceM);
@@ -75,6 +202,7 @@
   }
 
   .postFooter {
+    justify-self: stretch;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -94,6 +222,12 @@
       height: 2px;
       background-color: color-mix(in lab, var(--text) 20%, transparent);
     }
+  }
+
+  .post[data-featured='true'] .sources {
+    position: relative;
+    z-index: 1;
+    padding-top: var(--spaceM);
   }
 
   .sources {

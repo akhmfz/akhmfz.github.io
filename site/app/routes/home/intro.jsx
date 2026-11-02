@@ -7,9 +7,9 @@ import { Transition } from '~/components/transition';
 import { VisuallyHidden } from '~/components/visually-hidden';
 import { Link as RouterLink } from '@remix-run/react';
 import { useReducedMotion } from 'framer-motion';
-import { useInterval, usePrevious, useScrollToHash } from '~/hooks';
+import { useInterval, usePrevious, useScrollToHash, useWindowSize } from '~/hooks';
 import { Suspense, lazy, useEffect, useState } from 'react';
-import { cssProps } from '~/utils/style';
+import { cssProps, media } from '~/utils/style';
 import config from '~/config.json';
 import { useHydrated } from '~/hooks/useHydrated';
 import styles from './intro.module.css';
@@ -22,16 +22,43 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
   const { theme } = useTheme();
   const { disciplines } = config;
   const [disciplineIndex, setDisciplineIndex] = useState(0);
+  const [showSphere, setShowSphere] = useState(false);
   const prevTheme = usePrevious(theme);
-  const reduceMotion = useReducedMotion();
   const currentDiscipline = disciplines[disciplineIndex];
   const titleId = `${id}-title`;
   const scrollToHash = useScrollToHash();
   const isHydrated = useHydrated();
+  const { width } = useWindowSize();
+  const reduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    const connection = navigator.connection;
+    const slowConnection = ['slow-2g', '2g', '3g'].includes(connection?.effectiveType);
+
+    if (
+      width <= media.tablet ||
+      reduceMotion !== false ||
+      connection?.saveData ||
+      slowConnection
+    ) {
+      setShowSphere(false);
+      return;
+    }
+
+    let supported = false;
+    try {
+      const context = document.createElement('canvas').getContext('webgl2');
+      supported = Boolean(context);
+      context?.getExtension('WEBGL_lose_context')?.loseContext();
+    } catch {
+      supported = false;
+    }
+    setShowSphere(supported);
+  }, [reduceMotion, width]);
 
   useInterval(
     () => setDisciplineIndex(index => (index + 1) % disciplines.length),
-    reduceMotion ? null : 5000,
+    5000,
     theme
   );
 
@@ -57,7 +84,7 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
       <Transition in key={theme} timeout={3000}>
         {({ visible, status }) => (
           <>
-            {isHydrated && (
+            {isHydrated && showSphere && (
               <Suspense>
                 <DisplacementSphere />
               </Suspense>
@@ -79,25 +106,27 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
                   <span className={styles.line} data-status={status} />
                 </span>
                 <div className={styles.row}>
-                  <Transition
-                    unmount
-                    in={Boolean(currentDiscipline)}
-                    timeout={{ enter: 3000, exit: 2000 }}
-                    key={currentDiscipline}
-                  >
-                    {({ status: itemStatus, nodeRef }) => (
-                      <span
-                        aria-hidden
-                        ref={nodeRef}
-                        className={styles.word}
-                        data-plus={true}
-                        data-status={itemStatus}
-                        style={cssProps({ delay: tokens.base.durationL })}
-                      >
-                        {currentDiscipline}
-                      </span>
-                    )}
-                  </Transition>
+                  {disciplines.map(item => (
+                    <Transition
+                      unmount
+                      in={item === currentDiscipline}
+                      timeout={{ enter: 3000, exit: 2000 }}
+                      key={item}
+                    >
+                      {({ status: itemStatus, nodeRef }) => (
+                        <span
+                          aria-hidden
+                          ref={nodeRef}
+                          className={styles.word}
+                          data-plus={true}
+                          data-status={itemStatus}
+                          style={cssProps({ delay: tokens.base.durationL })}
+                        >
+                          {item}
+                        </span>
+                      )}
+                    </Transition>
+                  ))}
                 </div>
               </Heading>
             </header>

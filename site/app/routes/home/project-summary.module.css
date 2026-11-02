@@ -1,44 +1,37 @@
 .summary {
-  height: min(100vh, 760px);
   width: 100%;
-  max-height: 1080px;
-  padding-bottom: var(--spaceL);
-  margin: 120px 0;
+  padding: var(--space3XL) 0;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  @media (--mediaDesktop) {
-    margin: var(--space2XL) 0;
-  }
-
   @media (--mediaTablet) {
-    height: auto;
-    margin: var(--space3XL) 0;
+    padding: var(--space3XL) 0;
   }
 
   @media (--mediaMobile) {
-    padding-bottom: var(--space4XL);
-    margin-bottom: 0;
+    padding: var(--space2XL) 0;
   }
 
   &[data-first='true'] {
-    margin-top: 0;
-
-    @media (--mediaTablet) {
-      margin-top: 0;
-    }
+    padding-top: 0;
   }
 }
 
-.summary[data-first='true'] .details {
-  justify-self: start;
+@media (min-width: 1041px) {
+  .summary[data-first='true'] .details {
+    justify-self: start;
+  }
 }
 
-.summary[data-first='true'] {
-  padding-left: 0;
-  padding-right: 0;
+/* The page column already sets the left edge; Section padding would shift the
+   alternate (right-text) project inward and break the zigzag rhythm. */
+@media (min-width: 1041px) {
+  .summary {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .content {
@@ -92,17 +85,17 @@
   justify-content: center;
   height: 100%;
   width: 100%;
+
+  @media (--mediaTablet) {
+    max-width: 560px;
+    margin: 0 auto var(--space2XL);
+  }
 }
 
-.frame {
-  width: 106%;
+.laptop {
+  width: 100%;
   position: relative;
-  left: 8%;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid color-mix(in lab, var(--text) 14%, transparent);
-  background: var(--backgroundLight);
-  box-shadow: 0 40px 80px -40px color-mix(in lab, var(--black) 55%, transparent);
+  filter: drop-shadow(0 40px 60px color-mix(in lab, var(--black) 50%, transparent));
   opacity: 0;
   transition-property: opacity, transform;
   transition-timing-function: var(--bezierFastoutSlowin);
@@ -114,50 +107,51 @@
     opacity: 1;
     transform: none;
   }
-
-  .summary[data-alternate='true'] & {
-    left: -8%;
-  }
-
-  @media (--mediaTablet) {
-    width: 100%;
-    left: 0;
-
-    .summary[data-alternate='true'] & {
-      left: 0;
-    }
-  }
 }
 
-.frameBar {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  height: 34px;
-  padding: 0 var(--spaceM);
-  border-bottom: 1px solid color-mix(in lab, var(--text) 10%, transparent);
-  background: color-mix(in lab, var(--backgroundLight) 80%, var(--background));
+.screen {
+  padding: 12px 12px 16px;
+  border-radius: 16px 16px 4px 4px;
+  border: 1px solid color-mix(in lab, var(--text) 18%, transparent);
+  border-bottom: 0;
+  background: color-mix(in lab, var(--black) 88%, var(--text));
 }
 
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: color-mix(in lab, var(--text) 22%, transparent);
-}
-
-.frameUrl {
-  margin-left: var(--spaceS);
-  font-family: var(--monoFontStack);
-  font-size: 11px;
-  letter-spacing: 0.02em;
-  color: var(--textLight);
-  white-space: nowrap;
+.display {
   overflow: hidden;
-  text-overflow: ellipsis;
+  border-radius: 4px;
+  background: var(--black);
 
-  @media (--mediaMobileS) {
-    display: none;
+  & img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.base {
+  position: relative;
+  height: 12px;
+  margin: 0 -3%;
+  border-radius: 0 0 12px 12px;
+  border: 1px solid color-mix(in lab, var(--text) 16%, transparent);
+  border-top: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in lab, var(--text) 26%, var(--background)),
+    color-mix(in lab, var(--text) 10%, var(--background))
+  );
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 76px;
+    height: 5px;
+    transform: translateX(-50%);
+    border-radius: 0 0 6px 6px;
+    background: color-mix(in lab, var(--black) 65%, transparent);
   }
 }
 
@@ -167,7 +161,8 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--primary);
-  margin-bottom: var(--spaceM);
+  margin-top: var(--spaceM);
+  margin-bottom: var(--spaceL);
   opacity: 0;
   transition: opacity var(--durationM) ease var(--durationL);
 
@@ -183,7 +178,7 @@
   grid-template-columns: 90px 1fr;
   gap: var(--spaceM);
   align-items: center;
-  margin-bottom: var(--spaceXL);
+  margin-bottom: var(--spaceL);
 }
 
 .indexNumber {

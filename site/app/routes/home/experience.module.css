@@ -1,14 +1,19 @@
 @layer components {
-  .experience {
+  section.experience {
     width: 100%;
     max-width: var(--maxWidthL);
-    margin: var(--space5XL) auto var(--space4XL);
+    margin: var(--space3XL) auto var(--space4XL);
     padding: 0 var(--spaceOuter);
     display: block;
 
+    @media (--mediaTablet) {
+      padding-inline: var(--space2XL);
+    }
+
     @media (--mediaMobile) {
       padding: 0 var(--spaceL);
-      margin: var(--space4XL) auto var(--space3XL);
+      margin: var(--space3XL) auto var(--space3XL);
+      scroll-margin-top: var(--mobileNavOffset);
     }
   }
 
@@ -44,6 +49,76 @@
   .title {
     margin-bottom: var(--space2XL);
     max-width: var(--maxWidthM);
+  }
+
+  .highlights {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--spaceL);
+    margin-bottom: var(--space4XL);
+
+    @media (--mediaTablet) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (--mediaMobileS) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .highlight {
+    display: grid;
+    align-content: start;
+    gap: var(--spaceM);
+    min-width: 0;
+  }
+
+  .highlightImage {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    border: 1px solid color-mix(in lab, var(--text) 14%, transparent);
+    background: var(--backgroundLight);
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: filter var(--durationM) ease;
+    }
+
+    &:hover img,
+    &:focus-visible img {
+      filter: brightness(1.08);
+    }
+  }
+
+  .highlightCaption {
+    display: grid;
+    gap: var(--spaceS);
+    font-size: var(--fontSizeBodyS);
+
+    & strong {
+      color: var(--textTitle);
+      font-weight: var(--fontWeightMedium);
+    }
+
+    & a {
+      color: var(--textLight);
+
+      &:hover,
+      &:focus-visible {
+        color: var(--primary);
+      }
+    }
+  }
+
+  .highlightDate {
+    color: var(--primary);
+    font-family: var(--monoFontStack);
+    font-size: var(--fontSizeBodyXS);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
 
   .list {
@@ -87,7 +162,7 @@
   }
 
   .body {
-    max-width: var(--maxWidthM);
+    width: 100%;
   }
 
   .role {

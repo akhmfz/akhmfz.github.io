@@ -75,21 +75,20 @@ export function ProjectSummary({
   function renderPreview(visible) {
     return (
       <div className={styles.preview}>
-        <div className={styles.frame} data-visible={visible}>
-          <div className={styles.frameBar} aria-hidden>
-            <span className={styles.dot} />
-            <span className={styles.dot} />
-            <span className={styles.dot} />
-            <span className={styles.frameUrl}>{screenshot.url}</span>
+        <div className={styles.laptop} data-visible={visible}>
+          <div className={styles.screen}>
+            <div className={styles.display}>
+              <Image
+                srcSet={`${screenshot.src} ${screenshot.width}w`}
+                placeholder={screenshot.placeholder}
+                width={screenshot.width}
+                height={screenshot.height}
+                alt={screenshot.alt}
+                sizes={`(max-width: ${media.tablet}px) 92vw, 45vw`}
+              />
+            </div>
           </div>
-          <Image
-            srcSet={`${screenshot.src} ${screenshot.width}w`}
-            placeholder={screenshot.placeholder}
-            width={screenshot.width}
-            height={screenshot.height}
-            alt={screenshot.alt}
-            sizes={`(max-width: ${media.tablet}px) 92vw, 45vw`}
-          />
+          <div className={styles.base} aria-hidden />
         </div>
       </div>
     );

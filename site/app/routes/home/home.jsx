@@ -1,11 +1,12 @@
 import { Footer } from '~/components/footer';
 import { baseMeta } from '~/utils/meta';
 import { projects } from '~/data/projects';
-import { Button } from '~/components/button';
 import { Heading } from '~/components/heading';
 import { Text } from '~/components/text';
 import { Intro } from './intro';
 import { ProjectSummary } from './project-summary';
+import { Profile } from './profile';
+import { Experience } from './experience';
 import { createRef, useEffect, useRef, useState } from 'react';
 import styles from './home.module.css';
 import activityStyles from './home-content.module.css';
@@ -22,8 +23,10 @@ export const Home = () => {
   const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState(false);
   const intro = useRef();
   const projectRefs = useRef(projects.map(() => createRef()));
+  const profile = useRef();
+  const experience = useRef();
   useEffect(() => {
-    const sections = [intro, ...projectRefs.current];
+    const sections = [intro, ...projectRefs.current, profile, experience];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -104,6 +107,17 @@ export const Home = () => {
           />
         ))}
       </section>
+      <Profile
+        id="about"
+        sectionRef={profile}
+        visible={visibleSections.includes(profile.current)}
+        headingAs="h2"
+      />
+      <Experience
+        id="experience"
+        sectionRef={experience}
+        visible={visibleSections.includes(experience.current)}
+      />
       <Footer />
     </div>
   );

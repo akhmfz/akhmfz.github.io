@@ -1,12 +1,75 @@
 @layer components {
-  .page { min-height: 100vh; display: flex; flex-direction: column; }
-  .content { max-width: var(--maxWidthL); width: 100%; margin: 0 auto; padding: var(--spaceOuter); }
-  .content > p:first-child, .category { color: var(--primary); }
-  .intro { max-width: 60ch; margin-top: var(--spaceL); }
-  .list { margin-top: var(--space4XL); }
-  .item { max-width: 760px; padding: var(--space2XL) 0; border-top: 1px solid color-mix(in lab, var(--text) 14%, transparent); }
-  .item h2 { margin: var(--spaceS) 0; }
-  .role { color: var(--textLight); }
-  .item p:last-child { color: var(--textLight); }
-  @media (--mediaMobile) { .content { padding: var(--mobileNavOffset) var(--spaceL) var(--space3XL); } }
+  .page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content {
+    width: 100%;
+    max-width: var(--maxWidthL);
+    margin: 0 auto;
+    padding: var(--space4XL) var(--spaceOuter);
+
+    @media (--mediaTablet) {
+      padding: var(--mobileNavOffset) var(--space2XL) var(--spaceXL);
+    }
+
+    @media (--mediaMobile) {
+      padding-inline: var(--spaceL);
+    }
+  }
+
+  .header {
+    display: grid;
+    gap: var(--spaceM);
+    max-width: 68ch;
+    padding: var(--spaceS) 0 var(--space2XL);
+  }
+
+  .intro {
+    color: var(--textLight);
+  }
+
+  .list {
+    display: grid;
+  }
+
+  .item {
+    display: grid;
+    gap: var(--spaceL);
+    padding: var(--space2XL) 0;
+    border-top: 1px solid color-mix(in lab, var(--text) 10%, transparent);
+
+    &:last-child {
+      border-bottom: 1px solid color-mix(in lab, var(--text) 10%, transparent);
+    }
+  }
+
+  .meta {
+    display: grid;
+    grid-template-columns: 128px 1fr;
+    gap: var(--spaceM);
+    align-items: center;
+    color: var(--primary);
+    font-family: var(--monoFontStack);
+    font-size: var(--fontSizeBodyXS);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+
+    @media (--mediaMobile) {
+      grid-template-columns: 64px 1fr;
+    }
+  }
+
+  .org {
+    color: var(--textLight);
+    margin-top: calc(var(--spaceS) * -1);
+  }
+
+  .detail {
+    max-width: 68ch;
+    color: var(--textLight);
+  }
 }
