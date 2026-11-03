@@ -5,12 +5,13 @@
 ## Current release update (2026-11-02)
 
 - The owner directed publishing the current portfolio to GitHub Pages `main`.
-- The Berserk video and poster are removed from the error page and source assets; the page now uses an original inline pulse illustration.
+- The Berserk video and poster are removed from the error page and source assets; the page now uses an original inline pulse illustration. The home hero also has a CSS background fallback when WebGL is unavailable.
 - Gotham remains by owner instruction. No Gotham licence evidence is present in the repository, so its status remains unverified; the separate IPA Gothic fallback is also unverified and still shipped.
 - The About portrait now uses the owner's supplied original photo with its EXIF orientation applied and a head-inclusive crop.
 - Experience includes three UNIDA Gontor event photos. Each card links to its source article and credits UNIDA Gontor; no explicit photo reuse licence was found.
 - Static route titles share `site/app/data/page-titles.json` with the route-aware SPA hydration fallback. Published-copy checks passed with JavaScript disabled and enabled.
 - Mobile menu focus stays inside the open menu, and the WebGL effect is skipped on mobile, reduced-motion, unsupported, and constrained-connection cases.
+- New page navigations start at the top; deliberate home-page hash links still land on their target sections.
 
 > The content, source and deployment statements below describe the superseded 2026-11-01 snapshot only.
 

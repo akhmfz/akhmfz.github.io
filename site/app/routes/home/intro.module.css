@@ -9,6 +9,35 @@
   overflow: hidden;
   overflow: clip;
 
+  /* Static color-field fallback for browsers that cannot create the WebGL sphere. */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -14%;
+    width: min(76vw, 900px);
+    aspect-ratio: 1;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 35% 30%, color-mix(in lab, var(--primary) 24%, transparent), transparent 30%),
+      radial-gradient(circle at 65% 72%, color-mix(in lab, #0b625c 58%, transparent), transparent 65%),
+      radial-gradient(circle, color-mix(in lab, #143b3b 70%, transparent), transparent 74%);
+    filter: blur(16px);
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @media (--mediaMobile) {
+    &::before {
+      top: 43%;
+      right: -45%;
+      width: 145vw;
+      opacity: 0.62;
+    }
+  }
+
   /* The canvas is 1.3x viewport tall; fade it into the page instead of cutting it. */
   &::after {
     content: '';
