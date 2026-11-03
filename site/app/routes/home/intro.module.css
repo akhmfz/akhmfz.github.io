@@ -38,6 +38,17 @@
     }
   }
 
+  /* Hide the static decoration only once the WebGL sphere has actually rendered. */
+  &:has(:global(.sphereCanvas)[data-visible='true']) {
+    &::before {
+      opacity: 0;
+    }
+
+    .backgroundPattern {
+      opacity: 0;
+    }
+  }
+
   /* The canvas is 1.3x viewport tall; fade it into the page instead of cutting it. */
   &::after {
     content: '';
@@ -56,6 +67,7 @@
   z-index: 0;
   pointer-events: none;
   opacity: 0.62;
+  transition: opacity var(--durationXL) ease;
   background-image: radial-gradient(
     color-mix(in lab, var(--text) 26%, transparent) 1.2px,
     transparent 1.7px
