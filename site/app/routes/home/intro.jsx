@@ -81,6 +81,7 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
       tabIndex={-1}
       {...rest}
     >
+      <div aria-hidden className={styles.backgroundPattern} />
       <Transition in key={theme} timeout={3000}>
         {({ visible, status }) => (
           <>
