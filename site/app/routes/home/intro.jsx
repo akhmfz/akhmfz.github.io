@@ -47,7 +47,8 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
 
     let supported = false;
     try {
-      const context = document.createElement('canvas').getContext('webgl2');
+      const probe = document.createElement('canvas');
+      const context = probe.getContext('webgl2') || probe.getContext('webgl');
       supported = Boolean(context);
       context?.getExtension('WEBGL_lose_context')?.loseContext();
     } catch {
