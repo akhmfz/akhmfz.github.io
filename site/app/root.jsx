@@ -3,7 +3,6 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration,
   useLocation,
   useNavigation,
   useRouteError,
@@ -33,7 +32,7 @@ function getHydrateTitle() {
 }
 
 // Runs before hydration so a stored light theme never flashes dark on load.
-const themeScript = `try{var t=localStorage.getItem('${THEME_KEY}');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}`;
+const themeScript = `try{history.scrollRestoration='manual'}catch(e){};try{var t=localStorage.getItem('${THEME_KEY}');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){};addEventListener('pageshow',function(){if(!location.hash)scrollTo(0,0)},{once:true});`;
 
 function getInitialTheme() {
   try {
@@ -75,6 +74,7 @@ export function HydrateFallback() {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <title>{getHydrateTitle()}</title>
         <Links />
       </head>
@@ -89,7 +89,8 @@ export function HydrateFallback() {
 export default function App() {
   const [theme, setTheme] = useState(getInitialTheme);
   const { state } = useNavigation();
-  const { pathname } = useLocation();
+  const location = useLocation();
+  const { pathname } = location;
 
   const canonicalUrl = useMemo(() => {
     const path = pathname === '/' ? '/' : `${pathname.replace(/\/+$/, '')}/`;
@@ -112,6 +113,10 @@ export default function App() {
       `Taking a peek huh? Check out the source code: ${config.repo}\n\n`
     );
   }, []);
+
+  useEffect(() => {
+    if (!location.hash) window.scrollTo(0, 0);
+  }, [location.hash, location.key]);
 
   return (
     <html lang="en" data-theme={theme}>
@@ -146,7 +151,6 @@ export default function App() {
             <Outlet />
           </main>
         </ThemeProvider>
-        <ScrollRestoration />
         <Scripts />
       </body>
     </html>
@@ -169,7 +173,6 @@ export function ErrorBoundary() {
       </head>
       <body>
         <Error error={error} />
-        <ScrollRestoration />
         <Scripts />
       </body>
     </html>

@@ -36,8 +36,6 @@ const generated = [
   'humans.txt',
 ];
 
-const themeScript = `try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}`;
-
 const criticalCss = `
 html{background:#111;color-scheme:dark light}
 html[data-theme='light']{background:#f5f5f5;color-scheme:light}
@@ -63,7 +61,6 @@ function head({ title, description, path: pagePath }) {
 <meta name="twitter:title" content="${title}">
 <meta name="twitter:description" content="${description}">
 <meta name="twitter:image" content="${siteUrl}/social-image.png">
-<script>${themeScript}</script>
 <style>${criticalCss}</style>`;
 }
 
