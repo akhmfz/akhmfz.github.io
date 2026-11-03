@@ -56,8 +56,7 @@ export const DisplacementSphere = props => {
         canvas: canvasRef.current,
         antialias: false,
         alpha: true,
-        powerPreference: 'high-performance',
-        failIfMajorPerformanceCaveat: true,
+        powerPreference: 'default',
       });
     } catch {
       setWebglAvailable(false);

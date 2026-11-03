@@ -44,9 +44,6 @@
       opacity: 0;
     }
 
-    .backgroundPattern {
-      opacity: 0;
-    }
   }
 
   /* The canvas is 1.3x viewport tall; fade it into the page instead of cutting it. */
@@ -58,60 +55,6 @@
     background: linear-gradient(to bottom, transparent, var(--background));
     pointer-events: none;
     z-index: var(--zIndex1);
-  }
-}
-
-.backgroundPattern {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.62;
-  transition: opacity var(--durationXL) ease;
-  background-image: radial-gradient(
-    color-mix(in lab, var(--text) 26%, transparent) 1.2px,
-    transparent 1.7px
-  );
-  background-size: 32px 32px;
-  mask-image: radial-gradient(ellipse 55% 78% at 84% 50%, #000 10%, transparent 100%);
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    border: 1px solid color-mix(in lab, var(--primary) 20%, transparent);
-    border-radius: 50%;
-    aspect-ratio: 1;
-    transform: translateY(-50%) rotate(-18deg);
-  }
-
-  &::before {
-    right: -14%;
-    width: min(76vw, 900px);
-  }
-
-  &::after {
-    right: -6%;
-    width: min(66vw, 780px);
-    transform: translateY(-50%) rotate(18deg);
-    border-color: color-mix(in lab, var(--text) 10%, transparent);
-  }
-
-  @media (--mediaMobile) {
-    opacity: 0.38;
-    background-size: 28px 28px;
-    mask-image: radial-gradient(ellipse 65% 58% at 82% 48%, #000 6%, transparent 100%);
-
-    &::before {
-      right: -45%;
-      width: 145vw;
-    }
-
-    &::after {
-      right: -32%;
-      width: 125vw;
-    }
   }
 }
 
@@ -128,9 +71,10 @@
   &::before {
     content: '';
     position: absolute;
-    inset: 0;
+    inset: -48px;
     background: color-mix(in lab, var(--background) 88%, transparent);
-    border-radius: var(--spaceL);
+    mask-image: radial-gradient(ellipse, #000 35%, transparent 72%);
+    pointer-events: none;
     z-index: -1;
   }
 

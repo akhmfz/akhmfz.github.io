@@ -40,7 +40,7 @@ export default function Project() {
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
-          <Link className={styles.back} href="/#project-1">
+          <Link className={styles.back} href="/#projects">
           All projects
         </Link>
         <Heading level={0} as="h1" className={styles.title}>

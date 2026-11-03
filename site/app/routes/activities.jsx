@@ -30,8 +30,8 @@ export default function Activities() {
 
         <div className={styles.list}>
           {activities.map(activity => (
-            <article className={styles.item} key={activity.org}>
-              <div aria-hidden className={styles.meta}>
+            <article className={styles.item} key={`${activity.org}-${activity.title}`}>
+              <div className={styles.meta}>
                 <Divider notchWidth="64px" notchHeight="8px" collapsed={false} />
                 <span>
                   {activity.period} · {activity.category}

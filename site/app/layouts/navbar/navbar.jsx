@@ -217,13 +217,13 @@ export const Navbar = () => {
         data-navbar-item
         className={styles.logo}
         aria-label={`${config.name}, ${config.role}`}
-        inert={menuOpen}
+        inert={menuOpen ? '' : undefined}
         onClick={handleMobileNavClick}
       >
         <Monogram highlight />
       </RouterLink>
       <NavToggle onClick={() => setMenuOpen(!menuOpen)} menuOpen={menuOpen} />
-      <nav className={styles.nav} inert={menuOpen}>
+      <nav className={styles.nav} inert={menuOpen ? '' : undefined}>
         <div className={styles.navList}>
           {navLinks.map(({ label, pathname }) => (
             <RouterLink
@@ -273,7 +273,7 @@ export const Navbar = () => {
           </nav>
         )}
       </Transition>
-      {!isMobile && <ThemeToggle data-navbar-item inert={menuOpen} />}
+      {!isMobile && <ThemeToggle data-navbar-item inert={menuOpen ? '' : undefined} />}
     </header>
   );
 };

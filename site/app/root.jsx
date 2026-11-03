@@ -24,11 +24,8 @@ import './global.css';
 const THEME_KEY = 'theme';
 
 function getHydrateTitle() {
-  const path = typeof window === 'undefined' ? '/' : window.location.pathname;
-  const normalizedPath = path === '/' || path === '/index.html'
-    ? '/'
-    : `${path.replace(/\/+$/, '')}/`;
-  return pageTitles[normalizedPath] ?? pageTitles['404'];
+  // Match the served shell in both Vite dev and route-specific published HTML.
+  return typeof document === 'undefined' ? pageTitles['/'] : document.title;
 }
 
 // Runs before hydration so a stored light theme never flashes dark on load.

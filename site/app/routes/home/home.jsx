@@ -68,7 +68,7 @@ export const Home = () => {
         sectionRef={intro}
         scrollIndicatorHidden={scrollIndicatorHidden}
       />
-      <section className={activityStyles.work} aria-labelledby="work-title">
+      <section id="projects" className={activityStyles.work} aria-labelledby="work-title">
         <div className={activityStyles.headingRow}>
           <Text size="s">Selected work</Text>
           <Heading level={3} as="h2" id="work-title">Analysis tools & personal projects</Heading>
