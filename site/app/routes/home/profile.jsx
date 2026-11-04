@@ -49,21 +49,23 @@ export const Profile = ({ id, visible, sectionRef, headingAs = 'h1' }) => {
       <Transition in={visible || focused} timeout={0}>
         {({ visible, nodeRef }) => (
           <div className={styles.content} ref={nodeRef}>
-            <div className={`${styles.column} ${styles.textColumn}`}>
-              <ProfileText visible={visible} titleId={titleId} headingAs={headingAs} />
-            </div>
-            <div className={`${styles.column} ${styles.imageColumn}`}>
-              <div className={styles.tag} aria-hidden>
+            <div className={styles.tag}>
+              <div aria-hidden>
                 <Divider
                   notchWidth="64px"
                   notchHeight="8px"
                   collapsed={!visible}
                   collapseDelay={1000}
                 />
-                <div className={styles.tagText} data-visible={visible}>
-                  About me
-                </div>
               </div>
+              <Text className={styles.tagText} data-visible={visible} as="p">
+                About me
+              </Text>
+            </div>
+            <div className={`${styles.column} ${styles.textColumn}`}>
+              <ProfileText visible={visible} titleId={titleId} headingAs={headingAs} />
+            </div>
+            <div className={`${styles.column} ${styles.imageColumn}`}>
               <div className={styles.image}>
                 <Image
                   reveal

@@ -25,19 +25,22 @@
   grid-template-columns: 1fr 50%;
   grid-column-gap: var(--space2XL);
   grid-template-areas:
+    'tag tag'
     'text image'
     'actions image';
-  grid-template-rows: auto auto;
+  grid-template-rows: auto auto auto;
   max-width: none;
   width: 100%;
 
   @media (--mediaTablet) {
     grid-template-columns: 100%;
     grid-template-areas:
+      'tag'
       'text'
       'image'
       'actions';
     grid-template-rows: auto;
+    row-gap: var(--spaceL);
   }
 }
 
@@ -48,10 +51,15 @@
   align-items: flex-start;
   margin-bottom: 40px;
   transform: translate3d(0, 0, 0);
+
+  @media (--mediaTablet) {
+    margin-bottom: 0;
+  }
 }
 
 .textColumn { grid-area: text; }
 .imageColumn { grid-area: image; }
+.tag { grid-area: tag; }
 
 .title {
   white-space: nowrap;
@@ -83,7 +91,7 @@
   align-items: center;
 
   @media (--mediaTablet) {
-    margin-top: 30px;
+    margin-top: 0;
   }
 }
 
