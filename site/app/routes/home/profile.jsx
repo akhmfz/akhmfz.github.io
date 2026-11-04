@@ -49,28 +49,10 @@ export const Profile = ({ id, visible, sectionRef, headingAs = 'h1' }) => {
       <Transition in={visible || focused} timeout={0}>
         {({ visible, nodeRef }) => (
           <div className={styles.content} ref={nodeRef}>
-            <div className={styles.column}>
+            <div className={`${styles.column} ${styles.textColumn}`}>
               <ProfileText visible={visible} titleId={titleId} headingAs={headingAs} />
-              <div className={styles.actions} data-visible={visible}>
-                <Button
-                  secondary
-                  href={`mailto:${config.email}`}
-                  icon="send"
-                >
-                  Send me a message
-                </Button>
-                <Button
-                  secondary
-                  href={config.linkedin}
-                  icon="linkedin"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  LinkedIn
-                </Button>
-              </div>
             </div>
-            <div className={styles.column}>
+            <div className={`${styles.column} ${styles.imageColumn}`}>
               <div className={styles.tag} aria-hidden>
                 <Divider
                   notchWidth="64px"
@@ -94,6 +76,20 @@ export const Profile = ({ id, visible, sectionRef, headingAs = 'h1' }) => {
                   alt="Muhammad Akhmal Fauzi Saefurohman"
                 />
               </div>
+            </div>
+            <div className={styles.actions} data-visible={visible}>
+              <Button secondary href={`mailto:${config.email}`} icon="send">
+                Send me a message
+              </Button>
+              <Button
+                secondary
+                href={config.linkedin}
+                icon="linkedin"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </Button>
             </div>
           </div>
         )}

@@ -96,6 +96,12 @@ export default function Articles() {
             </Heading>
           </header>
 
+          {featured && (
+            <div className={styles.featured}>
+              <ArticlesPost post={featured} featured />
+            </div>
+          )}
+
           <div className={styles.list}>
             {rest.length === 0 ? (
               <Text as="p" className={styles.empty}>
@@ -105,12 +111,6 @@ export default function Articles() {
               rest.map(post => <ArticlesPost post={post} key={post.href} />)
             )}
           </div>
-
-          {featured && (
-            <div className={styles.featured}>
-              <ArticlesPost post={featured} featured />
-            </div>
-          )}
         </div>
       </section>
 
