@@ -6,10 +6,9 @@ import { tokens } from '~/components/theme-provider/theme';
 import { Transition } from '~/components/transition';
 import { VisuallyHidden } from '~/components/visually-hidden';
 import { Link as RouterLink } from '@remix-run/react';
-import { useReducedMotion } from 'framer-motion';
-import { useInterval, usePrevious, useScrollToHash, useWindowSize } from '~/hooks';
+import { useInterval, usePrevious, useScrollToHash } from '~/hooks';
 import { Suspense, lazy, useEffect, useState } from 'react';
-import { cssProps, media } from '~/utils/style';
+import { cssProps } from '~/utils/style';
 import config from '~/config.json';
 import { useHydrated } from '~/hooks/useHydrated';
 import styles from './intro.module.css';
@@ -22,40 +21,11 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
   const { theme } = useTheme();
   const { disciplines } = config;
   const [disciplineIndex, setDisciplineIndex] = useState(0);
-  const [showSphere, setShowSphere] = useState(false);
   const prevTheme = usePrevious(theme);
   const currentDiscipline = disciplines[disciplineIndex];
   const titleId = `${id}-title`;
   const scrollToHash = useScrollToHash();
   const isHydrated = useHydrated();
-  const { width } = useWindowSize();
-  const reduceMotion = useReducedMotion();
-
-  useEffect(() => {
-    const connection = navigator.connection;
-    const slowConnection = ['slow-2g', '2g', '3g'].includes(connection?.effectiveType);
-
-    if (
-      width <= media.tablet ||
-      reduceMotion !== false ||
-      connection?.saveData ||
-      slowConnection
-    ) {
-      setShowSphere(false);
-      return;
-    }
-
-    let supported = false;
-    try {
-      const probe = document.createElement('canvas');
-      const context = probe.getContext('webgl2') || probe.getContext('webgl');
-      supported = Boolean(context);
-      context?.getExtension('WEBGL_lose_context')?.loseContext();
-    } catch {
-      supported = false;
-    }
-    setShowSphere(supported);
-  }, [reduceMotion, width]);
 
   useInterval(
     () => setDisciplineIndex(index => (index + 1) % disciplines.length),
@@ -85,7 +55,7 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
       <Transition in key={theme} timeout={3000}>
         {({ visible, status }) => (
           <>
-            {isHydrated && showSphere && (
+            {isHydrated && (
               <Suspense>
                 <DisplacementSphere />
               </Suspense>

@@ -19,6 +19,7 @@
     aspect-ratio: 1;
     transform: translateY(-50%);
     border-radius: 50%;
+    transition: opacity var(--durationXL) ease;
     background:
       radial-gradient(circle at 35% 30%, color-mix(in lab, var(--primary) 24%, transparent), transparent 30%),
       radial-gradient(circle at 65% 72%, color-mix(in lab, #0b625c 58%, transparent), transparent 65%),

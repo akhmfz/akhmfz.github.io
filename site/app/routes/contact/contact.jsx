@@ -26,29 +26,48 @@ export const meta = () => {
 
 const MAX_EMAIL_LENGTH = 512;
 const MAX_MESSAGE_LENGTH = 4096;
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xaeekdpv';
 
 export const Contact = () => {
   const email = useFormInput('');
   const message = useFormInput('');
   const initDelay = tokens.base.durationS;
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
-  // No backend on a static site: compose the message in the visitor's mail client.
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    const subject = `Portfolio message from ${email.value || 'a visitor'}`;
-    const body = `${message.value}\n\nReply to: ${email.value}`;
-    window.location.href = `mailto:${config.email}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-    setSent(true);
+    setSubmitting(true);
+    setSubmitError('');
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: new FormData(event.currentTarget),
+        headers: { Accept: 'application/json' },
+      });
+
+      if (!response.ok) throw new Error('Form submission failed');
+      setSent(true);
+    } catch {
+      setSubmitError(`Message could not be sent. Please email ${config.email} directly.`);
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
     <Section className={styles.contact}>
       <Transition unmount in={!sent} timeout={1600}>
         {({ status, nodeRef }) => (
-          <form className={styles.form} method="post" ref={nodeRef} onSubmit={handleSubmit}>
+          <form
+            action={FORMSPREE_ENDPOINT}
+            className={styles.form}
+            method="post"
+            ref={nodeRef}
+            onSubmit={handleSubmit}
+          >
             <Heading
               className={styles.title}
               data-status={status}
@@ -87,14 +106,31 @@ export const Contact = () => {
               maxLength={MAX_MESSAGE_LENGTH}
               {...message}
             />
+            <input
+              className={styles.botkiller}
+              type="text"
+              name="_gotcha"
+              tabIndex={-1}
+              autoComplete="off"
+            />
+            {submitError && (
+              <div className={styles.formError} role="alert">
+                <div className={styles.formErrorContent}>
+                  <p className={styles.formErrorMessage}>{submitError}</p>
+                </div>
+              </div>
+            )}
             <Button
               className={styles.button}
               data-status={status}
               style={getDelay(tokens.base.durationM, initDelay)}
               icon="send"
               type="submit"
+              loading={submitting}
+              loadingText="Sending"
+              disabled={submitting}
             >
-              Send message
+              {submitting ? 'Sending…' : 'Send message'}
             </Button>
           </form>
         )}
@@ -103,7 +139,7 @@ export const Contact = () => {
         {({ status, nodeRef }) => (
           <div className={styles.complete} aria-live="polite" ref={nodeRef}>
             <Heading level={3} as="h3" className={styles.completeTitle} data-status={status}>
-              Message drafted
+              Message sent
             </Heading>
             <Text
               size="l"
@@ -112,8 +148,8 @@ export const Contact = () => {
               data-status={status}
               style={getDelay(tokens.base.durationXS)}
             >
-              Your mail app should be opening with the message ready. If nothing happens,
-              write to {config.email} directly.
+              Thanks for reaching out. I’ll reply to your email as soon as I can. If needed,
+              you can also reach me at {config.email}.
             </Text>
             <Button
               secondary
