@@ -147,6 +147,12 @@ for (const file of files) {
   await cp(path.join(client, file.name), path.join(outputRoot, file.name), { recursive: true });
 }
 
+// Keep the independent Malik site in the Pages artifact, outside the Remix app.
+const malikSite = path.resolve(here, '../public/malikadnan-portofolio');
+const malikOutput = path.join(outputRoot, 'malikadnan-portofolio');
+await cp(malikSite, malikOutput, { recursive: true });
+await readFile(path.join(malikOutput, 'index.html'));
+
 const sourceHtml = await readFile(path.join(client, 'index.html'), 'utf8');
 for (const [target, meta] of Object.entries(pages)) {
   const out = path.join(outputRoot, target);
