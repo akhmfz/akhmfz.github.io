@@ -94,6 +94,11 @@ content:
             label: Journal image description
             type: text
             description: Add descriptive alt text whenever an image is selected.
+          - name: activityImagePosition
+            label: Image crop focus
+            type: select
+            options:
+              values: [left center, center, right center]
       - name: education
         type: object
         list: true

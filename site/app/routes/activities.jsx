@@ -39,6 +39,7 @@ export default function Activities() {
                 className={styles.featuredImage}
                 src={featured.image}
                 alt={featured.imageAlt || featured.title}
+                style={{ objectPosition: featured.imagePosition || 'center' }}
                 loading="eager"
                 decoding="async"
               />
@@ -67,6 +68,7 @@ export default function Activities() {
                     className={styles.storyImage}
                     src={activity.image}
                     alt={activity.imageAlt || activity.title}
+                    style={{ objectPosition: activity.imagePosition || 'center' }}
                     loading="lazy"
                     decoding="async"
                   />

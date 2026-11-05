@@ -1,6 +1,6 @@
 import { roles } from './career';
 
-export const activities = roles.map(({ period, activityTitle, org, category, detail, activityImage, activityImageAlt }) => ({
+export const activities = roles.map(({ period, activityTitle, org, category, detail, activityImage, activityImageAlt, activityImagePosition }) => ({
   period,
   title: activityTitle,
   org,
@@ -8,4 +8,5 @@ export const activities = roles.map(({ period, activityTitle, org, category, det
   detail,
   image: activityImage,
   imageAlt: activityImageAlt,
+  imagePosition: activityImagePosition,
 }));
