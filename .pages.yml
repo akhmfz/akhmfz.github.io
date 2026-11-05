@@ -63,7 +63,7 @@ content:
     format: json
     fields:
       - name: roles
-        label: Experience and Journal posts
+        label: Experience timeline
         type: object
         list: true
         fields:
@@ -71,10 +71,6 @@ content:
             type: string
             required: true
           - name: role
-            type: string
-            required: true
-          - name: activityTitle
-            label: Journal headline
             type: string
             required: true
           - name: org
@@ -85,20 +81,6 @@ content:
             type: string
           - name: detail
             type: text
-          - name: activityImage
-            label: Journal image
-            type: image
-            options:
-              media: site-images
-          - name: activityImageAlt
-            label: Journal image description
-            type: text
-            description: Add descriptive alt text whenever an image is selected.
-          - name: activityImagePosition
-            label: Image crop focus
-            type: select
-            options:
-              values: [left center, center, right center]
       - name: education
         type: object
         list: true
@@ -118,6 +100,42 @@ content:
             type: string
           - name: detail
             type: text
+
+  - name: journal
+    label: Journal posts
+    type: file
+    path: site/app/data/journal.json
+    format: json
+    list: true
+    fields:
+      - name: period
+        label: Date or period
+        type: string
+        required: true
+      - name: title
+        type: string
+        required: true
+      - name: org
+        label: Organization or context
+        type: string
+        required: true
+      - name: category
+        type: string
+      - name: detail
+        type: text
+      - name: image
+        type: image
+        options:
+          media: site-images
+      - name: imageAlt
+        label: Image description
+        type: text
+        description: Add descriptive alt text whenever an image is selected.
+      - name: imagePosition
+        label: Image crop focus
+        type: select
+        options:
+          values: [left center, center, right center]
 
   - name: experience-highlights
     label: Experience photo highlights

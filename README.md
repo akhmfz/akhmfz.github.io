@@ -23,7 +23,8 @@ site/                 ← SOURCE Remix. Semua perubahan dikerjakan di sini.
   app/routes/         ← halaman: home/, articles, contact/, projects.$slug (detail proyek), $.jsx (404)
   app/data/projects-content.json ← isi proyek (bisa diedit dari CMS)
   app/data/manual-posts.json     ← artikel manual/LinkedIn (bisa diedit dari CMS)
-  app/data/career-content.json   ← experience, Journal, dan education (CMS)
+  app/data/career-content.json   ← experience dan education (CMS)
+  app/data/journal.json          ← Journal stories dengan foto (CMS)
   app/data/experience-highlights.json ← kartu foto Experience (CMS)
   public/uploads/                ← media yang diunggah melalui CMS
   app/data/posts.js              ← gabungan artikel manual + posts.json
