@@ -8,7 +8,9 @@ import { fileURLToPath } from 'node:url';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const client = path.resolve(here, '../build/client');
 const root = path.resolve(here, '../..');
-const outputRoot = process.env.PUBLISH_DIR ? path.resolve(process.env.PUBLISH_DIR) : root;
+const outputRoot = process.env.PUBLISH_DIR
+  ? path.resolve(here, '..', process.env.PUBLISH_DIR)
+  : root;
 const siteUrl = 'https://akhmfz.github.io';
 const pageTitles = JSON.parse(await readFile(path.resolve(here, '../app/data/page-titles.json'), 'utf8'));
 const siteConfig = JSON.parse(await readFile(path.resolve(here, '../app/config.json'), 'utf8'));
