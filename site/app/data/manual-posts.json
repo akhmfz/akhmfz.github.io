@@ -1,0 +1,62 @@
+[
+  {
+    "platform": "LinkedIn",
+    "titleLang": "id",
+    "blurbLang": "en",
+    "title": "OJK Tindak 3 Pelanggaran di Pasar Modal",
+    "date": "2026-11-05",
+    "href": "https://www.linkedin.com/feed/update/urn:li:activity:7523943822234435584/",
+    "banner": "/uploads/ojk-three-market-violations.webp",
+    "blurb": "A summary of OJK enforcement in three cases: PANR market manipulation, misleading BOGA IPO-fund reporting, and falsified client portfolios with unauthorized share sales by a former WPPE. The post covers the related sanctions and restrictions. This is an educational summary of OJK documents, not personal audit experience or investment advice.",
+    "sources": [
+      {
+        "label": "OJK document",
+        "href": "https://lnkd.in/gyMuyxTW"
+      }
+    ]
+  },
+  {
+    "platform": "LinkedIn",
+    "titleLang": "id",
+    "blurbLang": "en",
+    "title": "GAO menemukan seorang manajer menyetujui invoice kontraktor meskipun dokumen pendukungnya tidak cocok dengan jumlah pembayaran.",
+    "date": "2026-11-01",
+    "href": "https://lnkd.in/p/gbxy8ZR7",
+    "banner": "/uploads/gao-21-420r.png",
+    "blurb": "A case-based note on why a correct payment amount is not enough: reviewers still need to resolve, document, and evidence discrepancies before approval. This is a reading of GAO-21-420R, not a personal audit experience.",
+    "sources": [
+      {
+        "label": "GAO-21-420R",
+        "href": "https://lnkd.in/gkjKNFFQ"
+      }
+    ]
+  },
+  {
+    "platform": "LinkedIn",
+    "titleLang": "id",
+    "blurbLang": "en",
+    "title": "Pernah dengar orang bilang organisasinya punya sertifikasi ISO 9001?",
+    "date": "2026-10-23",
+    "href": "https://www.linkedin.com/feed/update/urn:li:activity:7519306697467949056/",
+    "blurb": "This post distinguishes ISO’s standards-setting role from third-party certification and explains that ISO 9001 sets management-system requirements. Certification does not guarantee perfect product conformity."
+  },
+  {
+    "platform": "LinkedIn",
+    "titleLang": "id",
+    "blurbLang": "en",
+    "title": "Rilis MSCI 15 Oktober mencatat pelaku pasar menilai kemajuan belum terlihat konsisten.",
+    "date": "2026-10-21",
+    "href": "https://www.linkedin.com/feed/update/urn:li:activity:7518599219725950976/",
+    "blurb": "The post summarises MSCI’s proposed review of Indonesia’s market classification, the consultation timeline, and concerns raised about market functioning and evidence of reform. It does not present the proposal as a final reclassification.",
+    "sources": [
+      {
+        "label": "MSCI consultation",
+        "href": "https://www.msci.com/downloads/documents/press-releases/media-room/Indonesia_PR_Oct_26.pdf"
+      },
+      {
+        "label": "OJK press release",
+        "href": "https://www.ojk.go.id/en/berita-dan-kegiatan/siaran-pers/Pages/OJK-Reaffirms-Commitment-to-Advancing-Indonesias-Capital-Market-Reform.aspx"
+      }
+    ]
+  }
+]

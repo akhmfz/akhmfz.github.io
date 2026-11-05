@@ -91,6 +91,19 @@
     &:focus-visible img {
       filter: brightness(1.08);
     }
+
+    &[data-gallery='true'] {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spaceXS);
+      height: auto;
+      aspect-ratio: auto;
+
+      & img {
+        height: auto;
+        aspect-ratio: 16 / 10;
+      }
+    }
   }
 
   .highlightCaption {

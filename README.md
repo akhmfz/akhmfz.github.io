@@ -4,7 +4,8 @@ Website portofolio — **[akhmfz.github.io](https://akhmfz.github.io)**
 
 Dibangun dengan [Remix](https://remix.run) (SPA mode) + Three.js, hasil port dari
 template [Hamish Williams](https://github.com/HamishMW/portfolio) (MIT, lihat `site/LICENSE`).
-Output-nya statis dan disajikan GitHub Pages dari root repo ini.
+Output-nya statis dan disajikan GitHub Pages. Konten bisa diedit lewat Pages CMS; lihat
+[`CONTENT-MANAGEMENT.md`](CONTENT-MANAGEMENT.md).
 
 ## Struktur
 
@@ -20,8 +21,12 @@ assets/, favicon*, manifest.json, shortcut.png, social-image.png
 site/                 ← SOURCE Remix. Semua perubahan dikerjakan di sini.
   app/config.json     ← identitas, sosial, disiplin (sumber teks global)
   app/routes/         ← halaman: home/, articles, contact/, projects.$slug (detail proyek), $.jsx (404)
-  app/data/projects.js ← isi proyek (dipakai home + halaman detail)
-  app/data/posts.js    ← daftar tulisan /articles: gabungan posts.json + entri manual
+  app/data/projects-content.json ← isi proyek (bisa diedit dari CMS)
+  app/data/manual-posts.json     ← artikel manual/LinkedIn (bisa diedit dari CMS)
+  app/data/career-content.json   ← experience, Journal, dan education (CMS)
+  app/data/experience-highlights.json ← kartu foto Experience (CMS)
+  public/uploads/                ← media yang diunggah melalui CMS
+  app/data/posts.js              ← gabungan artikel manual + posts.json
   app/data/posts.json  ← hasil `npm run posts` (artikel Kompasiana)
   app/components/     ← komponen UI + design token (theme-provider/theme.js)
   scripts/publish.mjs ← build + salin ke root repo + patch <head> statis
@@ -47,9 +52,8 @@ python3 -m http.server 8000   # dari root repo
 
 ## Deploy
 
-GitHub Pages menyajikan branch `main` direktori root. Tidak ada CI: jalankan
-`cd site && npm run publish`, lalu commit `index.html` + `assets/` + halaman lain
-yang berubah, dan push.
+GitHub Actions membangun dan menerbitkan website dari `site/`. Commit konten di
+branch `main` otomatis memicu deploy; jangan edit hasil build di root repo.
 
 Catatan:
 

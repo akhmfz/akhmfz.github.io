@@ -4,6 +4,7 @@
 # Build toolchain
 site/node_modules/
 site/build/
+site/dist/
 site/.cache/
 site/.env
 site/.dev.vars

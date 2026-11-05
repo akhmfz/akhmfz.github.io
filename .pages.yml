@@ -1,0 +1,227 @@
+media:
+  - name: site-images
+    label: Site images
+    input: site/public/uploads
+    output: /uploads
+    extensions: [png, jpg, jpeg, webp]
+    categories: [image]
+
+content:
+  - name: articles
+    label: Articles
+    type: file
+    path: site/app/data/manual-posts.json
+    format: json
+    list: true
+    fields:
+      - name: platform
+        type: select
+        options:
+          values: [LinkedIn, Kompasiana, Instagram]
+      - name: title
+        type: string
+        required: true
+      - name: titleLang
+        label: Title language
+        type: select
+        options:
+          values: [id, en]
+      - name: date
+        type: date
+        required: true
+      - name: href
+        label: Post URL
+        type: string
+        required: true
+        pattern: "^https://"
+      - name: banner
+        label: Cover image
+        type: image
+        options:
+          media: site-images
+      - name: blurb
+        type: text
+      - name: blurbLang
+        label: Summary language
+        type: select
+        options:
+          values: [id, en]
+      - name: sources
+        type: object
+        list: true
+        fields:
+          - name: label
+            type: string
+          - name: href
+            type: string
+            pattern: "^https://"
+
+  - name: experience
+    label: Experience and education
+    type: file
+    path: site/app/data/career-content.json
+    format: json
+    fields:
+      - name: roles
+        label: Experience and Journal posts
+        type: object
+        list: true
+        fields:
+          - name: period
+            type: string
+            required: true
+          - name: role
+            type: string
+            required: true
+          - name: activityTitle
+            label: Journal headline
+            type: string
+            required: true
+          - name: org
+            label: Organization
+            type: string
+            required: true
+          - name: category
+            type: string
+          - name: detail
+            type: text
+          - name: activityImage
+            label: Journal image
+            type: image
+            options:
+              media: site-images
+          - name: activityImageAlt
+            label: Journal image description
+            type: text
+            description: Add descriptive alt text whenever an image is selected.
+      - name: education
+        type: object
+        list: true
+        fields:
+          - name: period
+            type: string
+            required: true
+          - name: role
+            label: Degree or program
+            type: string
+            required: true
+          - name: org
+            label: Institution
+            type: string
+            required: true
+          - name: category
+            type: string
+          - name: detail
+            type: text
+
+  - name: experience-highlights
+    label: Experience photo highlights
+    type: file
+    path: site/app/data/experience-highlights.json
+    format: json
+    list: true
+    fields:
+      - name: date
+        type: string
+        required: true
+      - name: title
+        type: string
+        required: true
+      - name: image
+        type: image
+        required: true
+        options:
+          media: site-images
+      - name: alt
+        label: Image description
+        type: text
+        required: true
+      - name: source
+        label: Source article URL (optional)
+        type: string
+        pattern: "^https://"
+      - name: credit
+        label: Photo credit (optional)
+        type: string
+
+  - name: projects
+    label: Projects / portfolio
+    type: file
+    path: site/app/data/projects-content.json
+    format: json
+    list: true
+    fields:
+      - name: slug
+        type: string
+        required: true
+        pattern: "^[a-z0-9-]+$"
+      - name: index
+        label: Display order
+        type: number
+        required: true
+      - name: title
+        type: string
+        required: true
+      - name: shortTitle
+        type: string
+        required: true
+      - name: description
+        type: text
+      - name: meta
+        type: string
+      - name: screenshot
+        type: object
+        fields:
+          - name: src
+            label: Project screenshot
+            type: image
+            required: true
+            options:
+              media: site-images
+          - name: placeholder
+            label: Blur placeholder
+            type: image
+            options:
+              media: site-images
+          - name: width
+            type: number
+          - name: height
+            type: number
+          - name: alt
+            label: Screenshot description
+            type: string
+          - name: url
+            label: Browser bar text
+            type: string
+      - name: repo
+        label: Repository URL
+        type: string
+        required: true
+        pattern: "^https://"
+      - name: external
+        label: External project link (optional)
+        type: object
+        fields:
+          - name: label
+            type: string
+          - name: href
+            type: string
+            pattern: "^https://"
+      - name: summary
+        type: text
+      - name: sections
+        type: object
+        list: true
+        fields:
+          - name: heading
+            type: string
+          - name: body
+            type: text
+      - name: facts
+        type: object
+        list: true
+        fields:
+          - name: label
+            type: string
+          - name: value
+            type: string

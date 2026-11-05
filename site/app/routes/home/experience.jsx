@@ -55,26 +55,47 @@ export const Experience = ({ id, visible, sectionRef }) => {
               role="group"
               aria-label="Activity photo highlights"
             >
-              {experienceHighlights.map(item => (
-                <figure className={styles.highlight} key={item.source}>
-                  <a
+              {experienceHighlights.map(item => {
+                const images = item.images || [{ src: item.image, alt: item.alt }];
+                const Preview = item.source ? 'a' : 'div';
+
+                return (
+                <figure className={styles.highlight} key={item.source || item.title}>
+                  <Preview
                     className={styles.highlightImage}
-                    href={item.source}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`View source for ${item.title}`}
+                    data-gallery={images.length > 1 || undefined}
+                    {...(item.source
+                      ? {
+                          href: item.source,
+                          target: '_blank',
+                          rel: 'noopener noreferrer',
+                          'aria-label': `View source for ${item.title}`,
+                        }
+                      : {})}
                   >
-                    <img src={item.image} alt={item.alt} loading="lazy" decoding="async" />
-                  </a>
+                    {images.map(image => (
+                      <img
+                        key={image.src}
+                        src={image.src}
+                        alt={image.alt}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    ))}
+                  </Preview>
                   <figcaption className={styles.highlightCaption}>
                     <span className={styles.highlightDate}>{item.date}</span>
                     <strong>{item.title}</strong>
-                    <a href={item.source} target="_blank" rel="noopener noreferrer">
-                      Photo: UNIDA Gontor
-                    </a>
+                    {item.source && (
+                      <a href={item.source} target="_blank" rel="noopener noreferrer">
+                        Photo: UNIDA Gontor
+                      </a>
+                    )}
+                    {item.credit && <span>{item.credit}</span>}
                   </figcaption>
                 </figure>
-              ))}
+                );
+              })}
             </div>
             <div className={styles.list}>
               {roles.map(item => (

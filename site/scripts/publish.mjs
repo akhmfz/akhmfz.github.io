@@ -1,4 +1,4 @@
-// Publishes the built SPA to the repository root, which GitHub Pages serves.
+// Publishes the built SPA to the repository root or PUBLISH_DIR for Actions.
 // The SPA shell is patched with real <head> metadata so link previews and
 // crawlers see the site before any JavaScript runs.
 import { cp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
@@ -8,11 +8,23 @@ import { fileURLToPath } from 'node:url';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const client = path.resolve(here, '../build/client');
 const root = path.resolve(here, '../..');
+const outputRoot = process.env.PUBLISH_DIR ? path.resolve(process.env.PUBLISH_DIR) : root;
 const siteUrl = 'https://akhmfz.github.io';
 const pageTitles = JSON.parse(await readFile(path.resolve(here, '../app/data/page-titles.json'), 'utf8'));
+const siteConfig = JSON.parse(await readFile(path.resolve(here, '../app/config.json'), 'utf8'));
+const projects = JSON.parse(await readFile(path.resolve(here, '../app/data/projects-content.json'), 'utf8'));
+const projectSlugs = projects.map(project => project.slug);
+
+if (
+  projectSlugs.some(slug => typeof slug !== 'string' || !/^[a-z0-9-]+$/.test(slug)) ||
+  new Set(projectSlugs).size !== projectSlugs.length
+) {
+  throw new Error('Project slugs must be unique lowercase letters, numbers, or hyphens.');
+}
 
 const generated = [
   'assets',
+  'uploads',
   'articles',
   'contact',
   'details',
@@ -44,22 +56,24 @@ body{margin:0;background:inherit;color:inherit;font-family:system-ui,sans-serif}
 
 // Keep the static title identical to the route meta title React uses on hydration.
 function head({ title, description, path: pagePath }) {
-  const canonical = `${siteUrl}${pagePath}`;
-  return `<meta name="description" content="${description}">
+  const canonical = escapeHtml(`${siteUrl}${pagePath}`);
+  const safeTitle = escapeHtml(title);
+  const safeDescription = escapeHtml(description);
+  return `<meta name="description" content="${safeDescription}">
 <meta name="author" content="Muhammad Akhmal Fauzi Saefurohman">
 <link rel="canonical" href="${canonical}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Muhammad Akhmal">
 <meta property="og:url" content="${canonical}">
-<meta property="og:title" content="${title}">
-<meta property="og:description" content="${description}">
+<meta property="og:title" content="${safeTitle}">
+<meta property="og:description" content="${safeDescription}">
 <meta property="og:image" content="${siteUrl}/social-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Muhammad Akhmal — Financial Management student focused on Internal Audit, Risk & Compliance">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="${title}">
-<meta name="twitter:description" content="${description}">
+<meta name="twitter:title" content="${safeTitle}">
+<meta name="twitter:description" content="${safeDescription}">
 <meta name="twitter:image" content="${siteUrl}/social-image.png">
 <style>${criticalCss}</style>`;
 }
@@ -92,27 +106,15 @@ const pages = {
   'activities/index.html': {
     path: '/activities/',
     title: pageTitles['/activities/'],
-    description: 'Selected activities by Muhammad Akhmal Fauzi Saefurohman.',
+    description: 'Photo stories from the programs, scholarship, and community work of Muhammad Akhmal Fauzi Saefurohman.',
   },
   ...Object.fromEntries(
-    // shortcut: head metadata for project pages is duplicated from
-    // app/data/projects.js because that module imports Vite-only assets;
-    // move the shared fields into JSON if the list outgrows three pages.
-    [
-      [
-        'papan-instrumen',
-        'A transparent, sector-aware fundamental analysis dashboard for Indonesian equities, built in Pine Script v6.',
-      ],
-      [
-        'papan-gerak',
-        'A personal technical-analysis tool combining trend, momentum, volatility, and volume for IDX charts.',
-      ],
-    ].map(([slug, description]) => [
+    projects.map(({ slug, shortTitle, description }) => [
       `projects/${slug}/index.html`,
       {
         path: `/projects/${slug}/`,
-        title: pageTitles[`/projects/${slug}/`],
-        description,
+        title: `${siteConfig.name} | ${shortTitle}`,
+        description: description || '',
       },
     ])
   ),
@@ -135,30 +137,31 @@ function escapeHtml(value) {
   })[character]);
 }
 
+await mkdir(outputRoot, { recursive: true });
 for (const entry of generated) {
-  await rm(path.join(root, entry), { recursive: true, force: true });
+  await rm(path.join(outputRoot, entry), { recursive: true, force: true });
 }
 
 const files = await readdir(client, { withFileTypes: true });
 for (const file of files) {
-  await cp(path.join(client, file.name), path.join(root, file.name), { recursive: true });
+  await cp(path.join(client, file.name), path.join(outputRoot, file.name), { recursive: true });
 }
 
 const sourceHtml = await readFile(path.join(client, 'index.html'), 'utf8');
 for (const [target, meta] of Object.entries(pages)) {
-  const out = path.join(root, target);
+  const out = path.join(outputRoot, target);
   await mkdir(path.dirname(out), { recursive: true });
   await writeFile(out, await buildPage(sourceHtml, meta));
 }
 
 await writeFile(
-  path.join(root, '404.html'),
+  path.join(outputRoot, '404.html'),
   await buildPage(sourceHtml, {
     path: '/404.html',
     title: pageTitles['404'],
     description: 'The page you were looking for could not be found.',
   })
 );
-await writeFile(path.join(root, '.nojekyll'), '');
+await writeFile(path.join(outputRoot, '.nojekyll'), '');
 
-console.log('Published to repository root.');
+console.log(`Published static output to ${outputRoot}.`);

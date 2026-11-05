@@ -56,7 +56,7 @@ export default function Project() {
           <Button href={project.repo} iconEnd="arrow-right">
             Source code
           </Button>
-          {project.external && (
+          {project.external?.href && (
             <Button secondary href={project.external.href}>
               {project.external.label}
             </Button>
@@ -85,7 +85,7 @@ export default function Project() {
 
       <section className={styles.body}>
         <div className={styles.article}>
-          {project.sections.map(section => (
+          {(project.sections || []).map(section => (
             <div className={styles.block} key={section.heading}>
               <Heading level={3} as="h2" className={styles.blockTitle}>
                 {section.heading}
@@ -103,7 +103,7 @@ export default function Project() {
             <span className={styles.asideTagText}>At a glance</span>
           </div>
           <dl className={styles.facts}>
-            {project.facts.map(fact => (
+            {(project.facts || []).map(fact => (
               <div className={styles.fact} key={fact.label}>
                 <dt>{fact.label}</dt>
                 <dd>{fact.value}</dd>
