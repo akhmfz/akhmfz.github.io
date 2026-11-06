@@ -4,36 +4,31 @@
  */
 export async function loadImageFromSrcSet({ src, srcSet, sizes }) {
   return new Promise((resolve, reject) => {
-    try {
-      if (!src && !srcSet) {
-        throw new Error('No image src or srcSet provided');
-      }
-
-      let tempImage = new Image();
-
-      if (src) {
-        tempImage.src = src;
-      }
-
-      if (srcSet) {
-        tempImage.srcset = srcSet;
-      }
-
-      if (sizes) {
-        tempImage.sizes = sizes;
-      }
-
-      const onLoad = () => {
-        tempImage.removeEventListener('load', onLoad);
-        const source = tempImage.currentSrc;
-        tempImage = null;
-        resolve(source);
-      };
-
-      tempImage.addEventListener('load', onLoad);
-    } catch (error) {
-      reject(`Error loading ${srcSet}: ${error}`);
+    if (!src && !srcSet) {
+      reject(new Error('No image src or srcSet provided'));
+      return;
     }
+
+    const tempImage = new Image();
+    const cleanup = () => {
+      tempImage.removeEventListener('load', onLoad);
+      tempImage.removeEventListener('error', onError);
+    };
+    const onLoad = () => {
+      const source = tempImage.currentSrc || tempImage.src;
+      cleanup();
+      resolve(source);
+    };
+    const onError = () => {
+      cleanup();
+      reject(new Error(`Could not load image source: ${srcSet || src}`));
+    };
+
+    tempImage.addEventListener('load', onLoad, { once: true });
+    tempImage.addEventListener('error', onError, { once: true });
+    if (sizes) tempImage.sizes = sizes;
+    if (srcSet) tempImage.srcset = srcSet;
+    if (src) tempImage.src = src;
   });
 }
 
@@ -41,22 +36,33 @@ export async function loadImageFromSrcSet({ src, srcSet, sizes }) {
  * Generates a transparent png of a given width and height
  */
 export async function generateImage(width = 1, height = 1) {
-  return new Promise(resolve => {
+  return new Promise((resolve, reject) => {
     const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
+    try {
+      const ctx = canvas.getContext('2d');
+      if (!ctx) throw new Error('Canvas context unavailable');
 
-    canvas.width = width;
-    canvas.height = height;
+      canvas.width = width;
+      canvas.height = height;
+      ctx.fillStyle = 'rgba(0, 0, 0, 0)';
+      ctx.fillRect(0, 0, width, height);
 
-    ctx.fillStyle = 'rgba(0, 0, 0, 0)';
-    ctx.fillRect(0, 0, width, height);
-
-    canvas.toBlob(async blob => {
-      if (!blob) throw new Error('Video thumbnail failed to load');
-      const image = URL.createObjectURL(blob);
+      canvas.toBlob(blob => {
+        canvas.remove();
+        if (!blob) {
+          reject(new Error('Video thumbnail failed to load'));
+          return;
+        }
+        try {
+          resolve(URL.createObjectURL(blob));
+        } catch (error) {
+          reject(error);
+        }
+      });
+    } catch (error) {
       canvas.remove();
-      resolve(image);
-    });
+      reject(error);
+    }
   });
 }
 

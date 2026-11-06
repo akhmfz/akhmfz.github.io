@@ -86,8 +86,12 @@ const ImageElements = ({
 
   useEffect(() => {
     const resolveVideoSrc = async () => {
-      const resolvedVideoSrc = await resolveSrcFromSrcSet({ srcSet, sizes });
-      setVideoSrc(resolvedVideoSrc);
+      try {
+        setVideoSrc(await resolveSrcFromSrcSet({ srcSet, sizes }));
+      } catch {
+        // Keep the video usable if responsive source selection is unavailable.
+        setVideoSrc(src);
+      }
     };
 
     if (isVideo && srcSet) {

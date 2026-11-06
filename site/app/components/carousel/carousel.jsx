@@ -96,7 +96,6 @@ export const Carousel = ({ width, height, images, placeholder, ...rest }) => {
 
     const loadImages = async () => {
       const anisotropy = renderer.current.capabilities.getMaxAnisotropy();
-
       const texturePromises = images.map(async image => {
         const imageSrc = image.srcSet ? await resolveSrcFromSrcSet(image) : image.src;
         const imageTexture = await textureLoader.loadAsync(imageSrc);
@@ -142,7 +141,9 @@ export const Carousel = ({ width, height, images, placeholder, ...rest }) => {
     };
 
     if (inViewport && !loaded) {
-      loadImages();
+      loadImages().catch(error => {
+        if (mounted) console.error('Could not load carousel images', error);
+      });
     }
 
     return () => {

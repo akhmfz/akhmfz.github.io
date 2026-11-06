@@ -11,7 +11,7 @@ const root = path.resolve(here, '../..');
 const outputRoot = process.env.PUBLISH_DIR
   ? path.resolve(here, '..', process.env.PUBLISH_DIR)
   : root;
-const siteUrl = 'https://akhmfz.github.io';
+const siteUrl = 'https://akhmfz.my.id';
 const pageTitles = JSON.parse(await readFile(path.resolve(here, '../app/data/page-titles.json'), 'utf8'));
 const siteConfig = JSON.parse(await readFile(path.resolve(here, '../app/config.json'), 'utf8'));
 const projects = JSON.parse(await readFile(path.resolve(here, '../app/data/projects-content.json'), 'utf8'));
@@ -32,6 +32,7 @@ const generated = [
   'details',
   'activities',
   'projects',
+  'malikadnan-portofolio',
   'index.html',
   '404.html',
   'favicon.ico',
@@ -148,12 +149,6 @@ const files = await readdir(client, { withFileTypes: true });
 for (const file of files) {
   await cp(path.join(client, file.name), path.join(outputRoot, file.name), { recursive: true });
 }
-
-// Keep the independent Malik site in the Pages artifact, outside the Remix app.
-const malikSite = path.resolve(here, '../public/malikadnan-portofolio');
-const malikOutput = path.join(outputRoot, 'malikadnan-portofolio');
-await cp(malikSite, malikOutput, { recursive: true });
-await readFile(path.join(malikOutput, 'index.html'));
 
 const sourceHtml = await readFile(path.join(client, 'index.html'), 'utf8');
 for (const [target, meta] of Object.entries(pages)) {

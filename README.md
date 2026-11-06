@@ -1,6 +1,6 @@
-# akhmfz.github.io
+# akhmfz.my.id
 
-Website portofolio — **[akhmfz.github.io](https://akhmfz.github.io)**
+Website portofolio — **[akhmfz.my.id](https://akhmfz.my.id)**
 
 Dibangun dengan [Remix](https://remix.run) (SPA mode) + Three.js, hasil port dari
 template [Hamish Williams](https://github.com/HamishMW/portfolio) (MIT, lihat `site/LICENSE`).

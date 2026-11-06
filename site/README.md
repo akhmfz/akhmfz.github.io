@@ -1,6 +1,6 @@
 # site/ — source Remix
 
-Source untuk [akhmfz.github.io](https://akhmfz.github.io). Output statis ditulis ke
+Source untuk [akhmfz.my.id](https://akhmfz.my.id). Output statis ditulis ke
 root repo oleh `npm run publish`; lihat [`../README.md`](../README.md) untuk struktur
 dan cara deploy.
 
